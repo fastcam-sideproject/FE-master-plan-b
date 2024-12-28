@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import appleSdGothic from '@/components/AppleSdGothic';
 
 export const metadata: Metadata = {
   title: 'Master Plan B',
@@ -12,8 +13,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body suppressHydrationWarning={true}>{children}</body>
+    <html lang="ko">
+      <body className={`${appleSdGothic.className}`} suppressHydrationWarning={true}>{children}</body>
     </html>
   );
 }

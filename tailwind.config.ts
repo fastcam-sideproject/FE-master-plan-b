@@ -12,6 +12,14 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        appleSdGothic: "var(--font-appleSdGothic)",
+      },
+      fontWeight: {
+        medium: "400",
+        regular: "500",
+        semibold: "600",
+      },
     },
   },
   plugins: [],
