@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import appleSdGothic from '@/components/AppleSdGothic';
+import MSWComponent from '@/components/MSWComponent';
 
 export const metadata: Metadata = {
   title: 'Master Plan B',
@@ -14,7 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={`${appleSdGothic.className}`} suppressHydrationWarning={true}>{children}</body>
+      <body className={`${appleSdGothic.className}`} suppressHydrationWarning={true}>
+        <MSWComponent>{children}</MSWComponent>
+      </body>
     </html>
   );
 }
