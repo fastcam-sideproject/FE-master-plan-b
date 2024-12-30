@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss';
 
 export default {
+  darkMode: ['class'],
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -36,7 +37,6 @@ export default {
           '80': 'var(--color-yellow-80)',
           '90': 'var(--color-yellow-90)',
         },
-
         blue: {
           '5': 'var(--color-blue-5)',
           '10': 'var(--color-blue-10)',
@@ -97,6 +97,9 @@ export default {
         '8': '24px',
         '9': '32px',
         '10': '1000px',
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
       },
       spacing: {
         '0': '0px',
@@ -128,5 +131,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-animate')],
 } satisfies Config;
