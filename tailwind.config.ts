@@ -25,7 +25,7 @@ export default {
           '90': 'var(--color-neutral-90)',
           '100': 'var(--color-neutral-100)',
         },
-        yellow: {
+        primary: {
           '5': 'var(--color-yellow-5)',
           '10': 'var(--color-yellow-10)',
           '20': 'var(--color-yellow-20)',
