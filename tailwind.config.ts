@@ -178,6 +178,9 @@ export default {
       boxShadow: {
         '1': '0px 2px 4px rgba(20, 23, 28, 0.04), 0px 0px 4px 16px rgba(20, 23, 28, 0.04), 0px 0px 16px 30px rgba(20, 23, 28, 0.04)',
       },
+      screens: {
+        '2xl': '1920px',
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],
