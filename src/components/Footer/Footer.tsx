@@ -2,9 +2,9 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-neutral-5 text-neutral-50">
+    <footer className="bg-neutral-5 text-neutral-50 2xl:flex 2xl:justify-center 2xl:items-center">
 
-      <div className="flex items-start justify-between p-9 text-label-small-desktop">
+      <div className="flex items-start justify-between p-9 text-label-small-desktop max-w-[1920px] 2xl:gap-8">
         <div>
           <div className="flex gap-4 px-4 items-center">
             <Image width={20} height={20} src="/icons/category/art-design.svg" alt="카테고리 이미지" />
