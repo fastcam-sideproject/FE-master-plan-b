@@ -4,10 +4,11 @@ export default function Footer() {
   return (
     <footer className="bg-neutral-5 text-neutral-50">
 
-      <div className="flex items-start justify-between p-9">
+      <div className="flex items-start justify-between p-9 text-label-small-desktop">
         <div>
           <div className="flex gap-4 px-4 items-center">
-            <Image width={28} height={28} src="/icons/category/art-design.svg" alt="카테고리 이미지" />마스터플랜비
+            <Image width={20} height={20} src="/icons/category/art-design.svg" alt="카테고리 이미지" />
+            <span className="text-label-medium-desktop">Master Plan B</span>
           </div>
           <p>
             <span className="relative after:content-[''] after:absolute after:top-0 after:right-0 after:h-full after:w-[1px] after:bg-neutral-300 px-4">
@@ -25,7 +26,7 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className="grid grid-cols-[1fr_1px_1fr_1px_1fr] justify-items-center gap-4">
+        <div className="grid grid-cols-[1fr_1px_1fr_1px_1fr] justify-items-center gap-4 px-4">
           <div>개인정보처리방침</div>
           <div className="bg-neutral-30 w-full h-full"></div>
           <div>이용약관</div>
