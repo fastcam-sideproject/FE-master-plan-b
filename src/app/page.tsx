@@ -9,7 +9,7 @@ export default function Home() {
       </h2>
       <main className="bg-neutral-10 border shadow-1 stroke-normal rounded-10 font-semibold">
         안녕하세요 마스터 플랜 비 입니다
-        <Button variant="secondary" size="sm">
+        <Button variant="outline" size="md">
           클릭하세요.
         </Button>
         <button className="text-label-large-desktop border rounded-2 border-b-gray-50 ">aa</button>
