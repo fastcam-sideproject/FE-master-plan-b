@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-export default function MSWComponent({ children }: { children: React.ReactNode }) {
+function MswWrapper({ children }: { children: React.ReactNode }) {
   const [mswReady, setMswReady] = useState(false);
 
   useEffect(() => {
@@ -22,3 +22,5 @@ export default function MSWComponent({ children }: { children: React.ReactNode }
 
   return <>{children}</>;
 }
+
+export default MswWrapper;
