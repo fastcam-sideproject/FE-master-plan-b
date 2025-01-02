@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { IconCpu } from '@tabler/icons-react';
 import { Button } from '@/components/ui/button';
 import {
   Breadcrumb,
@@ -8,7 +9,9 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
-import Fab from '@/lib/common/Fab/Fab';
+import Fab from '@/lib/common/FAB/Fab';
+import CategoryItem from '@/components/Category/CategoryItem';
+import Category from '@/components/Category/Category';
 
 export default function Home() {
   return (
@@ -34,6 +37,7 @@ export default function Home() {
         <Button variant="third" size="md">
           활성화 버튼
         </Button>
+        <Category />
       </main>
     </>
   );
