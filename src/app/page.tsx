@@ -1,5 +1,7 @@
+'use client';
+
 import Link from 'next/link';
-import { IconCpu } from '@tabler/icons-react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   Breadcrumb,
@@ -9,15 +11,17 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
-import Fab from '@/lib/common/FAB/Fab';
 import CategoryItem from '@/components/Category/CategoryItem';
 import Category from '@/components/Category/Category';
 
+import NumberPagination from '@/components/NumberPagination';
+
 export default function Home() {
+  const [currentPage, setCurrentPage] = useState(1);
+
   return (
     <>
       <h1 className="text-display-desktop md:text-display-mobile font-extrabold">제목</h1>
-      <Fab />
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -39,6 +43,7 @@ export default function Home() {
         </Button>
         <Category />
       </main>
+      <NumberPagination currentPage={currentPage} totalPages={10} onPageChange={setCurrentPage} />
     </>
   );
 }
