@@ -1,7 +1,14 @@
 import React from 'react';
-import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
+import {
+  IconChevronLeft,
+  IconChevronRight,
+  IconChevronsLeft,
+  IconChevronsRight,
+  IconDots,
+} from '@tabler/icons-react';
+
 import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
+import { table } from 'console';
 
 const CustomPagination = ({
   currentPage,
@@ -19,29 +26,27 @@ const CustomPagination = ({
 
     // 맨처음 페이지로 이동
     pages.push(
-      <Button
+      <button
+        type="button"
         key="first"
-        variant="ghost"
-        size="icon"
         onClick={() => onPageChange(1)}
         disabled={currentPage === 1}
-        className="h-9 w-9"
+        className={cn('text-neutral-85', currentPage === 1 && 'text-neutral-30')}
       >
-        <ChevronsLeft className="h-4 w-4" />
-      </Button>,
+        <IconChevronsLeft size={24} />
+      </button>,
     );
     // 이전 페이지로 이동
     pages.push(
-      <Button
+      <button
         key="prev"
-        variant="ghost"
-        size="icon"
+        type="button"
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="h-9 w-9"
+        className={cn('text-neutral-85', currentPage === 1 && 'text-neutral-30')}
       >
-        <ChevronLeft className="h-4 w-4" />
-      </Button>,
+        <IconChevronLeft size={24} />
+      </button>,
     );
 
     // 페이지 번호
@@ -54,23 +59,26 @@ const CustomPagination = ({
         (currentPage >= totalPages - 2 && i >= totalPages - 4)
       ) {
         pages.push(
-          <Button
+          <button
             key={i}
-            variant={currentPage === i ? 'default' : 'ghost'}
-            size="icon"
             onClick={() => onPageChange(i)}
-            className={cn('h-9 w-9', currentPage === i && 'bg-black text-white hover:bg-black/90')}
+            className={cn(
+              'h-9 w-9 p-[10px]',
+              currentPage === i
+                ? 'text-body-large-desktop font-[400] bg-neutral-85 text-neutral-0 border rounded-10'
+                : 'text-body-large-desktop font-[400] text-neutral-85',
+            )}
           >
             {i}
-          </Button>,
+          </button>,
         );
       } else if (
         (i === currentPage - 2 && currentPage > 4) ||
         (i === currentPage + 2 && currentPage < totalPages - 3)
       ) {
         pages.push(
-          <span key={`ellipsis-${i}`} className="px-2">
-            ...
+          <span key={`ellipsis-${i}`} className="text-neutral-85">
+            <IconDots size={24} />
           </span>,
         );
       }
@@ -78,30 +86,28 @@ const CustomPagination = ({
 
     // 마지막 페이지로 이동
     pages.push(
-      <Button
+      <button
         key="next"
-        variant="ghost"
-        size="icon"
+        type="button"
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="h-9 w-9"
+        className={cn('text-neutral-85', currentPage === totalPages && 'text-neutral-30')}
       >
-        <ChevronRight className="h-4 w-4" />
-      </Button>,
+        <IconChevronRight size={24} />
+      </button>,
     );
 
     // 다음 페이지로 이동
     pages.push(
-      <Button
+      <button
         key="last"
-        variant="ghost"
-        size="icon"
+        type="button"
         onClick={() => onPageChange(totalPages)}
         disabled={currentPage === totalPages}
-        className="h-9 w-9"
+        className={cn('text-neutral-85', currentPage === totalPages && 'text-neutral-30')}
       >
-        <ChevronsRight className="h-4 w-4" />
-      </Button>,
+        <IconChevronsRight size={24} />
+      </button>,
     );
 
     return pages;
@@ -111,7 +117,7 @@ const CustomPagination = ({
     <nav
       role="navigation"
       aria-label="pagination"
-      className={cn('flex justify-center items-center gap-1', className)}
+      className={cn('flex justify-center items-center gap-4', className)}
     >
       {renderPageNumbers()}
     </nav>
