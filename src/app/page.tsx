@@ -6,12 +6,9 @@ import { Button } from '@/components/ui/button';
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
-import CategoryItem from '@/components/Category/CategoryItem';
 import Category from '@/components/Category/Category';
 
 import NumberPagination from '@/components/NumberPagination';
