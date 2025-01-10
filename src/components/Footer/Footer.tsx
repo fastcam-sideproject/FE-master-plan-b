@@ -5,14 +5,13 @@ export default function Footer() {
     <footer className="bg-neutral-5 text-neutral-50 2xl:flex 2xl:justify-center 2xl:items-center">
       <div className="flex items-start justify-between p-9 text-label-small-desktop max-w-[1920px] 2xl:gap-8">
         <div>
-          <div className="flex gap-4 px-4 items-center">
-            <Image width={20} height={20} src="/icons/category/brush.svg" alt="카테고리 이미지" />
-            <span className="text-label-medium-desktop">Master Plan B</span>
+          <div className="flex gap-4 px-4 items-start">
+            <Image width={150} height={50} src="/logos/logo-text-dark.svg" alt="로고" />
           </div>
           <p>
             <span className="relative after:content-[''] after:absolute after:top-0 after:right-0 after:h-full after:w-[1px] after:bg-neutral-300 px-4">
               상호
-            </span>{' '}
+            </span>
             <span className="px-4">마스터플랜비</span>
             <br />
             <span className="relative after:content-[''] after:absolute after:top-0 after:right-0 after:h-full after:w-[1px] after:bg-neutral-300 px-4">
@@ -22,12 +21,12 @@ export default function Footer() {
             <br />
             <span className="relative after:content-[''] after:absolute after:top-0 after:right-0 after:h-full after:w-[1px] after:bg-neutral-300 px-4">
               사업자 등록번호
-            </span>{' '}
+            </span>
             <span className="px-4">580 - 46 - 01046</span>
             <br />
             <span className="relative after:content-[''] after:absolute after:top-0 after:right-0 after:h-full after:w-[1px] after:bg-neutral-300 px-4">
               사업자 소재지
-            </span>{' '}
+            </span>
             <span className="px-4">Seoul, Gangnam District, Teheran-ro, 231, Centerfield</span>
             <br />
           </p>

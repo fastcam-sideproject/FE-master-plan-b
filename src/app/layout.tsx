@@ -4,6 +4,7 @@ import appleSdGothic from '@/components/AppleSdGothic';
 import MswWrapper from '@/components/MswWrapper';
 import ReactQueryProviders from '@/hooks/useReactQuery';
 import Footer from '@/components/Footer/Footer';
+import Header from '@/components/Header/Header';
 
 export const metadata: Metadata = {
   title: 'Master Plan B',
@@ -19,6 +20,7 @@ export default function RootLayout({
     <html lang="ko">
       <body className={`${appleSdGothic.className}`} suppressHydrationWarning={true}>
         <ReactQueryProviders>
+          <Header />
           <MswWrapper>{children}</MswWrapper>
           <Footer />
         </ReactQueryProviders>
