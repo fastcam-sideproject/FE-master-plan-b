@@ -37,6 +37,9 @@ export default function Home() {
         <Button variant="third" size="md">
           활성화 버튼
         </Button>
+        <Button variant="text" size="text_size">
+          text 박스
+        </Button>
         <Category />
       </main>
       <NumberPagination currentPage={currentPage} totalPages={10} onPageChange={setCurrentPage} />

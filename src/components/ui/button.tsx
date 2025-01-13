@@ -16,7 +16,7 @@ const buttonVariants = cva(
           'text-neutral-80 bg-neutral-5 font-[400] hover:bg-neutral-10 active:bg-neutral-20 disabled:bg-neutral-5 disabled:text-neutral-20 text-label-large-desktop',
         outline:
           'text-neutral-80 border border-neutral-20 bg-neutral-0 font-[400] hover:bg-neutral-5 active:bg-neutral-10 disabled:bg-neutral-5 disabled:text-neutral-20 text-label-large-desktop',
-        empty: '',
+        text: 'text-neutral-80 font-[400] text-label-large-desktop',
         link: '',
         ghost: '',
       },
@@ -25,6 +25,7 @@ const buttonVariants = cva(
         sm: 'rounded-3 px-[16px] py-[8px] gap-[10px]',
         md: 'rounded-4 px-[24px] py-[12px] gap-[10px]',
         lg: 'rounded-4 px-[32px] py-[16px] gap-[10px]',
+        text_size: 'p-3 gap-[10px]',
         icon: 'h-10 w-10',
       },
     },
