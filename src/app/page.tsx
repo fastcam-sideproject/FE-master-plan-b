@@ -10,8 +10,7 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 import Category from '@/components/Category/Category';
-
-import NumberPagination from '@/components/NumberPagination';
+import { NumberPagination } from '@/lib/common/Pagination';
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);

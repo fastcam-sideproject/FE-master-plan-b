@@ -9,7 +9,7 @@ import {
 
 import { cn } from '@/lib/utils';
 
-const CustomPagination = ({
+export function NumberPagination({
   currentPage,
   totalPages,
   onPageChange,
@@ -19,7 +19,7 @@ const CustomPagination = ({
   totalPages: number;
   onPageChange: (page: number) => void;
   className?: string;
-}) => {
+}) {
   const renderPageNumbers = () => {
     let pages = [];
 
@@ -121,6 +121,4 @@ const CustomPagination = ({
       {renderPageNumbers()}
     </nav>
   );
-};
-
-export default CustomPagination;
+}
