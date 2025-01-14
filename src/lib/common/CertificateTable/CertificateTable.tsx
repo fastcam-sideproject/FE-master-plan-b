@@ -56,23 +56,30 @@ export function CertificateTable() {
                 </div>
               </TableCell>
               <TableCell>{cert.reference}</TableCell>
-              <div className="flex items-center p-4 gap-4">
-                <button
-                  type="button"
-                  className="p-[10px] text-label-small-desktop font-[400] bg-neutral-80 text-neutral-0 rounded-4"
-                >
-                  후기 입력하기
-                </button>
-                <div className="flex items-center gap-4 ">
-                  <div className="w-px h-6 text-neutral-20" />
-                  <button type="button">
-                    <IconPencil width={24} height={24} color="#c2c2c2" />
+              <TableCell>
+                <div className="flex items-center p-4 gap-6">
+                  <button
+                    type="button"
+                    className="p-[10px] text-label-small-desktop font-[400] bg-neutral-80 text-neutral-0 rounded-4"
+                  >
+                    후기 입력하기
                   </button>
-                  <button type="button">
-                    <IconTrash width={24} height={24} color="#c2c2c2" />
-                  </button>
+                  <div className="flex items-center gap-4">
+                    <div
+                      className="h-6 bg-neutral-30"
+                      style={{
+                        width: '2px',
+                      }}
+                    />
+                    <button type="button">
+                      <IconPencil width={24} height={24} color="#c2c2c2" />
+                    </button>
+                    <button type="button">
+                      <IconTrash width={24} height={24} color="#c2c2c2" />
+                    </button>
+                  </div>
                 </div>
-              </div>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -181,6 +181,9 @@ export default {
       screens: {
         '2xl': '1920px',
       },
+      width: {
+        '2px': '2px',
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],

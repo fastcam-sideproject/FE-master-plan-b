@@ -43,6 +43,7 @@ export default function Home() {
       </main>
       <NumberPagination currentPage={currentPage} totalPages={10} onPageChange={setCurrentPage} />
       <CertificateTable />
+      <div className="w-px h-6 bg-neutral-30" />
     </>
   );
 }
