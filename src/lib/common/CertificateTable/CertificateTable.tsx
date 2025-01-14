@@ -35,32 +35,23 @@ export function CertificateTable() {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead style={{ width: '220px' }}>자격증명</TableHead>
-          <TableHead style={{ width: '160px', height: '50px' }}>기관명</TableHead>
-          <TableHead style={{ width: '130px' }}>취득일</TableHead>
-          <TableHead style={{ width: '130px' }}>만료일</TableHead>
-          <TableHead className="text-center" style={{ width: '80px' }}>
-            점수
-          </TableHead>
-          <TableHead style={{ width: '160px' }}>자격증 번호</TableHead>
+          <TableHead className="w-[220px]">자격증명</TableHead>
+          <TableHead className="w-40 h-[50px]">기관명</TableHead>
+          <TableHead className="w-[130px]">취득일</TableHead>
+          <TableHead className="w-[130px]">만료일</TableHead>
+          <TableHead className="text-center w-[80px]">점수</TableHead>
+          <TableHead className="w-40">자격증 번호</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {certificates.map((cert) => (
           <TableRow key={cert.id}>
             <TableCell>{cert.name}</TableCell>
-            <TableCell
-              style={{
-                width: '160px',
-                height: '50px',
-              }}
-            >
-              {cert.organization}
-            </TableCell>
+            <TableCell>{cert.organization}</TableCell>
             <TableCell>{cert.issueDate}</TableCell>
             <TableCell>{cert.expiryDate}</TableCell>
             <TableCell>
-              <div className="border rounded-4 bg-neutral-10 flex items-center justify-center ">
+              <div className="border rounded-4 bg-neutral-10 flex items-center justify-center">
                 <span className="text-neutral-85">{cert.score}</span>
               </div>
             </TableCell>
@@ -69,14 +60,12 @@ export function CertificateTable() {
               <div className="flex items-center gap-6">
                 <button
                   type="button"
-                  className="bg-neutral-70 hover:bg-neutral-30 p-4 text-label-small-desktop font-[400] text-neutral-0 rounded-4 "
-                  style={{ width: '145px', height: '50px' }}
+                  className="w-[145px] h-[50px] bg-neutral-70 hover:bg-neutral-30 p-4 text-label-small-desktop font-[400] text-neutral-0 rounded-4 "
                 >
                   후기 입력하기
                 </button>
                 <div className="flex items-center gap-4">
                   <div className="h-6 bg-neutral-20 w-1" />
-
                   <button type="button">
                     <IconPencil width={24} height={24} color="#c2c2c2" />
                   </button>

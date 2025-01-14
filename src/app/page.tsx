@@ -36,7 +36,11 @@ export default function Home() {
         <Button variant="third" size="md" disabled>
           비활성화 버튼
         </Button>
-        <Button variant="third" size="md">
+        <Button
+          variant="third"
+          size="md"
+          className="w-[145px] h-[50px] bg-neutral-70 hover:bg-neutral-30"
+        >
           활성화 버튼
         </Button>
         <Category />
