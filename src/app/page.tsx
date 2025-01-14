@@ -12,6 +12,7 @@ import {
 import Category from '@/components/Category/Category';
 
 import NumberPagination from '@/components/NumberPagination';
+import { CertificateTable } from '@/lib/common/CertificateTable';
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -41,6 +42,8 @@ export default function Home() {
         <Category />
       </main>
       <NumberPagination currentPage={currentPage} totalPages={10} onPageChange={setCurrentPage} />
+      <CertificateTable />
+      <div className="w-px h-6 bg-neutral-30" />
     </>
   );
 }
