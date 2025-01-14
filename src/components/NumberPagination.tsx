@@ -8,7 +8,6 @@ import {
 } from '@tabler/icons-react';
 
 import { cn } from '@/lib/utils';
-import { table } from 'console';
 
 const CustomPagination = ({
   currentPage,
