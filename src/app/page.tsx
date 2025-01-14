@@ -25,7 +25,7 @@ export default function Home() {
           <BreadcrumbItem>
             <Link href="/">홈</Link>
           </BreadcrumbItem>
-          <BreadcrumbSeparator className="" />
+          <BreadcrumbSeparator />
           <BreadcrumbItem>
             <Link href="/components">하위 페이지</Link>
           </BreadcrumbItem>
