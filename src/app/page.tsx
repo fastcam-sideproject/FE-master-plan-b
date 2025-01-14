@@ -39,11 +39,11 @@ export default function Home() {
         <Button variant="third" size="md">
           활성화 버튼
         </Button>
-        <Category />
       </main>
       <NumberPagination currentPage={currentPage} totalPages={10} onPageChange={setCurrentPage} />
       <CertificateTable />
       <div className="w-px h-6 bg-neutral-30" />
+      <Category />
     </>
   );
 }
