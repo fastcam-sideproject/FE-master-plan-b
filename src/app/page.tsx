@@ -13,6 +13,7 @@ import Category from '@/components/Category/Category';
 
 import NumberPagination from '@/components/NumberPagination';
 import { CertificateTable } from '@/lib/common/CertificateTable';
+import { NumberInput } from '@/lib/common/NumberInput';
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -39,7 +40,7 @@ export default function Home() {
         <Button
           variant="third"
           size="md"
-          className="w-[145px] h-[50px] bg-neutral-70 hover:bg-neutral-30"
+          className="text-body-large-desktop font-[400] w-[26px] h-[26px] p-2 text-center border-none overflow-hidden border-neutral-10 bg-neutral-0 text-neutral-85"
         >
           활성화 버튼
         </Button>
@@ -48,6 +49,9 @@ export default function Home() {
       <CertificateTable />
       <div className="w-px h-6 bg-neutral-30" />
       <Category />
+      <div className="flex items-center justify-center">
+        <NumberInput min={0} max={100} defaultValue={0} />
+      </div>
     </>
   );
 }
