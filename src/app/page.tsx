@@ -14,6 +14,7 @@ import Category from '@/components/Category/Category';
 import NumberPagination from '@/components/NumberPagination';
 import { CertificateTable } from '@/lib/common/CertificateTable';
 import SearchBar from '@/components/SearchBar/SearchBar';
+import { NumberInput } from '@/lib/common/NumberInput';
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
