@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Minus, Plus } from 'lucide-react';
+import { IconMinus, IconPlus } from '@tabler/icons-react';
 import { Input } from '@/components/ui/input';
 
 type NumberInputProps = {
@@ -39,7 +39,7 @@ export function NumberInput({ min, max, defaultValue, onChange }: NumberInputPro
   return (
     <div className="flex items-center justify-center border rounded-4 overflow-hidden border-neutral-10 bg-neutral-0 max-w-[91px] h-9 p-2">
       <button type="button" className="w-[26px] h-[26px] text-neutral-30" onClick={handleDecrement}>
-        <Minus className="w-5 h-5" />
+        <IconMinus className="w-5 h-5" />
       </button>
       <Input
         type="number"
@@ -48,7 +48,7 @@ export function NumberInput({ min, max, defaultValue, onChange }: NumberInputPro
         className=" h-[29px] text-body-large-desktop font-[400] text-center border-none text-neutral-85"
       />
       <button type="button" className="w-[26px] h-[26px] text-neutral-30" onClick={handleIncrement}>
-        <Plus className="w-5 h-5" />
+        <IconPlus className="w-5 h-5" />
       </button>
     </div>
   );

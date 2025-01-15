@@ -16,6 +16,7 @@ import SearchBar from '@/components/SearchBar/SearchBar';
 import Chip from '@/components/Chip/Chip';
 import StarRating from '@/lib/common/StarRating/StarRating';
 import { NumberPagination } from '@/lib/common/Pagination';
+import { NumberInput } from '@/lib/common/NumberInput';
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -64,6 +65,7 @@ export default function Home() {
       <StarRating size="small" rating={3} />
       <StarRating size="small" rating={4} />
       <StarRating size="small" rating={5} />
+      <NumberInput min={0} max={100} defaultValue={0} />
     </>
   );
 }
