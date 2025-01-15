@@ -12,7 +12,7 @@ interface ChipProps {
 export default function Chip({ size, keyword, onClick, onClose, selected }: ChipProps) {
   return (
     <button
-      className={`group flex items-center gap-3 rounded-10 px-7 py-4 border border-neutral-20 text-label-large-desktop transition duration-300  ${selected ? 'bg-neutral-85' : 'bg-neutral-0 hover:bg-neutral-5'} disabled:cursor-not-allowed`}
+      className={`group flex items-center gap-3 rounded-10 px-7 py-4 border border-neutral-20 text-label-large-desktop transition duration-300  ${selected ? 'bg-neutral-85' : 'bg-neutral-0 hover:bg-neutral-5'} ${size === 'large' ? 'px-7 py-4' : 'px-6 py-3'} disabled:cursor-not-allowed`}
       disabled
     >
       <span
