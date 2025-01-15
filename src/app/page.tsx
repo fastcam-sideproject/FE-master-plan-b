@@ -14,24 +14,10 @@ import Category from '@/components/Category/Category';
 import NumberPagination from '@/components/NumberPagination';
 import { CertificateTable } from '@/lib/common/CertificateTable';
 import SearchBar from '@/components/SearchBar/SearchBar';
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 import { NumberInput } from '@/lib/common/NumberInput';
-=======
->>>>>>> 3802175 (feature: SearchBar 컴포넌트 추가)
-=======
-import { NumberInput } from '@/lib/common/NumberInput';
->>>>>>> 95554a4 (feat: NumberInput 컴포넌트 추가)
-=======
-import { NumberInput } from '@/lib/common/NumberInput';
-=======
->>>>>>> 8be9b4a (feature: SearchBar 컴포넌트 추가)
->>>>>>> 228252a (feature: SearchBar 컴포넌트 추가)
-=======
-import { NumberInput } from '@/lib/common/NumberInput';
->>>>>>> 3fef7c3 (refactor: import문 추가)
+
+
+
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -67,19 +53,11 @@ export default function Home() {
       <CertificateTable />
       <div className="w-px h-6 bg-neutral-30" />
       <Category />
-<<<<<<< HEAD
-      <div className="flex items-center justify-center">
-        <NumberInput min={0} max={100} defaultValue={0} />
-      </div>
-=======
->>>>>>> 3802175 (feature: SearchBar 컴포넌트 추가)
       <SearchBar type="main" />
       <SearchBar type="default" />
       <div className="flex items-center justify-center">
         <NumberInput min={0} max={100} defaultValue={0} />
       </div>
-      <SearchBar type="main" />
-      <SearchBar type="default" />
     </>
   );
 }
