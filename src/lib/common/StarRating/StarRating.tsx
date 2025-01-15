@@ -1,10 +1,10 @@
 import { IconStarFilled } from '@tabler/icons-react';
 import React from 'react';
 
-interface StarRatingProps {
+type StarRatingProps = {
   size: 'large' | 'small';
   rating: number;
-}
+};
 export default function StarRating({ size, rating }: StarRatingProps) {
   const totalStars = 5;
 

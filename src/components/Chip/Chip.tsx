@@ -1,14 +1,15 @@
 import React from 'react';
 import { IconX } from '@tabler/icons-react';
 
-interface ChipProps {
+type ChipProps = {
   size: 'large' | 'small';
   keyword: string;
   onClick?: () => void;
   onClose?: () => void;
   selected?: boolean;
   disabled?: boolean;
-}
+};
+
 export default function Chip({ size, keyword, onClick, onClose, selected }: ChipProps) {
   return (
     <button
