@@ -13,6 +13,7 @@ import Category from '@/components/Category/Category';
 
 import NumberPagination from '@/components/NumberPagination';
 import { CertificateTable } from '@/lib/common/CertificateTable';
+import SearchBar from '@/components/SearchBar/SearchBar';
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -48,6 +49,8 @@ export default function Home() {
       <CertificateTable />
       <div className="w-px h-6 bg-neutral-30" />
       <Category />
+      <SearchBar type="main" />
+      <SearchBar type="default" />
     </>
   );
 }
