@@ -14,6 +14,7 @@ import Category from '@/components/Category/Category';
 import NumberPagination from '@/components/NumberPagination';
 import { CertificateTable } from '@/lib/common/CertificateTable';
 import SearchBar from '@/components/SearchBar/SearchBar';
+import Chip from '@/components/Chip/Chip';
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -51,6 +52,7 @@ export default function Home() {
       <Category />
       <SearchBar type="main" />
       <SearchBar type="default" />
+      <Chip size="large" keyword="테스트" selected={false} disabled />
     </>
   );
 }
