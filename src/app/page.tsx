@@ -11,11 +11,11 @@ import {
 } from '@/components/ui/breadcrumb';
 import Category from '@/components/Category/Category';
 
-import NumberPagination from '@/components/NumberPagination';
 import { CertificateTable } from '@/lib/common/CertificateTable';
 import SearchBar from '@/components/SearchBar/SearchBar';
 import Chip from '@/components/Chip/Chip';
 import StarRating from '@/lib/common/StarRating/StarRating';
+import { NumberPagination } from '@/lib/common/Pagination';
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
