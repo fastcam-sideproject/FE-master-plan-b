@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { ChevronRight, MoreHorizontal } from 'lucide-react';
-
 import { cn } from '@/lib/utils';
 
 const Breadcrumb = React.forwardRef<
@@ -16,10 +15,7 @@ const BreadcrumbList = React.forwardRef<HTMLOListElement, React.ComponentPropsWi
   ({ className, ...props }, ref) => (
     <ol
       ref={ref}
-      className={cn(
-        'flex flex-wrap items-center gap-1.5 break-words text-sm text-neutral-500 sm:gap-2.5 dark:text-neutral-400',
-        className,
-      )}
+      className={cn('w-[1200px] py-4 px-6 flex flex-wrap items-center', className)}
       {...props}
     />
   ),
@@ -31,7 +27,7 @@ const BreadcrumbItem = React.forwardRef<HTMLLIElement, React.ComponentPropsWitho
     <li
       ref={ref}
       className={cn(
-        'inline-flex items-center gap-1.5 text-link-small-desktop font-[400] text-neutral-80',
+        'inline-flex items-center gap-3 text-link-small-desktop font-[400] text-neutral-80',
         className,
       )}
       {...props}
@@ -51,10 +47,7 @@ const BreadcrumbLink = React.forwardRef<
   return (
     <Comp
       ref={ref}
-      className={cn(
-        'transition-colors hover:text-neutral-950 dark:hover:text-neutral-50',
-        className,
-      )}
+      className={cn('text-[14px] font-[400] leading-[160%] text-neutral-50', className)}
       {...props}
     />
   );
@@ -79,7 +72,7 @@ const BreadcrumbSeparator = ({ children, className, ...props }: React.ComponentP
   <li
     role="presentation"
     aria-hidden="true"
-    className={cn('[&>svg]:w-6 [&>svg]:h-6 py-[24px] px-[8px]', className)}
+    className={cn('[&>svg]:w-6 [&>svg]:h-6 py-[24px] px-[8px] text-neutral-50', className)}
     {...props}
   >
     {children ?? <ChevronRight />}
