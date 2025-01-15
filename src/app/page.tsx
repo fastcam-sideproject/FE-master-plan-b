@@ -15,9 +15,13 @@ import NumberPagination from '@/components/NumberPagination';
 import { CertificateTable } from '@/lib/common/CertificateTable';
 import SearchBar from '@/components/SearchBar/SearchBar';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { NumberInput } from '@/lib/common/NumberInput';
 =======
 >>>>>>> 3802175 (feature: SearchBar 컴포넌트 추가)
+=======
+import { NumberInput } from '@/lib/common/NumberInput';
+>>>>>>> 95554a4 (feat: NumberInput 컴포넌트 추가)
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -61,6 +65,9 @@ export default function Home() {
 >>>>>>> 3802175 (feature: SearchBar 컴포넌트 추가)
       <SearchBar type="main" />
       <SearchBar type="default" />
+      <div className="flex items-center justify-center">
+        <NumberInput min={0} max={100} defaultValue={0} />
+      </div>
     </>
   );
 }
