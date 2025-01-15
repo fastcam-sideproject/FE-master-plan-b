@@ -15,6 +15,7 @@ import NumberPagination from '@/components/NumberPagination';
 import { CertificateTable } from '@/lib/common/CertificateTable';
 import SearchBar from '@/components/SearchBar/SearchBar';
 import Chip from '@/components/Chip/Chip';
+import StarRating from '@/lib/common/StarRating/StarRating';
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -53,6 +54,16 @@ export default function Home() {
       <SearchBar type="main" />
       <SearchBar type="default" />
       <Chip size="large" keyword="테스트" selected={false} disabled />
+      <StarRating size="large" rating={1} />
+      <StarRating size="large" rating={2} />
+      <StarRating size="large" rating={3} />
+      <StarRating size="large" rating={4} />
+      <StarRating size="large" rating={5} />
+      <StarRating size="small" rating={1} />
+      <StarRating size="small" rating={2} />
+      <StarRating size="small" rating={3} />
+      <StarRating size="small" rating={4} />
+      <StarRating size="small" rating={5} />
     </>
   );
 }
