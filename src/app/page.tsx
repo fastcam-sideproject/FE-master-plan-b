@@ -40,7 +40,7 @@ export default function Home() {
         <Button
           variant="third"
           size="md"
-          className="w-[145px] h-[50px] bg-neutral-70 hover:bg-neutral-30"
+          className="text-body-large-desktop font-[400] w-[26px] h-[26px] p-2 text-center border-none overflow-hidden border-neutral-10 bg-neutral-0 text-neutral-85"
         >
           활성화 버튼
         </Button>
