@@ -13,7 +13,7 @@ import Category from '@/components/Category/Category';
 
 import NumberPagination from '@/components/NumberPagination';
 import { CertificateTable } from '@/lib/common/CertificateTable';
-import { NumberInput } from '@/lib/common/NumberInput';
+import SearchBar from '@/components/SearchBar/SearchBar';
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -52,6 +52,8 @@ export default function Home() {
       <div className="flex items-center justify-center">
         <NumberInput min={0} max={100} defaultValue={0} />
       </div>
+      <SearchBar type="main" />
+      <SearchBar type="default" />
     </>
   );
 }
