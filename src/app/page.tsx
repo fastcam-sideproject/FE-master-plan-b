@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import {
   Breadcrumb,
   BreadcrumbItem,
+  BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
@@ -27,11 +28,11 @@ export default function Home() {
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <Link href="/">홈</Link>
+            <BreadcrumbLink href="/">홈</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <Link href="/components">하위 페이지</Link>
+            <BreadcrumbLink href="/components">하위 페이지</BreadcrumbLink>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
