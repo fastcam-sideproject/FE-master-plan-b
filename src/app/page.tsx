@@ -20,6 +20,8 @@ import { NumberPagination } from '@/lib/common/Pagination';
 import { NumberInput } from '@/lib/common/NumberInput';
 import { PageHeader } from '@/lib/common/PageHeader';
 import { ContentsHeader } from '@/lib/common/ContentsHeader';
+import SideBarMyHome from '@/components/SideBar/SideBarMyHome';
+import SideBarFavoriteCertifications from '@/components/SideBar/SideBarFavoriteCertifications';
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -80,6 +82,8 @@ export default function Home() {
         description="Detail Text"
         icon={<IconAccessible />}
       />
+      <SideBarMyHome />
+      <SideBarFavoriteCertifications />
     </>
   );
 }
