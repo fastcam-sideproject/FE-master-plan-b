@@ -19,7 +19,7 @@ import StarRating from '@/lib/common/StarRating/StarRating';
 import { NumberPagination } from '@/lib/common/Pagination';
 import { NumberInput } from '@/lib/common/NumberInput';
 import { PageHeader } from '@/lib/common/PageHeader';
-import { ContentsHeader } from '@/components/ContentsHeader';
+import { ContentsHeader } from '@/lib/common/ContentsHeader';
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
