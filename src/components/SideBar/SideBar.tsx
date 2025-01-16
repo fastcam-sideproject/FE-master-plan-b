@@ -1,7 +1,7 @@
 'use client';
 import Image from "next/image";
-import SideBarLi from "./SideBarLi";
 import { useState } from "react";
+import SideBarLi from "./SideBarLi";
 
 export default function SideBar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
