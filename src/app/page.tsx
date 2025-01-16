@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
@@ -18,13 +17,18 @@ import Chip from '@/components/Chip/Chip';
 import StarRating from '@/lib/common/StarRating/StarRating';
 import { NumberPagination } from '@/lib/common/Pagination';
 import { NumberInput } from '@/lib/common/NumberInput';
+import { PageHeader } from '@/lib/common/PageHeader';
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
 
+  const breadcrumbItems = [
+    { label: '홈', href: '/' },
+    { label: '하위 페이지', href: '#' },
+  ];
+
   return (
     <>
-      <h1 className="text-display-desktop md:text-display-mobile font-extrabold">제목</h1>
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -67,6 +71,7 @@ export default function Home() {
       <StarRating size="small" rating={4} />
       <StarRating size="small" rating={5} />
       <NumberInput min={0} max={100} defaultValue={0} />
+      <PageHeader title="Page Heading" breadcrumbItems={breadcrumbItems} variant="left-small" />
     </>
   );
 }
