@@ -17,7 +17,7 @@ import Chip from '@/components/Chip/Chip';
 import StarRating from '@/lib/common/StarRating/StarRating';
 import { NumberPagination } from '@/lib/common/Pagination';
 import { NumberInput } from '@/lib/common/NumberInput';
-import { PageHeader } from '@/lib/common/PageHeader/PageHeader';
+import { PageHeader } from '@/lib/common/PageHeader';
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -71,7 +71,7 @@ export default function Home() {
       <StarRating size="small" rating={4} />
       <StarRating size="small" rating={5} />
       <NumberInput min={0} max={100} defaultValue={0} />
-      <PageHeader title="Page Heading" breadcrumbItems={breadcrumbItems} variant="center-default" />
+      <PageHeader title="Page Heading" breadcrumbItems={breadcrumbItems} variant="left-small" />
     </>
   );
 }

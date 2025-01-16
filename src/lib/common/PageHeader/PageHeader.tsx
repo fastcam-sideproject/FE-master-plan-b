@@ -16,7 +16,7 @@ type BreadcrumbItems = {
 type PageHeaderProps = React.HTMLAttributes<HTMLDivElement> & {
   title: string;
   breadcrumbItems: BreadcrumbItems[];
-  variant: 'center-default' | 'center-large' | 'left-default' | 'left-small';
+  variant: 'center-default' | 'center-small' | 'left-default' | 'left-small';
 };
 
 export function PageHeader({
@@ -32,17 +32,20 @@ export function PageHeader({
       title:
         'w-[1200px] flex items-center justify-center text-heading-medium-desktop font-[400] leading-[140%] text-neutral-85 py-3 px-6 text-center',
     },
-    'center-large': {
-      container: 'flex flex-col items-center',
-      title: 'text-3xl font-bold mt-4 text-center',
+    'center-small': {
+      container: 'flex flex-col',
+      title:
+        'w-[1200px] flex items-center justify-center text-heading-small-desktop font-[400] leading-[140%] text-neutral-85 py-3 px-6 text-center',
     },
     'left-default': {
       container: 'flex flex-col',
-      title: 'text-2xl font-semibold mt-4',
+      title:
+        'w-[1200px] flex items-center text-heading-medium-desktop font-[400] leading-[140%] text-neutral-85 py-3 px-6 text-center',
     },
     'left-small': {
       container: 'flex flex-col',
-      title: 'text-xl mt-4',
+      title:
+        'w-[1200px] flex items-center text-heading-small-desktop font-[400] leading-[140%] text-neutral-85 py-3 px-6 text-center',
     },
   };
 
