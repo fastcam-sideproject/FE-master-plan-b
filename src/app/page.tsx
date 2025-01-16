@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { IconAccessible } from '@tabler/icons-react';
 import { Button } from '@/components/ui/button';
 import {
   Breadcrumb,
@@ -18,6 +19,7 @@ import StarRating from '@/lib/common/StarRating/StarRating';
 import { NumberPagination } from '@/lib/common/Pagination';
 import { NumberInput } from '@/lib/common/NumberInput';
 import { PageHeader } from '@/lib/common/PageHeader';
+import { ContentsHeader } from '@/components/ContentsHeader';
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -42,7 +44,7 @@ export default function Home() {
       </Breadcrumb>
       <main className="bg-neutral-10 border shadow-1 stroke-normal rounded-10 font-semibold">
         안녕하세요 마스터 플랜 비 입니다
-        <Button variant="third" size="md" disabled>
+        <Button variant="third" size="md" disabled className="w-6 text-neutral-85">
           비활성화 버튼
         </Button>
         <Button
@@ -72,6 +74,12 @@ export default function Home() {
       <StarRating size="small" rating={5} />
       <NumberInput min={0} max={100} defaultValue={0} />
       <PageHeader title="Page Heading" breadcrumbItems={breadcrumbItems} variant="left-small" />
+      <ContentsHeader
+        size="large"
+        title="Main Title"
+        description="Detail Text"
+        icon={<IconAccessible />}
+      />
     </>
   );
 }
