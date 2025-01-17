@@ -25,6 +25,7 @@ import SideBarFavoriteCertifications from '@/components/SideBar/SideBarFavoriteC
 import BarGraph from '@/components/DashBoard/BarGraph';
 import LearningTimeGraph from '@/components/DashBoard/LearningTimeGraph';
 import DonutGraph from '@/components/DashBoard/DonutGraph';
+import BtnOnboarding from '@/components/Onboarding/BtnOnboarding';
 
 const difBarGraphData = [
   { label: '쉬워요', value: 30 },
@@ -125,6 +126,10 @@ export default function Home() {
           <DonutGraph type={'reflection'} data={reflectionData} />
           <DonutGraph type={'time'} data={timeData} />
         </div>
+      </div>
+      <div className="flex gap-9">
+        <BtnOnboarding type={'general'} />
+        <BtnOnboarding type={'specific'} />
       </div>
     </>
   );
