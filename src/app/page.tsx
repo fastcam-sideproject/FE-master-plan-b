@@ -84,6 +84,11 @@ export default function Home() {
       />
       <SideBarMyHome />
       <SideBarFavoriteCertifications />
+
+      <div className='text-body-large-desktop'>테스트</div>
+      <div className='text-title-large-desktop'>테스트</div>
+      <div className='text-title-large-desktop'>Test</div>
+
     </>
   );
 }

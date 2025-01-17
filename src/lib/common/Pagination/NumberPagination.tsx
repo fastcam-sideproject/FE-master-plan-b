@@ -59,6 +59,7 @@ export function NumberPagination({
       ) {
         pages.push(
           <button
+            lang='en'
             key={i}
             onClick={() => onPageChange(i)}
             className={cn(
