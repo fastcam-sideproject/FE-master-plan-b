@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import appleSdGothic from '@/components/AppleSdGothic';
 import MswWrapper from '@/components/MswWrapper';
 import ReactQueryProviders from '@/hooks/useReactQuery';
 import Footer from '@/components/Footer/Footer';
@@ -18,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={`${appleSdGothic.className}`} suppressHydrationWarning={true}>
+      <body suppressHydrationWarning={true}>
         <ReactQueryProviders>
           <Header />
           <MswWrapper>{children}</MswWrapper>

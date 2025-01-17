@@ -18,7 +18,7 @@ export default function SideBarFavoriteCertifications() {
         <div>
           <SideBarLogo isCollapsed={isCollapsed} toggleSidebar={toggleSidebar} />
           <ul className="flex flex-col justify-center items-center text-neutral-0">
-            <SideBarLi iconUrl={"/icons/study/home.svg"} iconName={"My Home"} liName={"My Home"} isCollapsed={isCollapsed} />
+            <SideBarLi iconUrl={"/icons/study/home.svg"} iconName={"My Home"} liName={"My 홈"} isCollapsed={isCollapsed} />
             <SideBarLi iconUrl={"/icons/study/vocabulary.svg"} iconName={"관심자격증"} liName={"관심자격증"} isCollapsed={isCollapsed} />
             <SideBarLi iconUrl={"/icons/study/calendar-month.svg"} iconName={"자격증모아보기"} liName={"자격증모아보기"} isCollapsed={isCollapsed} />
           </ul>

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Header() {
   return (
-    <header className="flex justify-between items-center bg-neutral-85 p-5">
+    <header className="sticky top-0 z-10 h-20 flex justify-between items-center bg-neutral-85 px-9 py-5">
       <div className="flex items-center gap-[145px]">
         <Image width={157} height={40} src={"/logos/logo-text-light.svg"} alt={"헤더로고"} />
         <ul className="flex text-neutral-0">
