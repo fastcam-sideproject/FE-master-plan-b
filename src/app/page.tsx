@@ -3,19 +3,12 @@
 import { useState } from 'react';
 import { IconAccessible } from '@tabler/icons-react';
 import { Button } from '@/components/ui/button';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb';
+
 import Category from '@/components/Category/Category';
 import { CertificateTable } from '@/lib/common/CertificateTable';
 import SearchBar from '@/components/SearchBar/SearchBar';
 import Chip from '@/components/Chip/Chip';
 import StarRating from '@/lib/common/StarRating/StarRating';
-import { NumberPagination } from '@/lib/common/Pagination';
 import { NumberInput } from '@/lib/common/NumberInput';
 import { PageHeader } from '@/lib/common/PageHeader';
 import { ContentsHeader } from '@/lib/common/ContentsHeader';
@@ -92,16 +85,17 @@ export default function Home() {
         description="Detail Text"
         icon={<IconAccessible />}
       />
-      <Button variant="text" size="text_lg" className="font-medium" disabled>
+      <Button variant="secondary" size="lg" className="font-medium">
         라지 박스
       </Button>
-
-      <Button variant="text" size="text_md" className="text-neutral-80">
+      <Button variant="secondary" size="md" className="text-neutral-80 ga">
         미디움 박스
       </Button>
-
-      <Button variant="text" size="text_sm" className="text-neutral-80">
+      <Button variant="secondary" size="sm" className="text-neutral-80">
         스몰 박스
+      </Button>
+      <Button variant="default" size="sm">
+        Default Box
       </Button>
       <SideBarMyHome />
       <SideBarFavoriteCertifications />
