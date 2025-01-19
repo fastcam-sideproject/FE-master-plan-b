@@ -11,7 +11,7 @@ const buttonVariants = cva(
         default:
           'text-neutral-85 font-medium bg-primary-40 hover:bg-primary-50 active:bg-primary-60 disabled:bg-neutral-5 disabled:text-neutral-20 text-label-large-desktop gap-[10px]',
         secondary:
-          'text-neutral-0 !text-neutral-0 font-medium bg-neutral-85 hover:bg-neutral-80 active:bg-neutral-70 disabled:bg-neutral-5 disabled:text-neutral-20  disabled:!text-neutral-20 text-label-large-desktop gap-3',
+          'w-[136px] text-neutral-0 !text-neutral-0 font-medium bg-neutral-85 hover:bg-neutral-80 active:bg-neutral-70 disabled:bg-neutral-5 disabled:text-neutral-20  disabled:!text-neutral-20 text-label-large-desktop gap-3',
         third:
           'text-neutral-80 bg-neutral-5 font-medium hover:bg-neutral-10 active:bg-neutral-20 disabled:bg-neutral-5 disabled:text-neutral-20 text-label-large-desktop gap-[10px]',
         outline:
