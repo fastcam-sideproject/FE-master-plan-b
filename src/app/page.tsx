@@ -11,7 +11,6 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 import Category from '@/components/Category/Category';
-import { NumberPagination } from '@/lib/common/Pagination';
 import { CertificateTable } from '@/lib/common/CertificateTable';
 import SearchBar from '@/components/SearchBar/SearchBar';
 import Chip from '@/components/Chip/Chip';
@@ -65,35 +64,10 @@ export default function Home() {
 
   return (
     <>
-      <Breadcrumb>
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/">홈</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/components">하위 페이지</BreadcrumbLink>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
       <main className="bg-neutral-10 border shadow-1 stroke-normal rounded-10 font-semibold">
         안녕하세요 마스터 플랜 비 입니다
-        <Button variant="third" size="md" disabled className="w-6 text-neutral-85">
-          비활성화 버튼
-        </Button>
-        <Button
-          variant="third"
-          size="md"
-          className="text-body-large-desktop font-[400] w-[26px] h-[26px] p-2 text-center border-none overflow-hidden border-neutral-10 bg-neutral-0 text-neutral-85"
-        >
-          활성화 버튼
-        </Button>
-        <Button variant="text" size="text_size">
-          text 박스
-        </Button>
         <Category />
       </main>
-      <NumberPagination currentPage={currentPage} totalPages={10} onPageChange={setCurrentPage} />
       <CertificateTable />
       <div className="w-px h-6 bg-neutral-30" />
       <Category />
@@ -118,6 +92,17 @@ export default function Home() {
         description="Detail Text"
         icon={<IconAccessible />}
       />
+      <Button variant="text" size="text_lg" className="font-medium" disabled>
+        라지 박스
+      </Button>
+
+      <Button variant="text" size="text_md" className="text-neutral-80">
+        미디움 박스
+      </Button>
+
+      <Button variant="text" size="text_sm" className="text-neutral-80">
+        스몰 박스
+      </Button>
       <SideBarMyHome />
       <SideBarFavoriteCertifications />
       <LearningTimeGraph data={learningTimeGraphData} />
