@@ -9,22 +9,25 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'text-neutral-85 font-[400] bg-primary-40 hover:bg-primary-50 active:bg-primary-60  disabled:bg-neutral-5 disabled:text-neutral-20 text-label-large-desktop',
+          'text-neutral-85 font-medium bg-primary-40 hover:bg-primary-50 active:bg-primary-60 disabled:bg-neutral-5 disabled:text-neutral-20 text-label-large-desktop gap-[10px]',
         secondary:
-          'text-neutral-0 !text-neutral-0 font-[400] bg-neutral-85 hover:bg-neutral-80 active:bg-neutral-70 disabled:bg-neutral-5 disabled:text-neutral-20  disabled:!text-neutral-20 text-label-large-desktop',
+          'w-[136px] text-neutral-0 !text-neutral-0 font-medium bg-neutral-85 hover:bg-neutral-80 active:bg-neutral-70 disabled:bg-neutral-5 disabled:text-neutral-20  disabled:!text-neutral-20 text-label-large-desktop gap-3',
         third:
-          'text-neutral-80 bg-neutral-5 font-[400] hover:bg-neutral-10 active:bg-neutral-20 disabled:bg-neutral-5 disabled:text-neutral-20 text-label-large-desktop',
+          'text-neutral-80 bg-neutral-5 font-medium hover:bg-neutral-10 active:bg-neutral-20 disabled:bg-neutral-5 disabled:text-neutral-20 text-label-large-desktop gap-[10px]',
         outline:
-          'text-neutral-80 border border-neutral-20 bg-neutral-0 font-[400] hover:bg-neutral-5 active:bg-neutral-10 disabled:bg-neutral-5 disabled:text-neutral-20 text-label-large-desktop',
-        empty: '',
+          'text-neutral-80 border border-neutral-20 bg-neutral-0 font-medium hover:bg-neutral-5 active:bg-neutral-10 disabled:bg-neutral-5 disabled:text-neutral-20 text-label-large-desktop',
+        text: 'text-neutral-80 font-medium hover:font-bold disabled:text-neutral-20',
         link: '',
         ghost: '',
       },
       size: {
         default: '',
-        sm: 'rounded-3 px-[16px] py-[8px] gap-[10px]',
-        md: 'rounded-4 px-[24px] py-[12px] gap-[10px]',
-        lg: 'rounded-4 px-[32px] py-[16px] gap-[10px]',
+        sm: 'rounded-3 px-[16px] py-[8px]',
+        md: 'rounded-4 px-[24px] py-[12px]',
+        lg: 'rounded-4 px-[32px] py-[16px]',
+        text_sm: 'p-3 gap-[10px] text-label-small-desktop',
+        text_md: 'p-3 gap-[10px] text-label-medium-desktop',
+        text_lg: 'p-3 gap-[10px] text-label-large-desktop',
         icon: 'h-10 w-10',
       },
     },
@@ -42,13 +45,27 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
+  ({ className, variant, size, asChild = false, children, ...props }, ref) => {
     const Comp = asChild ? Slot : 'button';
+    const iconSize = size === 'sm' ? '16px' : '20px';
+
     return (
-      <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
+      <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props}>
+        {variant === 'secondary' && (
+          <img
+            src="/icons/active/check.svg"
+            alt="button icon"
+            className="bg-neutral-0"
+            width={iconSize}
+            height={iconSize}
+          />
+        )}
+        {children}
+      </Comp>
     );
   },
 );
+
 Button.displayName = 'Button';
 
 export { Button, buttonVariants };

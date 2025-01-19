@@ -3,20 +3,12 @@
 import { useState } from 'react';
 import { IconAccessible } from '@tabler/icons-react';
 import { Button } from '@/components/ui/button';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb';
-import Category from '@/components/Category/Category';
 
+import Category from '@/components/Category/Category';
 import { CertificateTable } from '@/lib/common/CertificateTable';
 import SearchBar from '@/components/SearchBar/SearchBar';
 import Chip from '@/components/Chip/Chip';
 import StarRating from '@/lib/common/StarRating/StarRating';
-import { NumberPagination } from '@/lib/common/Pagination';
 import { NumberInput } from '@/lib/common/NumberInput';
 import { PageHeader } from '@/lib/common/PageHeader';
 import { ContentsHeader } from '@/lib/common/ContentsHeader';
@@ -65,31 +57,10 @@ export default function Home() {
 
   return (
     <>
-      <Breadcrumb>
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/">홈</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/components">하위 페이지</BreadcrumbLink>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
       <main className="bg-neutral-10 border shadow-1 stroke-normal rounded-10 font-semibold">
         안녕하세요 마스터 플랜 비 입니다
-        <Button variant="third" size="md" disabled className="w-6 text-neutral-85">
-          비활성화 버튼
-        </Button>
-        <Button
-          variant="third"
-          size="md"
-          className="text-body-large-desktop font-[400] w-[26px] h-[26px] p-2 text-center border-none overflow-hidden border-neutral-10 bg-neutral-0 text-neutral-85"
-        >
-          활성화 버튼
-        </Button>
+        <Category />
       </main>
-      <NumberPagination currentPage={currentPage} totalPages={10} onPageChange={setCurrentPage} />
       <CertificateTable />
       <div className="w-px h-6 bg-neutral-30" />
       <Category />
@@ -114,6 +85,18 @@ export default function Home() {
         description="Detail Text"
         icon={<IconAccessible />}
       />
+      <Button variant="secondary" size="lg" className="font-medium">
+        라지 박스
+      </Button>
+      <Button variant="secondary" size="md" className="text-neutral-80 ga">
+        미디움 박스
+      </Button>
+      <Button variant="secondary" size="sm" className="text-neutral-80">
+        스몰 박스
+      </Button>
+      <Button variant="default" size="sm">
+        Default Box
+      </Button>
       <SideBarMyHome />
       <SideBarFavoriteCertifications />
       <LearningTimeGraph data={learningTimeGraphData} />
