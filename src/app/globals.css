@@ -1,6 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'AppleSDGothicNeo';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/AppleSDGothicNeo-Medium.woff2') format('woff2');
+  unicode-range: U+1100-11FF, U+3130-318F, U+A960-A97F, U+AC00-D7A3, U+D7B0-D7FF;
+}
+
+@font-face {
+  font-family: 'AppleSDGothicNeo';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/fonts/AppleSDGothicNeo-Regular.woff2') format('woff2');
+  unicode-range: U+1100-11FF, U+3130-318F, U+A960-A97F, U+AC00-D7A3, U+D7B0-D7FF;
+}
+
+@font-face {
+  font-family: 'AppleSDGothicNeo';
+  font-style: normal;
+  font-weight: 600;
+  src: url('/fonts/AppleSDGothicNeo-SemiBold.woff2') format('woff2');
+  unicode-range: U+1100-11FF, U+3130-318F, U+A960-A97F, U+AC00-D7A3, U+D7B0-D7FF;
+}
+
+@font-face {
+  font-family: 'AppleSDGothicNeo';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/AppleSDGothicNeo-Bold.woff2') format('woff2');
+  unicode-range: U+1100-11FF, U+3130-318F, U+A960-A97F, U+AC00-D7A3, U+D7B0-D7FF;
+}
+
+@font-face {
+  font-family: 'SUIT';
+  src: url('/fonts/SUIT-Variable.woff2') format('woff2');
+  unicode-range: U+0000-007F, U+0030-0039, U+0041-005A, U+0061-007A;
+}
+
 @layer base {
   :root {
     --color-neutral-0: #ffffff;
@@ -39,16 +78,16 @@
     --color-blue-80: #03123f;
     --color-blue-90: #01040f;
 
-    --color-vioelt-5: #eae3fc;
-    --color-vioelt-10: #c7b5f8;
-    --color-vioelt-20: #a386f3;
-    --color-vioelt-30: #8058ee;
-    --color-vioelt-40: #5e2bea;
-    --color-vioelt-50: #4514cc;
-    --color-vioelt-60: #36109e;
-    --color-vioelt-70: #260b6f;
-    --color-vioelt-80: #160641;
-    --color-vioelt-90: #060213;
+    --color-violet-5: #eae3fc;
+    --color-violet-10: #c7b5f8;
+    --color-violet-20: #a386f3;
+    --color-violet-30: #8058ee;
+    --color-violet-40: #5e2bea;
+    --color-violet-50: #4514cc;
+    --color-violet-60: #36109e;
+    --color-violet-70: #260b6f;
+    --color-violet-80: #160641;
+    --color-violet-90: #060213;
 
     --color-green-5: #cdfef1;
     --color-green-10: #9bfde3;
@@ -72,5 +111,8 @@
     --color-red-80: #710411;
     --color-red-90: #40020a;
     --radius: 0.5rem;
+  }
+  body {
+    font-family: 'AppleSDGothicNeo', 'SUIT', sans-serif;
   }
 }
