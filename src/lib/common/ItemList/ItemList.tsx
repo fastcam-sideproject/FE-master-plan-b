@@ -4,7 +4,6 @@ import {
   IconChevronDown,
   IconChevronUp,
   IconClock,
-  IconTag,
   IconThumbUp,
   IconUserFilled,
 } from '@tabler/icons-react';
@@ -22,7 +21,7 @@ type ItemListProps = {
   practicalStudy: string;
 };
 
-const iconMap = {
+const iconMap: { [key: string]: JSX.Element } = {
   '하루 1~2시간 학습': <IconClock size={20} />,
   비전공자: <IconUserFilled size={20} />,
   '6개월 준비': <IconCalendarWeek size={20} />,
