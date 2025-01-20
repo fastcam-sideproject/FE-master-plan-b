@@ -10,11 +10,11 @@ type AvatarProps = {
 };
 
 const sizeClasses = {
-  xl: 'w-[75px] h-[75px] p-[18.75px] rounded-6',
-  lg: 'w-[60px] h-[60px] p-[18.75px] rounded-6',
-  md: 'w-[40px] h-[40px] p-[10px] rounded-5',
-  sm: 'w-[32px] h-[32px] p-[8px] rounded-4',
-  xs: 'w-[24px] h-[24px] p-[6px] rounded-4',
+  xl: 'w-[75px] h-[75px] rounded-6',
+  lg: 'w-[60px] h-[60px] rounded-6',
+  md: 'w-[40px] h-[40px] rounded-5',
+  sm: 'w-[32px] h-[32px] rounded-4',
+  xs: 'w-[24px] h-[24px] rounded-4',
 };
 
 const imageSizeClasses = {
