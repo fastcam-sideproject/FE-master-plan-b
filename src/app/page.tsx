@@ -18,6 +18,7 @@ import LearningTimeGraph from '@/components/DashBoard/LearningTimeGraph';
 import DonutGraph from '@/components/DashBoard/DonutGraph';
 import BtnOnboarding from '@/components/Onboarding/BtnOnboarding';
 import { Avatar } from '@/lib/common/Avatar';
+import StudyCard from '@/components/StudyCard/StudyCard';
 
 const difBarGraphData = [
   { label: '쉬워요', value: 30 },
@@ -117,6 +118,7 @@ export default function Home() {
         <BtnOnboarding type={'general'} />
         <BtnOnboarding type={'specific'} />
       </div>
+      <StudyCard />
     </>
   );
 }
