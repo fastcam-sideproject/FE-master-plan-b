@@ -1,3 +1,4 @@
+import { IconBellFilled, IconSearch, IconUserFilled } from "@tabler/icons-react";
 import Image from "next/image";
 
 export default function Header() {
@@ -14,13 +15,13 @@ export default function Header() {
       <div>
         <ul className="flex gap-4">
           <li className="flex justify-center items-center w-10 h-10 bg-neutral-80 rounded-full hover:cursor-pointer hover:bg-neutral-70 active:bg-neutral-50">
-            <Image width={24} height={24} src={"icons/active/search-bold.svg"} alt="헤더아이콘" className="filter invert" />
+            <IconSearch className="text-neutral-0" />
           </li>
           <li className="flex justify-center items-center w-10 h-10 bg-neutral-80 rounded-full hover:cursor-pointer hover:bg-neutral-70 active:bg-neutral-50">
-            <Image width={24} height={24} src={"icons/gnb/bell-filled.svg"} alt="헤더아이콘" className="filter invert" />
+            <IconBellFilled className="text-neutral-0" />
           </li>
           <li className="flex justify-center items-center w-10 h-10 bg-neutral-80 rounded-full hover:cursor-pointer hover:bg-neutral-70 active:bg-neutral-50">
-            <Image width={24} height={24} src={"icons/gnb/user-filled.svg"} alt="헤더아이콘" className="filter invert" />
+            <IconUserFilled className="text-neutral-0" />
           </li>
         </ul>
       </div>
