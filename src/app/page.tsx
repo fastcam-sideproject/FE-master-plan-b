@@ -18,6 +18,7 @@ import BarGraph from '@/components/DashBoard/BarGraph';
 import LearningTimeGraph from '@/components/DashBoard/LearningTimeGraph';
 import DonutGraph from '@/components/DashBoard/DonutGraph';
 import BtnOnboarding from '@/components/Onboarding/BtnOnboarding';
+import ItemList from '@/lib/common/ItemList/ItemList';
 
 const difBarGraphData = [
   { label: '쉬워요', value: 30 },
@@ -48,12 +49,7 @@ const timeData = [
 ];
 
 export default function Home() {
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const breadcrumbItems = [
-    { label: '홈', href: '/' },
-    { label: '하위 페이지', href: '#' },
-  ];
+  const [expanded, setExpanded] = useState(false);
 
   return (
     <>
@@ -62,6 +58,15 @@ export default function Home() {
         <Category />
       </main>
       <CertificateTable />
+
+      <ItemList
+        title="제목을 입력해주세요"
+        labels={['웹디자인기능사', '정윤아', '2024. 12. 03']}
+        content="내용을 입력해주세요"
+        expanded={expanded}
+        onToggle={() => setExpanded(!expanded)}
+      />
+
       <div className="w-px h-6 bg-neutral-30" />
       <Category />
       <SearchBar type="main" />
@@ -78,7 +83,6 @@ export default function Home() {
       <StarRating size="small" rating={4} />
       <StarRating size="small" rating={5} />
       <NumberInput min={0} max={100} defaultValue={0} />
-      <PageHeader title="Page Heading" breadcrumbItems={breadcrumbItems} variant="left-small" />
       <ContentsHeader
         size="large"
         title="Main Title"
