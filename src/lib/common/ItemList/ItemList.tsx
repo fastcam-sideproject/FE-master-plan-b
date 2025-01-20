@@ -4,7 +4,9 @@ import {
   IconChevronDown,
   IconChevronUp,
   IconClock,
+  IconThumbDownFilled,
   IconThumbUp,
+  IconThumbUpFilled,
   IconUserFilled,
 } from '@tabler/icons-react';
 import { Avatar } from '../Avatar';
@@ -39,10 +41,19 @@ export function ItemList({
   practicalStudy,
 }: ItemListProps) {
   const [likes, setLikes] = useState(initialLikes);
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState<boolean>(false);
+  const [isActive, setIsActive] = useState<boolean>(false);
 
   const toggleExpanded = () => setExpanded((prev) => !prev);
-  const handleLike = () => setLikes((prev) => prev + 1);
+
+  const handleLike = () => {
+    if (isActive) {
+      setLikes((prev) => prev - 1);
+    } else {
+      setLikes((prev) => prev + 1);
+    }
+    setIsActive((prev) => !prev);
+  };
 
   const tagsWithIcons = tags.map((tag) => ({
     tag,
@@ -70,7 +81,11 @@ export function ItemList({
           <div className="flex items-center gap-2">
             <span className="text-sm text-neutral-50">{likes}</span>
             <button type="button" onClick={handleLike}>
-              <IconThumbUp className="text-neutral-40" />
+              {isActive ? (
+                <IconThumbUpFilled />
+              ) : (
+                <IconThumbUp className="text-neutral-40 hover:text-neutral-85" />
+              )}
             </button>
           </div>
         </div>
