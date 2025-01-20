@@ -7,7 +7,6 @@ type AvatarProps = {
   size: AvatarSize;
   src: string;
   alt: string;
-  className?: string;
 };
 
 const sizeClasses = {
