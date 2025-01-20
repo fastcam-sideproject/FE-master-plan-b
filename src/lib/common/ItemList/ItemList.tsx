@@ -105,7 +105,7 @@ export function ItemList({
           <button
             onClick={toggleExpanded}
             type="button"
-            className="w-[28px] h-[28px] rounded-4 border bg-neutral-5 flex items-center justify-center"
+            className="w-[28px] h-[28px] rounded-4 border active:bg-neutral-5 flex items-center justify-center"
           >
             {expanded ? <IconChevronUp size={20} /> : <IconChevronDown size={20} />}
           </button>
