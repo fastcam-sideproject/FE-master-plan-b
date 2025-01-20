@@ -115,4 +115,29 @@
   body {
     font-family: 'AppleSDGothicNeo', 'SUIT', sans-serif;
   }
+  .folder {
+    width: 284px;
+    height: 228px;
+    padding: 0 22px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 0 20px 20px 20px;
+  }
+
+  .folder:before {
+    content: '';
+    width: 30%;
+    border-radius: 20px 20px 0 0;
+    position: absolute;
+    top: -24px;
+    left: 0;
+
+    border-bottom: 25px solid #ffffff;
+    border-right: 25px solid transparent;
+  }
 }
