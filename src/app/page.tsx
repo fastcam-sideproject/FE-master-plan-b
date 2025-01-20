@@ -2,14 +2,12 @@
 
 import { IconAccessible } from '@tabler/icons-react';
 import { Button } from '@/components/ui/button';
-
 import Category from '@/components/Category/Category';
 import { CertificateTable } from '@/lib/common/CertificateTable';
 import SearchBar from '@/components/SearchBar/SearchBar';
 import Chip from '@/components/Chip/Chip';
 import StarRating from '@/lib/common/StarRating/StarRating';
 import { NumberInput } from '@/lib/common/NumberInput';
-import { PageHeader } from '@/lib/common/PageHeader';
 import { ContentsHeader } from '@/lib/common/ContentsHeader';
 import SideBarMyHome from '@/components/SideBar/SideBarMyHome';
 import SideBarFavoriteCertifications from '@/components/SideBar/SideBarFavoriteCertifications';
@@ -64,6 +62,7 @@ export default function Home() {
         <Category />
       </main>
       <CertificateTable />
+<<<<<<< HEAD
 
       <Avatar size="xl" src="/icons/gnb/user-filled.svg" alt="asdsa" />
       <Avatar src="/icons/gnb/user-filled.svg" alt="Custom icon" size="lg" />
@@ -79,19 +78,24 @@ export default function Home() {
       />
 
       <div className="w-px h-6 bg-neutral-30" />
+=======
+>>>>>>> 8049c64 (feat: ItemList 컴포넌트 좋아요 버튼, fontsize, tag아이콘 추가)
       <Avatar size="xl" src="/icons/gnb/user-filled.svg" alt="asdsa" />
       <Avatar src="/icons/gnb/user-filled.svg" alt="Custom icon" size="lg" />
       <Avatar src="/icons/gnb/user-filled.svg" alt="Custom icon" size="md" />
       <Avatar src="/icons/gnb/user-filled.svg" alt="Custom icon" size="sm" />
       <Avatar src="/icons/gnb/user-filled.svg" alt="" size="xs" />
       <ItemList
-        title="제목을 입력해주세요"
-        labels={['웹디자인기능사', '정윤아', '2024. 12. 03']}
-        content="내용을 입력해주세요"
-        expanded={expanded}
-        onToggle={() => setExpanded(!expanded)}
+        title="필기시험은 기출문제 무조건 반복하세요"
+        labels={['멜딕기관기능사', '정호안', '2024.12.03']}
+        tags={['하루 1~2시간 학습', '비전공자', '6개월 준비']}
+        content="기출문제만 잘 활용해도 필기시험의 반은 준비된 거나 다름없습니다. 저는 최근 5년간의 기출문제를 풀어본 후, 틀린 문제들을 모아 다시 복습하면서 약점을 보완했어요. 필기시험을 대비할 때 가장 중요한 건 기출문제를 정복하는 거예요. 저는 5년 치 기출문제를 풀어본 후, 틀린 문제들을 따로 정리하고 반복해서 공부했더니 효과가 좋았어요."
+        initialLikes={10}
+        writtenDifficulty="보통"
+        practicalDifficulty="어려움"
+        writtenStudy="인터넷 강의"
+        practicalStudy="인터넷 강의"
       />
-
       <div className="w-px h-6 bg-neutral-30" />
       <Category />
       <SearchBar type="main" />
