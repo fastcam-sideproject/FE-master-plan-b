@@ -79,6 +79,20 @@ export default function Home() {
       />
 
       <div className="w-px h-6 bg-neutral-30" />
+      <Avatar size="xl" src="/icons/gnb/user-filled.svg" alt="asdsa" />
+      <Avatar src="/icons/gnb/user-filled.svg" alt="Custom icon" size="lg" />
+      <Avatar src="/icons/gnb/user-filled.svg" alt="Custom icon" size="md" />
+      <Avatar src="/icons/gnb/user-filled.svg" alt="Custom icon" size="sm" />
+      <Avatar src="/icons/gnb/user-filled.svg" alt="" size="xs" />
+      <ItemList
+        title="제목을 입력해주세요"
+        labels={['웹디자인기능사', '정윤아', '2024. 12. 03']}
+        content="내용을 입력해주세요"
+        expanded={expanded}
+        onToggle={() => setExpanded(!expanded)}
+      />
+
+      <div className="w-px h-6 bg-neutral-30" />
       <Category />
       <SearchBar type="main" />
       <SearchBar type="default" />
