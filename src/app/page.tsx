@@ -18,7 +18,7 @@ import DonutGraph from '@/components/DashBoard/DonutGraph';
 import BtnOnboarding from '@/components/Onboarding/BtnOnboarding';
 import { Avatar } from '@/lib/common/Avatar';
 import StudyCard from '@/components/StudyCard/StudyCard';
-import ItemList from '@/lib/common/ItemList/ItemList';
+import { ItemList } from '@/lib/common/ItemList';
 
 const difBarGraphData = [
   { label: '쉬워요', value: 30 },
