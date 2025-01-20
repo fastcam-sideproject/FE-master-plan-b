@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { IconAccessible } from '@tabler/icons-react';
 import { Button } from '@/components/ui/button';
 
@@ -18,6 +17,7 @@ import BarGraph from '@/components/DashBoard/BarGraph';
 import LearningTimeGraph from '@/components/DashBoard/LearningTimeGraph';
 import DonutGraph from '@/components/DashBoard/DonutGraph';
 import BtnOnboarding from '@/components/Onboarding/BtnOnboarding';
+import { Avatar } from '@/lib/common/Avatar';
 
 const difBarGraphData = [
   { label: '쉬워요', value: 30 },
@@ -48,8 +48,6 @@ const timeData = [
 ];
 
 export default function Home() {
-  const [currentPage, setCurrentPage] = useState(1);
-
   const breadcrumbItems = [
     { label: '홈', href: '/' },
     { label: '하위 페이지', href: '#' },
@@ -62,7 +60,12 @@ export default function Home() {
         <Category />
       </main>
       <CertificateTable />
-      <div className="w-px h-6 bg-neutral-30" />
+
+      <Avatar size="xl" src="/icons/gnb/user-filled.svg" alt="asdsa" />
+      <Avatar src="/icons/gnb/user-filled.svg" alt="Custom icon" size="lg" />
+      <Avatar src="/icons/gnb/user-filled.svg" alt="Custom icon" size="md" />
+      <Avatar src="/icons/gnb/user-filled.svg" alt="Custom icon" size="sm" />
+      <Avatar src="/icons/gnb/user-filled.svg" alt="" size="xs" />
       <Category />
       <SearchBar type="main" />
       <SearchBar type="default" />
