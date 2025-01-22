@@ -19,6 +19,7 @@ import BtnOnboarding from '@/components/Onboarding/BtnOnboarding';
 import { Avatar } from '@/components/common/Avatar';
 import StudyCard from '@/components/StudyCard/StudyCard';
 import { ItemList } from '@/components/ItemList';
+import { Dropdown } from '@/components/Dropdown';
 
 const difBarGraphData = [
   { label: '쉬워요', value: 30 },
@@ -53,7 +54,6 @@ export default function Home() {
     { label: '홈', href: '/' },
     { label: '하위 페이지', href: '#' },
   ];
-  const [expanded, setExpanded] = useState(false);
 
   return (
     <>
@@ -62,7 +62,7 @@ export default function Home() {
         <Category />
       </main>
       <CertificateTable />
-
+      <Dropdown />
       <div className="w-px h-6 bg-neutral-30" />
       <Avatar size="xl" src="/icons/gnb/user-filled.svg" alt="asdsa" />
       <Avatar src="/icons/gnb/user-filled.svg" alt="Custom icon" size="lg" />
