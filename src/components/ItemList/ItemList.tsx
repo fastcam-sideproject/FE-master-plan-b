@@ -9,7 +9,7 @@ import {
   IconThumbUpFilled,
   IconUserFilled,
 } from '@tabler/icons-react';
-import { Avatar } from '../Avatar';
+import { Avatar } from '../common/Avatar';
 
 type ItemListProps = {
   title: string;

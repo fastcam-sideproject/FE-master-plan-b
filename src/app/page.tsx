@@ -4,21 +4,21 @@ import { IconAccessible } from '@tabler/icons-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import Category from '@/components/Category/Category';
-import { CertificateTable } from '@/lib/common/CertificateTable';
+import { CertificateTable } from '@/components/CertificateTable';
 import SearchBar from '@/components/SearchBar/SearchBar';
 import Chip from '@/components/Chip/Chip';
-import StarRating from '@/lib/common/StarRating/StarRating';
-import { NumberInput } from '@/lib/common/NumberInput';
-import { ContentsHeader } from '@/lib/common/ContentsHeader';
+import StarRating from '@/components/common/StarRating/StarRating';
+import { NumberInput } from '@/components/common/NumberInput';
+import { ContentsHeader } from '@/components/common/ContentsHeader';
 import SideBarMyHome from '@/components/SideBar/SideBarMyHome';
 import SideBarFavoriteCertifications from '@/components/SideBar/SideBarFavoriteCertifications';
 import BarGraph from '@/components/DashBoard/BarGraph';
 import LearningTimeGraph from '@/components/DashBoard/LearningTimeGraph';
 import DonutGraph from '@/components/DashBoard/DonutGraph';
 import BtnOnboarding from '@/components/Onboarding/BtnOnboarding';
-import { Avatar } from '@/lib/common/Avatar';
+import { Avatar } from '@/components/common/Avatar';
 import StudyCard from '@/components/StudyCard/StudyCard';
-import { ItemList } from '@/lib/common/ItemList';
+import { ItemList } from '@/components/ItemList';
 
 const difBarGraphData = [
   { label: '쉬워요', value: 30 },
