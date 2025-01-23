@@ -20,6 +20,7 @@ import { Avatar } from '@/components/common/Avatar';
 import StudyCard from '@/components/StudyCard/StudyCard';
 import { ItemList } from '@/components/ItemList';
 import { Dropdown } from '@/components/Dropdown';
+import { Calendar } from '@/components/ui/calendar';
 
 const difBarGraphData = [
   { label: '쉬워요', value: 30 },
@@ -48,8 +49,15 @@ const timeData = [
   { label: '적절했어요', value: 40 },
   { label: '여유로웠어요', value: 30 },
 ];
-
+const selectedDates = ['2025-01-24', '2025-01-28', '2025-02-03'];
 export default function Home() {
+  const breadcrumbItems = [
+    { label: '홈', href: '/' },
+    { label: '하위 페이지', href: '#' },
+  ];
+  const [expanded, setExpanded] = useState(false);
+  const [date, setDate] = useState<Date | undefined>(undefined);
+
   return (
     <>
       <main className="bg-neutral-10 border shadow-1 stroke-normal rounded-10 font-semibold">
@@ -80,7 +88,7 @@ export default function Home() {
         writtenStudy="인터넷 강의"
         practicalStudy="인터넷 강의"
       />
-      <div className="w-px h-6 bg-neutral-30" />
+      <div className="w-px h-6 bg-neutral-30 " />
       <Category />
       <SearchBar type="main" />
       <SearchBar type="default" />
@@ -132,6 +140,14 @@ export default function Home() {
         <BtnOnboarding type={'specific'} />
       </div>
       <StudyCard />
+      <div className="flex gap-3">
+        <Calendar date={selectedDates} bg={'light'} size={'large'} />
+        <Calendar date={selectedDates} bg={'dark'} size={'large'} />
+      </div>
+      <div className="flex gap-3">
+        <Calendar date={selectedDates} bg={'light'} size={'small'} />
+        <Calendar date={selectedDates} bg={'dark'} size={'small'} />
+      </div>
     </>
   );
 }
