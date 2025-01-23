@@ -136,8 +136,10 @@ export default function Home() {
         </div>
       </div>
       <div className="flex gap-9">
-        <BtnOnboarding type={'general'} />
-        <BtnOnboarding type={'specific'} />
+        <BtnOnboarding type={'general'} size={'large'} />
+        <BtnOnboarding type={'general'} size={'medium'} />
+        <BtnOnboarding type={'specific'} size={'large'} />
+        <BtnOnboarding type={'specific'} size={'medium'} />
       </div>
       <StudyCard />
       <div className="flex gap-3">
