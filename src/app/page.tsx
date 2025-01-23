@@ -50,11 +50,6 @@ const timeData = [
 ];
 
 export default function Home() {
-  const breadcrumbItems = [
-    { label: '홈', href: '/' },
-    { label: '하위 페이지', href: '#' },
-  ];
-
   return (
     <>
       <main className="bg-neutral-10 border shadow-1 stroke-normal rounded-10 font-semibold">
@@ -62,7 +57,12 @@ export default function Home() {
         <Category />
       </main>
       <CertificateTable />
-      <Dropdown />
+      <Dropdown
+        items={['검은색 1', '검은색 2', '검은색 3', '검은색 4', '검은색 5']}
+        size="w-[165px]"
+        color="bg-neutral-90"
+      />
+      <Dropdown items={['흰색 1', '흰색 2', '흰색 3', '흰색 4', '흰색 5']} />
       <div className="w-px h-6 bg-neutral-30" />
       <Avatar size="xl" src="/icons/gnb/user-filled.svg" alt="asdsa" />
       <Avatar src="/icons/gnb/user-filled.svg" alt="Custom icon" size="lg" />
@@ -82,7 +82,6 @@ export default function Home() {
       />
       <div className="w-px h-6 bg-neutral-30" />
       <Category />
-
       <SearchBar type="main" />
       <SearchBar type="default" />
       <Chip size="large" keyword="테스트" selected={false} disabled />
