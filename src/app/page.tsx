@@ -93,6 +93,8 @@ export default function Home() {
       <SearchBar type="main" />
       <SearchBar type="default" />
       <Chip size="large" keyword="테스트" selected={false} disabled />
+      <Chip size="small" keyword="테스트" selected={false} disabled />
+      <Chip size="xsmall" keyword="테스트" selected={false} disabled />
       <StarRating size="large" rating={1} />
       <StarRating size="large" rating={2} />
       <StarRating size="large" rating={3} />
