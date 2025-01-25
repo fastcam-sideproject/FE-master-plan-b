@@ -119,6 +119,8 @@ export default {
         'body-small-mobile': ['.6875rem', { lineHeight: '160%', fontWeight: '600' }],
         'body-xsmall-desktop': ['.875rem', { lineHeight: '160%', fontWeight: '600' }],
         'body-xsmall-mobile': ['.6875rem', { lineHeight: '160%', fontWeight: '600' }],
+        'body-xxsmall-desktop': ['.6875rem', { lineHeight: '160%', fontWeight: '600' }],
+        'body-xxsmall-mobile': ['.625rem', { lineHeight: '160%', fontWeight: '600' }],
 
         // Label
         'label-large-desktop': ['1.125rem', { lineHeight: '160%', fontWeight: '600' }],
@@ -127,6 +129,8 @@ export default {
         'label-medium-mobile': ['.75rem', { lineHeight: '160%', fontWeight: '600' }],
         'label-small-desktop': ['.875rem', { lineHeight: '160%', fontWeight: '400' }],
         'label-small-mobile': ['.75rem', { lineHeight: '160%', fontWeight: '400' }],
+        'label-xsmall-desktop': ['.75rem', { lineHeight: '160%', fontWeight: '400' }],
+        'label-xsmall-mobile': ['.6875rem', { lineHeight: '160%', fontWeight: '400' }],
 
         // Link
         'link-large-desktop': ['1.125rem', { lineHeight: '160%', fontWeight: '500' }],
