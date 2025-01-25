@@ -4,7 +4,7 @@ import { Avatar } from '../common/Avatar';
 
 type MainItemListProps = {
   title: string;
-  labels: string[];
+  labels: [string, string];
   tags: string[];
   content: string;
 };
