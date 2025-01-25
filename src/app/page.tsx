@@ -20,6 +20,7 @@ import StudyCard from '@/components/StudyCard/StudyCard';
 import { ItemList, MainItemList } from '@/components/ItemList';
 import { Dropdown } from '@/components/Dropdown';
 import { Calendar } from '@/components/ui/calendar';
+import ItemCard from '@/components/ItemCard/ItemCard';
 
 const difBarGraphData = [
   { label: '쉬워요', value: 30 },
@@ -49,6 +50,17 @@ const timeData = [
   { label: '여유로웠어요', value: 30 },
 ];
 const selectedDates = ['2025-01-24', '2025-01-28', '2025-02-03'];
+const ItemCardDummyData = {
+  examId: '1',
+  exam: '정보처리기사',
+  host: '국가기술자격',
+  bookmark: false,
+  starRating: 4,
+  category: '정보통신',
+  regStartDate: '2025-01-22',
+  regEndDate: '2025-02-28',
+  examStartDate: '2025-02-28',
+};
 export default function Home() {
   const breadcrumbItems = [
     { label: '홈', href: '/' },
@@ -156,6 +168,12 @@ export default function Home() {
       <div className="flex gap-3">
         <Calendar date={selectedDates} bg={'light'} size={'small'} />
         <Calendar date={selectedDates} bg={'dark'} size={'small'} />
+      </div>
+      <div className="flex gap-5 mx-5 my-5">
+        <ItemCard type={'community'} data={ItemCardDummyData} />
+        <ItemCard type={'info'} data={ItemCardDummyData} />
+        <ItemCard type={'date'} data={ItemCardDummyData} />
+        button 컴포넌트 수정필요함
       </div>
     </>
   );

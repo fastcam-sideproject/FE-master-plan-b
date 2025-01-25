@@ -18,7 +18,7 @@ function Calendar({ date, bg, size, className, classNames, ...props }: CalendarP
   const [currentMonth, setCurrentMonth] = React.useState(new Date());
   const dateObjects = date.map((date) => {
     const [year, month, day] = date.split('-').map(Number);
-    return new Date(year, month - 1, day); // month is 0-indexed
+    return new Date(year, month - 1, day);
   });
 
   const handlePreviousMonth = () => {
