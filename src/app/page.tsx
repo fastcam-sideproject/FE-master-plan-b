@@ -4,7 +4,6 @@ import { IconAccessible } from '@tabler/icons-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import Category from '@/components/Category/Category';
-import { CertificateTable } from '@/components/CertificateTable';
 import SearchBar from '@/components/SearchBar/SearchBar';
 import Chip from '@/components/Chip/Chip';
 import StarRating from '@/components/common/StarRating/StarRating';
@@ -18,7 +17,7 @@ import DonutGraph from '@/components/DashBoard/DonutGraph';
 import BtnOnboarding from '@/components/Onboarding/BtnOnboarding';
 import { Avatar } from '@/components/common/Avatar';
 import StudyCard from '@/components/StudyCard/StudyCard';
-import { ItemList } from '@/components/ItemList';
+import { ItemList, MainItemList } from '@/components/ItemList';
 import { Dropdown } from '@/components/Dropdown';
 import { Calendar } from '@/components/ui/calendar';
 
@@ -64,7 +63,13 @@ export default function Home() {
         안녕하세요 마스터 플랜 비 입니다
         <Category />
       </main>
-      <CertificateTable />
+
+      <MainItemList
+        title="제목을 입력해주세요"
+        labels={['Label', 'Label']}
+        tags={['하루 1~2시간 학습', '비전공자', '6개월 준비']}
+        content="필기는 기출문제를 정복하면 절반은 먹고 들어갑니다. 저는 5년 치 기출문제를 다운로드해서 한 번 풀어본 뒤, 틀린 문제만 다시 정리했어요. 기출문제는 반복되는 경향이 강하니까 시험 직전까지 최소 3번은 돌려보는 걸 추천합니다. 암기 팁으로는 **'키워드 중심으로 정리'**하는 게 중요해요. 책 한 권을 다 외우려 하지 말고, 꼭 나오는 핵심 개념만 메모하면서 공부했어요."
+      />
       <Dropdown
         items={['검은색 1', '검은색 2', '검은색 3', '검은색 4', '검은색 5']}
         size="w-[165px]"
