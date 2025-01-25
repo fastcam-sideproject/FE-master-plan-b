@@ -4,7 +4,6 @@ import {
   IconChevronDown,
   IconChevronUp,
   IconClock,
-  IconThumbDownFilled,
   IconThumbUp,
   IconThumbUpFilled,
   IconUserFilled,
@@ -162,5 +161,3 @@ export function ItemList({
     </div>
   );
 }
-
-export default ItemList;
