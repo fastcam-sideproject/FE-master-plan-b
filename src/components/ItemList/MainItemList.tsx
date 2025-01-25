@@ -30,7 +30,7 @@ export function MainItemList({ title, labels, tags, content }: MainItemListProps
                 <Avatar
                   src="/icons/gnb/user-filled.svg"
                   alt="아바타 아이콘"
-                  size={window.innerWidth < 768 ? 'md' : 'lg'}
+                  size={{ mobile: 'md', desktop: 'lg' }}
                 />
               </div>
               <div className="grow shrink basis-0 flex-col justify-start items-start inline-flex">
