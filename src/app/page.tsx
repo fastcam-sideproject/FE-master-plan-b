@@ -19,6 +19,7 @@ import BtnOnboarding from '@/components/Onboarding/BtnOnboarding';
 import { Avatar } from '@/components/common/Avatar';
 import StudyCard from '@/components/StudyCard/StudyCard';
 import { ItemList } from '@/components/ItemList';
+import TabVertical from '@/components/common/Tab/TabVertical';
 
 const difBarGraphData = [
   { label: '쉬워요', value: 30 },
@@ -133,6 +134,7 @@ export default function Home() {
         <BtnOnboarding type={'specific'} />
       </div>
       <StudyCard />
+      <TabVertical />
     </>
   );
 }
