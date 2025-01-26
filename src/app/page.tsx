@@ -21,6 +21,7 @@ import { ItemList, MainItemList } from '@/components/ItemList';
 import { Dropdown } from '@/components/Dropdown';
 import { Calendar } from '@/components/ui/calendar';
 import ItemCard from '@/components/ItemCard/ItemCard';
+import { TooltipComponent } from '@/components/common/TooltipComponent';
 
 const difBarGraphData = [
   { label: '쉬워요', value: 30 },
@@ -87,6 +88,10 @@ export default function Home() {
         size="w-[165px]"
         color="bg-neutral-90"
       />
+
+      <div className="flex items-center justify-center">
+        <TooltipComponent />
+      </div>
       <Dropdown items={['흰색 1', '흰색 2', '흰색 3', '흰색 4', '흰색 5']} />
       <div className="w-px h-6 bg-neutral-30" />
       <Avatar size="xl" src="/icons/gnb/user-filled.svg" alt="asdsa" />
