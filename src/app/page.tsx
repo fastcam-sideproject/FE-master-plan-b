@@ -18,10 +18,15 @@ import BtnOnboarding from '@/components/Onboarding/BtnOnboarding';
 import { Avatar } from '@/components/common/Avatar';
 import StudyCard from '@/components/StudyCard/StudyCard';
 import { ItemList, MainItemList } from '@/components/ItemList';
+import TabVertical from '@/components/common/Tab/TabVertical';
 import { Dropdown } from '@/components/Dropdown';
 import { Calendar } from '@/components/ui/calendar';
 import ItemCard from '@/components/ItemCard/ItemCard';
 import { TooltipComponent } from '@/components/common/TooltipComponent';
+import TabHorizon from '@/components/common/Tab/TabHorizon';
+import TabVerticalSmall from '@/components/common/Tab/TabVerticalSmall';
+import TabHorizonMedium from '@/components/common/Tab/TabHorizonMedium';
+import TabHorizonSmall from '@/components/common/Tab/TabHorizonSmall';
 
 const difBarGraphData = [
   { label: '쉬워요', value: 30 },
@@ -166,6 +171,17 @@ export default function Home() {
         <BtnOnboarding type={'specific'} size={'medium'} />
       </div>
       <StudyCard />
+      <TabVertical />
+      <TabVerticalSmall />
+      <TabHorizon isDark={true} />
+      <TabHorizon isDark={false} />
+
+      <TabHorizonMedium isDark={true} />
+      <TabHorizonMedium isDark={false} />
+
+      <TabHorizonSmall isDark={true} />
+      <TabHorizonSmall isDark={false} />
+
       <div className="flex gap-3">
         <Calendar date={selectedDates} bg={'light'} size={'large'} />
         <Calendar date={selectedDates} bg={'dark'} size={'large'} />
