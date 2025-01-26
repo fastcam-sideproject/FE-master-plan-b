@@ -1,6 +1,5 @@
-import React from 'react';
-import TabButton from './TabButton';
-
+import TabHorizonButton from "./TabHorizonButton";
+import { TabHorizonType } from "./types";
 
 const tabButtonProps = [
   {
@@ -8,20 +7,21 @@ const tabButtonProps = [
     buttonLink: "/"
   },
   {
-    innerText: "안녕하세요",
+    innerText: "안녕",
     buttonLink: "/"
   }
 ];
 
-export default function TabVertical() {
+export default function TabHorizon({ isDark }: TabHorizonType) {
   return (
     <nav className="flex">
-      <ul className="p-4 flex flex-col gap-3 shadow-2 rounded-7">
+      <ul className={`p-2 flex gap-3 shadow-2 rounded-10 ${isDark ? "bg-neutral-0" : "bg-neutral-5"}`}>
         {tabButtonProps.map((btnProps, index) => (
-          <TabButton
+          <TabHorizonButton
             key={index}
             innerText={btnProps.innerText}
             link={btnProps.buttonLink}
+            isDark={isDark}
           />
         ))}
       </ul>

@@ -1,6 +1,4 @@
-import React from 'react';
-import TabButton from './TabButton';
-
+import TabButton from "./TabButton";
 
 const tabButtonProps = [
   {
@@ -13,18 +11,22 @@ const tabButtonProps = [
   }
 ];
 
-export default function TabVertical() {
+
+function TabVerticalSmall() {
   return (
     <nav className="flex">
-      <ul className="p-4 flex flex-col gap-3 shadow-2 rounded-7">
+      <ul className="p-3 flex flex-col gap-3 shadow-2 rounded-7">
         {tabButtonProps.map((btnProps, index) => (
           <TabButton
             key={index}
             innerText={btnProps.innerText}
             link={btnProps.buttonLink}
+            fontSize="text-label-small-desktop"
           />
         ))}
       </ul>
     </nav>
   );
 }
+
+export default TabVerticalSmall;
