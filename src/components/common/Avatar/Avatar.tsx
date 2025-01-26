@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 
 type AvatarSize = 'xl' | 'lg' | 'md' | 'sm' | 'xs';
 
 type AvatarProps = {
-  size: AvatarSize;
+  size: AvatarSize | { mobile: AvatarSize; desktop: AvatarSize };
   src: string;
   alt: string;
 };
@@ -26,14 +26,30 @@ const imageSizeClasses = {
 };
 
 export function Avatar({ size, src, alt }: AvatarProps) {
+  const [currentSize, setCurrentSize] = useState<AvatarSize>(
+    typeof size === 'object' ? size.mobile : size,
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (typeof size === 'object') {
+        setCurrentSize(window.innerWidth < 768 ? size.mobile : size.desktop);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [size]);
+
   return (
     <div
       className={cn(
-        sizeClasses[size],
+        sizeClasses[currentSize],
         'border:none bg-neutral-5 justify-center items-center inline-flex',
       )}
     >
-      <img src={src} alt={alt} className={cn(imageSizeClasses[size])} />
+      <img src={src} alt={alt} className={cn(imageSizeClasses[currentSize])} />
     </div>
   );
 }

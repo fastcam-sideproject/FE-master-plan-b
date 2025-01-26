@@ -4,7 +4,6 @@ import { IconAccessible } from '@tabler/icons-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import Category from '@/components/Category/Category';
-import { CertificateTable } from '@/components/CertificateTable';
 import SearchBar from '@/components/SearchBar/SearchBar';
 import Chip from '@/components/Chip/Chip';
 import StarRating from '@/components/common/StarRating/StarRating';
@@ -18,8 +17,12 @@ import DonutGraph from '@/components/DashBoard/DonutGraph';
 import BtnOnboarding from '@/components/Onboarding/BtnOnboarding';
 import { Avatar } from '@/components/common/Avatar';
 import StudyCard from '@/components/StudyCard/StudyCard';
-import { ItemList } from '@/components/ItemList';
+import { ItemList, MainItemList } from '@/components/ItemList';
 import TabVertical from '@/components/common/Tab/TabVertical';
+import { Dropdown } from '@/components/Dropdown';
+import { Calendar } from '@/components/ui/calendar';
+import ItemCard from '@/components/ItemCard/ItemCard';
+import { TooltipComponent } from '@/components/common/TooltipComponent';
 
 const difBarGraphData = [
   { label: '쉬워요', value: 30 },
@@ -48,13 +51,25 @@ const timeData = [
   { label: '적절했어요', value: 40 },
   { label: '여유로웠어요', value: 30 },
 ];
-
+const selectedDates = ['2025-01-24', '2025-01-28', '2025-02-03'];
+const ItemCardDummyData = {
+  examId: '1',
+  exam: '정보처리기사',
+  host: '국가기술자격',
+  bookmark: false,
+  starRating: 4,
+  category: '정보통신',
+  regStartDate: '2025-01-22',
+  regEndDate: '2025-02-28',
+  examStartDate: '2025-02-28',
+};
 export default function Home() {
   const breadcrumbItems = [
     { label: '홈', href: '/' },
     { label: '하위 페이지', href: '#' },
   ];
   const [expanded, setExpanded] = useState(false);
+  const [date, setDate] = useState<Date | undefined>(undefined);
 
   return (
     <>
@@ -62,8 +77,23 @@ export default function Home() {
         안녕하세요 마스터 플랜 비 입니다
         <Category />
       </main>
-      <CertificateTable />
 
+      <MainItemList
+        title="제목을 입력해주세요"
+        labels={['Label', 'Label']}
+        tags={['하루 1~2시간 학습', '비전공자', '6개월 준비']}
+        content="필기는 기출문제를 정복하면 절반은 먹고 들어갑니다. 저는 5년 치 기출문제를 다운로드해서 한 번 풀어본 뒤, 틀린 문제만 다시 정리했어요. 기출문제는 반복되는 경향이 강하니까 시험 직전까지 최소 3번은 돌려보는 걸 추천합니다. 암기 팁으로는 **'키워드 중심으로 정리'**하는 게 중요해요. 책 한 권을 다 외우려 하지 말고, 꼭 나오는 핵심 개념만 메모하면서 공부했어요."
+      />
+      <Dropdown
+        items={['검은색 1', '검은색 2', '검은색 3', '검은색 4', '검은색 5']}
+        size="w-[165px]"
+        color="bg-neutral-90"
+      />
+
+      <div className="flex items-center justify-center">
+        <TooltipComponent />
+      </div>
+      <Dropdown items={['흰색 1', '흰색 2', '흰색 3', '흰색 4', '흰색 5']} />
       <div className="w-px h-6 bg-neutral-30" />
       <Avatar size="xl" src="/icons/gnb/user-filled.svg" alt="asdsa" />
       <Avatar src="/icons/gnb/user-filled.svg" alt="Custom icon" size="lg" />
@@ -81,12 +111,13 @@ export default function Home() {
         writtenStudy="인터넷 강의"
         practicalStudy="인터넷 강의"
       />
-      <div className="w-px h-6 bg-neutral-30" />
+      <div className="w-px h-6 bg-neutral-30 " />
       <Category />
-
       <SearchBar type="main" />
       <SearchBar type="default" />
       <Chip size="large" keyword="테스트" selected={false} disabled />
+      <Chip size="small" keyword="테스트" selected={false} disabled />
+      <Chip size="xsmall" keyword="테스트" selected={false} disabled />
       <StarRating size="large" rating={1} />
       <StarRating size="large" rating={2} />
       <StarRating size="large" rating={3} />
@@ -130,11 +161,27 @@ export default function Home() {
         </div>
       </div>
       <div className="flex gap-9">
-        <BtnOnboarding type={'general'} />
-        <BtnOnboarding type={'specific'} />
+        <BtnOnboarding type={'general'} size={'large'} />
+        <BtnOnboarding type={'general'} size={'medium'} />
+        <BtnOnboarding type={'specific'} size={'large'} />
+        <BtnOnboarding type={'specific'} size={'medium'} />
       </div>
       <StudyCard />
       <TabVertical />
+      <div className="flex gap-3">
+        <Calendar date={selectedDates} bg={'light'} size={'large'} />
+        <Calendar date={selectedDates} bg={'dark'} size={'large'} />
+      </div>
+      <div className="flex gap-3">
+        <Calendar date={selectedDates} bg={'light'} size={'small'} />
+        <Calendar date={selectedDates} bg={'dark'} size={'small'} />
+      </div>
+      <div className="flex gap-5 mx-5 my-5">
+        <ItemCard type={'community'} data={ItemCardDummyData} />
+        <ItemCard type={'info'} data={ItemCardDummyData} />
+        <ItemCard type={'date'} data={ItemCardDummyData} />
+        button 컴포넌트 수정필요함
+      </div>
     </>
   );
 }

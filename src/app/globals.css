@@ -141,3 +141,11 @@
     border-right: 25px solid transparent;
   }
 }
+
+.overflow-hidden {
+  overflow-y: auto;
+}
+
+.overflow-hidden::-webkit-scrollbar {
+  display: none;
+}

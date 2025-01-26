@@ -119,6 +119,8 @@ export default {
         'body-small-mobile': ['.6875rem', { lineHeight: '160%', fontWeight: '600' }],
         'body-xsmall-desktop': ['.875rem', { lineHeight: '160%', fontWeight: '600' }],
         'body-xsmall-mobile': ['.6875rem', { lineHeight: '160%', fontWeight: '600' }],
+        'body-xxsmall-desktop': ['.6875rem', { lineHeight: '160%', fontWeight: '600' }],
+        'body-xxsmall-mobile': ['.625rem', { lineHeight: '160%', fontWeight: '600' }],
 
         // Label
         'label-large-desktop': ['1.125rem', { lineHeight: '160%', fontWeight: '600' }],
@@ -127,6 +129,8 @@ export default {
         'label-medium-mobile': ['.75rem', { lineHeight: '160%', fontWeight: '600' }],
         'label-small-desktop': ['.875rem', { lineHeight: '160%', fontWeight: '400' }],
         'label-small-mobile': ['.75rem', { lineHeight: '160%', fontWeight: '400' }],
+        'label-xsmall-desktop': ['.75rem', { lineHeight: '160%', fontWeight: '400' }],
+        'label-xsmall-mobile': ['.6875rem', { lineHeight: '160%', fontWeight: '400' }],
 
         // Link
         'link-large-desktop': ['1.125rem', { lineHeight: '160%', fontWeight: '500' }],
@@ -179,14 +183,14 @@ export default {
         strong: '2px',
       },
       boxShadow: {
-        '1': '0px 2px 4px rgba(20, 23, 28, 0.04), 0px 0px 4px 16px rgba(20, 23, 28, 0.04), 0px 0px 16px 30px rgba(20, 23, 28, 0.04)',
+        '1': '0px 2px 4px rgba(20, 23, 28, 0.04), 0px 4px 16px rgba(20, 23, 28, 0.04), 0px 16px 30px rgba(20, 23, 28, 0.04)',
         '2': '0px 0px 20px rgba(80, 74, 60, 0.1)',
+        '3': '0px 0px 20px rgba(80, 74, 60, 0.05)',
       },
       screens: {
-        '2xl': '1920px',
-      },
-      width: {
-        '2px': '2px',
+        desktop: { min: '1280px' }, // Desktop: 1280px ~ 1920px
+        tablet: { min: '768px', max: '1279.9px' }, // Tablet: 768px ~ 1279px
+        mobile: { max: '767.9px' }, // Mobile: 360px ~ 767px
       },
     },
   },
