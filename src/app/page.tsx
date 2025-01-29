@@ -29,6 +29,7 @@ import TabHorizonMedium from '@/components/common/Tab/TabHorizonMedium';
 import TabHorizonSmall from '@/components/common/Tab/TabHorizonSmall';
 import StepperItem from '@/components/Stepper/StepperItem';
 import Stepper from '@/components/Stepper/Stepper';
+import { NumberPagination } from '@/components/common/Pagination';
 
 const difBarGraphData = [
   { label: '쉬워요', value: 30 },
@@ -85,6 +86,13 @@ export default function Home() {
   const [expanded, setExpanded] = useState(false);
   const [date, setDate] = useState<Date | undefined>(undefined);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 10;
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
   return (
     <>
       <main className="bg-neutral-10 border shadow-1 stroke-normal rounded-10 font-semibold">
@@ -92,6 +100,12 @@ export default function Home() {
         <Category />
       </main>
 
+      <NumberPagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+        className="custom-class"
+      />
       <MainItemList
         title="제목을 입력해주세요"
         labels={['Label', 'Label']}

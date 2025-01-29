@@ -32,9 +32,10 @@ export function NumberPagination({
         disabled={currentPage === 1}
         className={cn('text-neutral-85', currentPage === 1 && 'text-neutral-30')}
       >
-        <IconChevronsLeft size={24} />
+        <IconChevronsLeft className="w-7 h-7 mobile:w-6 mobile:h-6" />
       </button>,
     );
+
     // 이전 페이지로 이동
     pages.push(
       <button
@@ -44,7 +45,7 @@ export function NumberPagination({
         disabled={currentPage === 1}
         className={cn('text-neutral-85', currentPage === 1 && 'text-neutral-30')}
       >
-        <IconChevronLeft size={24} />
+        <IconChevronLeft className="w-7 h-7 mobile:w-6 mobile:h-6" />
       </button>,
     );
 
@@ -59,14 +60,13 @@ export function NumberPagination({
       ) {
         pages.push(
           <button
-            lang="en"
             key={i}
             onClick={() => onPageChange(i)}
             className={cn(
-              'h-9 w-9 p-[10px]',
+              'h-9 w-9 mobile:h-8 mobile:w-8',
               currentPage === i
-                ? 'text-body-large-desktop font-[400] bg-neutral-85 text-neutral-0 border rounded-10'
-                : 'text-body-large-desktop font-[400] text-neutral-85',
+                ? 'text-body-large-desktop mobile:text-body-medium-desktop font-[400] bg-neutral-85 text-neutral-0 border rounded-10'
+                : 'text-body-large-desktop mobile:text-body-medium-desktop font-[400] text-neutral-85',
             )}
           >
             {i}
@@ -78,7 +78,7 @@ export function NumberPagination({
       ) {
         pages.push(
           <span key={`ellipsis-${i}`} className="text-neutral-85">
-            <IconDots size={24} />
+            <IconDots className="w-7 h-7 mobile:w-6 mobile:h-6" />
           </span>,
         );
       }
@@ -93,7 +93,7 @@ export function NumberPagination({
         disabled={currentPage === totalPages}
         className={cn('text-neutral-85', currentPage === totalPages && 'text-neutral-30')}
       >
-        <IconChevronRight size={24} />
+        <IconChevronRight className="w-7 h-7 mobile:w-6 mobile:h-6" />
       </button>,
     );
 
@@ -106,7 +106,7 @@ export function NumberPagination({
         disabled={currentPage === totalPages}
         className={cn('text-neutral-85', currentPage === totalPages && 'text-neutral-30')}
       >
-        <IconChevronsRight size={24} />
+        <IconChevronsRight className="w-7 h-7 mobile:w-6 mobile:h-6" />
       </button>,
     );
 
@@ -117,7 +117,10 @@ export function NumberPagination({
     <nav
       role="navigation"
       aria-label="pagination"
-      className={cn('flex justify-center items-center gap-4', className)}
+      className={cn(
+        'w-[480px] h-[40px] mobile:w-[355px] mobile:h-[32px] flex justify-center items-center gap-4 mobile:gap-3',
+        className,
+      )}
     >
       {renderPageNumbers()}
     </nav>
