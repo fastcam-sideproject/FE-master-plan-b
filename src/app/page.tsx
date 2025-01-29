@@ -27,6 +27,8 @@ import TabHorizon from '@/components/common/Tab/TabHorizon';
 import TabVerticalSmall from '@/components/common/Tab/TabVerticalSmall';
 import TabHorizonMedium from '@/components/common/Tab/TabHorizonMedium';
 import TabHorizonSmall from '@/components/common/Tab/TabHorizonSmall';
+import StepperItem from '@/components/Stepper/StepperItem';
+import Stepper from '@/components/Stepper/Stepper';
 
 const difBarGraphData = [
   { label: '쉬워요', value: 30 },
@@ -67,6 +69,14 @@ const ItemCardDummyData = {
   regEndDate: '2025-02-28',
   examStartDate: '2025-02-28',
 };
+const stepperData = [
+  { label: '답안지 작성 관련 OT', time: 15 },
+  { label: '수험자 휴식시간', time: 5 },
+  { label: '신분 확인 및 휴대폰 제출', time: 15 },
+  { label: '문제지 배부 및 파본 확인', time: 5 },
+  { label: '듣기평가(LC)', time: 45 },
+  { label: '읽기평가(RC)', time: 75 },
+];
 export default function Home() {
   const breadcrumbItems = [
     { label: '홈', href: '/' },
@@ -193,6 +203,9 @@ export default function Home() {
         <ItemCard type={'info'} data={ItemCardDummyData} />
         <ItemCard type={'date'} data={ItemCardDummyData} />
         button 컴포넌트 수정필요함
+      </div>
+      <div className="w-[1200px] tablet:w-[780px] mobile:w-[360px]">
+        <Stepper data={stepperData} />
       </div>
     </>
   );
