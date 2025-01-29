@@ -3,10 +3,9 @@ import Link from 'next/link';
 
 type BtnOnboardingProps = {
   type: 'general' | 'specific';
-  size: 'large' | 'medium';
 };
 
-export default function BtnOnboarding({ type, size }: BtnOnboardingProps) {
+export default function BtnOnboarding({ type }: BtnOnboardingProps) {
   const templates = {
     general: {
       imageSrc: '/images/general.png',
@@ -25,26 +24,28 @@ export default function BtnOnboarding({ type, size }: BtnOnboardingProps) {
   };
 
   const { imageSrc, altText, description, title, link } = templates[type];
-  const isLarge = size === 'large';
+  const btnStyle =
+    'w-[400px] h-[490px] pb-7 tablet:w-[330px] tablet:h-[404px] mobile:w-[330px] mobile:h-[270px]  mobile:pb-5';
+  const imgStyle = 'size-[263px] tablet:size-[200px] mobile:size-[140px] ';
+  const descriptionStyle =
+    'text-body-medium-desktop tablet:text-body-xsmall-desktop mobile:text-body-xsmall-mobile';
+  const titleStyle =
+    'text-title-large-desktop tablet:text-title-medium-desktop mobile:text-title-medium-mobile';
   return (
     <Link href={link}>
       <button
-        className={`group ${isLarge ? 'w-[400px] h-[490px]' : 'w-[330px] h-[404px]'} bg-neutral-0 shadow-2 rounded-9 pb-7 border-2 border-transparent transition duration-300 hover:border-neutral-20 active:bg-neutral-85`}
+        className={`group ${btnStyle} bg-neutral-0 shadow-2 rounded-9  border-2 border-transparent transition duration-300 hover:border-neutral-20 active:bg-neutral-85`}
       >
         <div className="flex flex-col items-center">
-          <img
-            src={imageSrc}
-            alt={altText}
-            className={`${isLarge ? 'size-[263px]' : 'size-[200px]'}`}
-          />
+          <img src={imageSrc} alt={altText} className={`${imgStyle}`} />
           <div className="flex flex-col items-center gap-5">
             <p
-              className={`${isLarge ? 'text-body-medium-desktop' : 'text-body-xsmall-desktop'} text-neutral-50 transition duration-300 group-active:text-neutral-10`}
+              className={`${descriptionStyle} text-neutral-50 transition duration-300 group-active:text-neutral-10`}
             >
               {description}
             </p>
             <p
-              className={`${isLarge ? 'text-title-large-desktop' : 'text-title-medium-desktop'}  text-neutral-90 transition duration-300 group-active:text-neutral-0`}
+              className={`${titleStyle}  text-neutral-90 transition duration-300 group-active:text-neutral-0`}
               dangerouslySetInnerHTML={{ __html: title }}
             />
           </div>
