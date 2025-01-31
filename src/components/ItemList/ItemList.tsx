@@ -23,9 +23,9 @@ type ItemListProps = {
 };
 
 const iconMap: { [key: string]: JSX.Element } = {
-  '하루 1~2시간 학습': <IconClock size={20} />,
-  비전공자: <IconUserFilled size={20} />,
-  '6개월 준비': <IconCalendarWeek size={20} />,
+  '하루 1~2시간 학습': <IconClock className="size-6" />,
+  비전공자: <IconUserFilled className="size-6" />,
+  '6개월 준비': <IconCalendarWeek className="size-6" />,
 };
 
 export function ItemList({
