@@ -31,6 +31,8 @@ import StepperItem from '@/components/Stepper/StepperItem';
 import Stepper from '@/components/Stepper/Stepper';
 import { NumberPagination } from '@/components/common/Pagination';
 import { AppleLoginBtn, GoogleLoginBtn, KakaoLoginBtn } from '@/components/LoginButton';
+import ChatBox from '@/components/Chat/ChatBox';
+import ChatList from '@/components/Chat/ChatList';
 
 const difBarGraphData = [
   { label: '쉬워요', value: 30 },
@@ -225,6 +227,7 @@ export default function Home() {
       <div className="w-[1200px] tablet:w-[780px] mobile:w-[360px]">
         <Stepper data={stepperData} />
       </div>
+      <ChatList />
     </>
   );
 }
