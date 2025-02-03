@@ -30,6 +30,7 @@ import TabHorizonSmall from '@/components/common/Tab/TabHorizonSmall';
 import StepperItem from '@/components/Stepper/StepperItem';
 import Stepper from '@/components/Stepper/Stepper';
 import { NumberPagination } from '@/components/common/Pagination';
+import { AppleLoginBtn, GoogleLoginBtn, KakaoLoginBtn } from '@/components/LoginButton';
 
 const difBarGraphData = [
   { label: '쉬워요', value: 30 },
@@ -99,6 +100,9 @@ export default function Home() {
         안녕하세요 마스터 플랜 비 입니다
         <Category />
       </main>
+      <KakaoLoginBtn />
+      <AppleLoginBtn />
+      <GoogleLoginBtn />
 
       <NumberPagination
         currentPage={currentPage}
