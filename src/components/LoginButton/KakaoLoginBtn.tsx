@@ -5,7 +5,7 @@ export function KakaoLoginBtn() {
       type="button"
     >
       <div className="flex flex-col justify-start items-center gap-6 mobile:flex-row mobile:gap-4">
-        <img src="/icons/login/kakao.svg" alt="kakao login icon" className="w-8 h-[28.69px]" />
+        <img src="/icons/login/kakao.svg" alt="kakao icon" className="w-8 h-[28.69px]" />
         <div className="text-neutral-85 text-label-medium-desktop font-normal">
           카카오로 시작하기
         </div>
