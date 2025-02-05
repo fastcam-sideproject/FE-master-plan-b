@@ -2,49 +2,53 @@ import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer className="bg-neutral-5 text-neutral-50 2xl:flex 2xl:justify-center 2xl:items-center">
-      <div className="flex items-start justify-between p-9 text-label-small-desktop max-w-[1920px] 2xl:gap-8">
-        <div>
-          <div className="flex gap-4 px-4 items-start">
-            <Image width={150} height={50} src="/logos/logo-text-dark.svg" alt="로고" />
-          </div>
+    <footer className="bg-neutral-5 text-neutral-50 text-link-small-desktop">
+      <div className='h-full grid mobile:grid-cols-1 mobile:grid-row-4 mobile:gap-5  mobile:items-center grid-cols-3 grid-rows-3 mobile:p-7 p-9 '>
+        <Image width={150} height={50} src="/logos/logo-text-dark.svg" alt="로고" />
+        <div className='mobile:col-start-1 mobile:row-start-4 row-start-2 row-end-4'>
           <p>
-            <span className="relative after:content-[''] after:absolute after:top-0 after:right-0 after:h-full after:w-[1px] after:bg-neutral-300 px-4">
+            <span className="relative after:content-[''] after:absolute after:top-0 after:right-0 after:h-full after:w-[1px] after:bg-neutral-300 pr-4">
               상호
             </span>
             <span className="px-4">마스터플랜비</span>
             <br />
-            <span className="relative after:content-[''] after:absolute after:top-0 after:right-0 after:h-full after:w-[1px] after:bg-neutral-300 px-4">
+            <span className="relative after:content-[''] after:absolute after:top-0 after:right-0 after:h-full after:w-[1px] after:bg-neutral-300 pr-4">
               대표자 명
             </span>
             <span className="px-4">김시환</span>
             <br />
-            <span className="relative after:content-[''] after:absolute after:top-0 after:right-0 after:h-full after:w-[1px] after:bg-neutral-300 px-4">
+            <span className="relative after:content-[''] after:absolute after:top-0 after:right-0 after:h-full after:w-[1px] after:bg-neutral-300 pr-4">
               사업자 등록번호
             </span>
             <span lang='en' className="px-4">580 - 46 - 01046</span>
             <br />
-            <span className="relative after:content-[''] after:absolute after:top-0 after:right-0 after:h-full after:w-[1px] after:bg-neutral-300 px-4">
+            <span className="relative after:content-[''] after:absolute after:top-0 after:right-0 after:h-full after:w-[1px] after:bg-neutral-300 pr-4">
               사업자 소재지
             </span>
-            <span className="px-4">Seoul, Gangnam District, Teheran-ro, 231, Centerfield</span>
+            <span className="px-4">Seoul, Gangnam District, Teheran-ro</span>
             <br />
           </p>
         </div>
 
-        <div className="grid grid-cols-[1fr_1px_1fr_1px_1fr] justify-items-center gap-4 px-4">
-          <div>개인정보처리방침</div>
-          <div className="bg-neutral-30 w-full h-full"></div>
-          <div>이용약관</div>
-          <div className="bg-neutral-30 w-full h-full"></div>
-          <div>결제정보</div>
+        <div className='h-2 mobile:col-start-1 mobile:row-start-2 tablet:col-start-3 tablet:justify-end flex justify-center'>
+          <div className="grid grid-cols-[97px_1px_50px_1px_50px] gap-6 items-center">
+            <div>개인정보처리방침</div>
+            <div className='w-full h-5 bg-neutral-30'></div>
+            <div>이용약관</div>
+            <div className='w-full h-5 bg-neutral-30'></div>
+            <div>결제정보</div>
+          </div>
         </div>
 
-        <div>
-          <div>고객센터</div>
-          <div>masterplanb@gmail.com</div>
+        <div className='mobile:justify-normal mobile:col-start-1 mobile:row-start-3 tablet:col-start-3 tablet:row-start-3  tablet:justify-end flex justify-center'>
+          <div className='tablet:text-right'>
+            <div>고객센터</div>
+            <div>masterplanb@gmail.com</div>
+          </div>
         </div>
+
       </div>
-    </footer>
+
+    </footer >
   );
 }
