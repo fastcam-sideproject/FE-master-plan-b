@@ -20,7 +20,7 @@ export default function Footer() {
             <span className="relative after:content-[''] after:absolute after:top-0 after:right-0 after:h-full after:w-[1px] after:bg-neutral-300 pr-4">
               사업자 등록번호
             </span>
-            <span lang='en' className="px-4">580 - 46 - 01046</span>
+            <span className="px-4">580 - 46 - 01046</span>
             <br />
             <span className="relative after:content-[''] after:absolute after:top-0 after:right-0 after:h-full after:w-[1px] after:bg-neutral-300 pr-4">
               사업자 소재지
