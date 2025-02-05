@@ -230,8 +230,8 @@ export default function Home() {
       <ChatList />
       <Textarea placeholder="여기에 텍스트 입력" />
       <Textarea placeholder="여기에 텍스트 입력" disabled />
-      <Input />
-      <Input disabled />
+      <Input placeholder="여기에 텍스트 입력" size="text_md" />
+      <Input placeholder="여기에 텍스트 입력" size="text_md" disabled />
     </>
   );
 }

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { cn } from '@/lib/utils';
 
 const textareaStyles =
-  'disabled:bg-neutral-5 text-medium placeholder:text-neutral-20 w-full pr-6 h-[320px] focus:outline-none focus:text-neutral-85 [&::-webkit-scrollbar]:w-[6px] [&::-webkit-scrollbar]:ml-[20px] [&::-webkit-scrollbar-thumb]:bg-neutral-20 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent resize-none';
+  'disabled:bg-neutral-5 text-body-medium-desktop placeholder:text-neutral-20 w-full pr-6 h-[320px] focus:outline-none text-neutral-85 [&::-webkit-scrollbar]:w-[6px] [&::-webkit-scrollbar]:ml-[20px] [&::-webkit-scrollbar-thumb]:bg-neutral-20 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent resize-none';
 
 interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
 
