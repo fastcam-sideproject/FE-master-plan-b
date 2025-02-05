@@ -1,5 +1,3 @@
-import { IconAbc } from "@tabler/icons-react";
-
 type SideBarIcon = {
   liName: string,
   isCollapsed: boolean
