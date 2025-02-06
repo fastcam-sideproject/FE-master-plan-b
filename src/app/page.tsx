@@ -16,7 +16,6 @@ import LearningTimeGraph from '@/components/DashBoard/LearningTimeGraph';
 import DonutGraph from '@/components/DashBoard/DonutGraph';
 import BtnOnboarding from '@/components/Onboarding/BtnOnboarding';
 import { Avatar } from '@/components/common/Avatar';
-import StudyCard from '@/components/StudyCard/StudyCard';
 import { ItemList, MainItemList } from '@/components/ItemList';
 import TabVertical from '@/components/common/Tab/TabVertical';
 import { Dropdown } from '@/components/Dropdown';
@@ -27,12 +26,11 @@ import TabHorizon from '@/components/common/Tab/TabHorizon';
 import TabVerticalSmall from '@/components/common/Tab/TabVerticalSmall';
 import TabHorizonMedium from '@/components/common/Tab/TabHorizonMedium';
 import TabHorizonSmall from '@/components/common/Tab/TabHorizonSmall';
-import StepperItem from '@/components/Stepper/StepperItem';
 import Stepper from '@/components/Stepper/Stepper';
 import { NumberPagination } from '@/components/common/Pagination';
 import { AppleLoginBtn, GoogleLoginBtn, KakaoLoginBtn } from '@/components/LoginButton';
-import ChatBox from '@/components/Chat/ChatBox';
 import ChatList from '@/components/Chat/ChatList';
+import StudyCardList from '@/components/StudyCard/StudyCardList';
 
 const difBarGraphData = [
   { label: '쉬워요', value: 30 },
@@ -198,7 +196,7 @@ export default function Home() {
         <BtnOnboarding type={'general'} />
         <BtnOnboarding type={'specific'} />
       </div>
-      <StudyCard />
+      <StudyCardList />
       <TabVertical />
       <TabVerticalSmall />
       <TabHorizon isDark={true} />

@@ -115,6 +115,7 @@
   body {
     font-family: 'AppleSDGothicNeo', 'SUIT', sans-serif;
   }
+
   .folder {
     width: 284px;
     height: 228px;
@@ -139,6 +140,12 @@
 
     border-bottom: 25px solid #ffffff;
     border-right: 25px solid transparent;
+  }
+  @media (max-width: 767.9px) {
+    .folder {
+      width: 229px;
+      height: 184px;
+    }
   }
 }
 
