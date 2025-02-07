@@ -33,6 +33,7 @@ import ChatList from '@/components/Chat/ChatList';
 import StudyCardList from '@/components/StudyCard/StudyCardList';
 import Textarea from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
+import { LiveChip } from '@/components/LiveChip';
 
 const difBarGraphData = [
   { label: '쉬워요', value: 30 },
@@ -98,6 +99,7 @@ export default function Home() {
 
   return (
     <>
+      <LiveChip />
       <main className="bg-neutral-10 border shadow-1 stroke-normal rounded-10 font-semibold">
         안녕하세요 마스터 플랜 비 입니다
         <Category />
