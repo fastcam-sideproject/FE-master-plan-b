@@ -10,17 +10,13 @@ const useGetTimeAgo = () => {
   const getTimeAgo = useCallback((uploadedDay: string) => {
     const uploaded = dayjs(uploadedDay);
     const now = dayjs();
-    const diffInMinutes = now.diff(uploaded, 'minute');
-    const diffInHours = now.diff(uploaded, 'hour');
-    const diffInDays = now.diff(uploaded, 'day');
 
+    const diffInMinutes = now.diff(uploaded, 'minute');
     if (diffInMinutes < 60) {
       return `${diffInMinutes}분`;
-    } else if (diffInHours < 24) {
-      return `${diffInHours}시간`;
-    } else {
-      return `${diffInDays}일`;
     }
+
+    return uploaded.fromNow();
   }, []);
 
   return { getTimeAgo };
