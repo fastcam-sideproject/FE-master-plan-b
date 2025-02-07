@@ -2,6 +2,8 @@ import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
+//TODO: input 옵션이 더 추가될 경우, inputVariants의 내용을 조금 더 정돈할 예정임
+
 const inputVariants = cva('flex w-full text-neutral-85 font-medium', {
   variants: {
     variant: {
