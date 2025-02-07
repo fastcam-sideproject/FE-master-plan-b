@@ -45,7 +45,7 @@ export function NumberInput({ min, max, defaultValue, onChange }: NumberInputPro
         type="number"
         value={value}
         onChange={handleChange}
-        className=" h-[29px] text-body-large-desktop font-[400] text-center border-none text-neutral-85"
+        className=" h-[29px] text-body-large-desktop font-[400] text-center border-none text-neutral-85 [&::-webkit-inner-spin-button]:appearance-none"
       />
       <button type="button" className="w-[26px] h-[26px] text-neutral-30" onClick={handleIncrement}>
         <IconPlus className="w-5 h-5" />
