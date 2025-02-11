@@ -27,7 +27,7 @@ interface CommunityDataProps {
 const communityData: CommunityDataProps[] = [
   {
     uploadedTime: '2025-02-07T18:51:00',
-    title: '오늘 자 시험 난이도 어땠나요?',
+    title: '(아이콘 수정 예정)오늘 자 시험 난이도 어땠나요?',
     category: '시험 꿀팁',
     content: `안녕하세요! 오늘 토익 첫 시험을 봤는데, RC에서 시간이 부족해서 끝까지 못 풀었어요. 😭 다들
         시간 관리 어떻게 하세요? 문제 풀 때 팁이나 전략 있으면 공유 부탁드려요! 🙏`,
