@@ -34,6 +34,7 @@ import StudyCardList from '@/components/StudyCard/StudyCardList';
 import Textarea from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { LiveChip } from '@/components/LiveChip';
+import CommunityBox from '@/components/CommunityBox/CommunityBox';
 
 const difBarGraphData = [
   { label: '쉬워요', value: 30 },
@@ -234,6 +235,7 @@ export default function Home() {
       <Textarea placeholder="여기에 텍스트 입력" disabled />
       <Input placeholder="여기에 텍스트 입력" size="text_md" />
       <Input placeholder="여기에 텍스트 입력" size="text_md" disabled />
+      <CommunityBox />
     </>
   );
 }
