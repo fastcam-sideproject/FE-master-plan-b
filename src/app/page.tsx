@@ -1,6 +1,6 @@
 'use client';
 
-import { IconAccessible } from '@tabler/icons-react';
+import { IconAccessible, IconQuestionMark } from '@tabler/icons-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import Category from '@/components/Category/Category';
@@ -36,6 +36,7 @@ import { Input } from '@/components/ui/input';
 import { LiveChip } from '@/components/LiveChip';
 import CommunityBox from '@/components/CommunityBox/CommunityBox';
 import CommunityInfo from '@/components/CommunityInfo/CommunityInfo';
+import { Popover } from '@/components/ui/popover';
 
 const difBarGraphData = [
   { label: '쉬워요', value: 30 },
@@ -238,6 +239,113 @@ export default function Home() {
       <Input placeholder="여기에 텍스트 입력" size="text_md" disabled />
       <CommunityBox />
       <CommunityInfo />
+      <div className="px-[200px] py-10 flex gap-10">
+        <div className="border border-neutral-90 w-fit rounded-10 ">
+          <IconQuestionMark />
+        </div>
+        <div className="border border-neutral-90 w-fit rounded-10">
+          <IconQuestionMark />
+        </div>
+        <div className="border border-neutral-90 w-fit rounded-10">
+          <IconQuestionMark />
+        </div>
+        <div className="border border-neutral-90 w-fit rounded-10">
+          <IconQuestionMark />
+        </div>
+        <div className="border border-neutral-90 w-fit rounded-10">
+          <IconQuestionMark />
+        </div>
+        <div className="border border-neutral-90 w-fit rounded-10">
+          <IconQuestionMark />
+        </div>
+        <div className="border border-neutral-90 w-fit rounded-10">
+          <IconQuestionMark />
+        </div>
+        <div className="border border-neutral-90 w-fit rounded-10">
+          <IconQuestionMark />
+        </div>
+        <div className="border border-neutral-90 w-fit rounded-10">
+          <IconQuestionMark />
+        </div>
+      </div>
+      <div className="px-[200px] py-10 flex gap-10">
+        <div className="border border-neutral-90 w-fit rounded-10">
+          <IconQuestionMark />
+        </div>
+        <div className="border border-neutral-90 w-fit rounded-10">
+          <IconQuestionMark />
+        </div>
+        <div className="border border-neutral-90 w-fit rounded-10">
+          <IconQuestionMark />
+        </div>
+        <div className="border border-neutral-90 w-fit rounded-10">
+          <IconQuestionMark />
+        </div>
+        <div className="border border-neutral-90 w-fit rounded-10">
+          <IconQuestionMark />
+        </div>
+        <div className="border border-neutral-90 w-fit rounded-10">
+          <IconQuestionMark />
+        </div>
+        <div className="border border-neutral-90 w-fit rounded-10">
+          <IconQuestionMark />
+        </div>
+        <div className="border border-neutral-90 w-fit rounded-10">
+          <IconQuestionMark />
+        </div>
+        <div className="border border-neutral-90 w-fit rounded-10">
+          <IconQuestionMark />
+        </div>
+      </div>
+      <Popover label="여기에 다크모드 텍스트 입력" tipPosition="start" mode="dark" />
+      <Popover label="여기에 다크모드 텍스트 입력" tipPosition="center" mode="dark" />
+      <Popover label="여기에 다크모드 텍스트 입력" tipPosition="end" mode="dark" />
+      <Popover
+        label="여기에 다크모드 텍스트 입력"
+        tipPosition="start"
+        mode="dark"
+        tipDirection="up"
+      />
+      <Popover
+        label="여기에 다크모드 텍스트 입력"
+        tipPosition="center"
+        mode="dark"
+        tipDirection="up"
+      />
+      <Popover
+        label="여기에 다크모드 텍스트 입력"
+        tipPosition="end"
+        mode="dark"
+        tipDirection="up"
+      />
+      <div className="bg-neutral-90 p-5">
+        <Popover label="여기에 화이트모드 텍스트 입력" tipPosition="start" mode="light" />
+        <Popover label="여기에 화이트모드 텍스트 입력" tipPosition="center" mode="light" />
+        <Popover label="여기에 화이트모드 텍스트 입력" tipPosition="end" mode="light" />
+        <Popover
+          label="여기에 화이트모드 텍스트 입력"
+          tipPosition="start"
+          mode="light"
+          tipDirection="up"
+        />
+        <Popover
+          label="여기에 화이트모드 텍스트 입력"
+          tipPosition="center"
+          mode="light"
+          tipDirection="up"
+        />
+        <Popover
+          label="여기에 화이트모드 텍스트 입력"
+          tipPosition="end"
+          mode="light"
+          tipDirection="up"
+        />
+      </div>
+      <Popover
+        label="앞으로 가는 길이 조금 멀어보여도, 한 걸음씩 걷다보면 어느새 도착해 있을 거예요."
+        mode="big"
+        text="big"
+      />
     </>
   );
 }
