@@ -1,6 +1,6 @@
 'use client';
 
-import { IconAccessible, IconQuestionMark } from '@tabler/icons-react';
+import { IconAccessible } from '@tabler/icons-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import Category from '@/components/Category/Category';
@@ -37,6 +37,7 @@ import { LiveChip } from '@/components/LiveChip';
 import CommunityBox from '@/components/CommunityBox/CommunityBox';
 import CommunityInfo from '@/components/CommunityInfo/CommunityInfo';
 import { Popover } from '@/components/ui/popover';
+import Badge from '@/components/Badge/Badge';
 
 const difBarGraphData = [
   { label: '쉬워요', value: 30 },
@@ -295,6 +296,9 @@ export default function Home() {
           mode="big"
           bigTipPosition="start"
         />
+      </div>
+      <div>
+        <Badge />
       </div>
     </>
   );

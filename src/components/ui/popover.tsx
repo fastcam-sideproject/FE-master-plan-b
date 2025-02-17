@@ -119,7 +119,7 @@ const Popover = ({
       {mode === 'big' && (
         <div
           className={cn(
-            "absolute before:contents-[''] bottom-[-20px] z-0",
+            "absolute before:content-[''] bottom-[-20px] z-0",
             // bigTipPosition에 따라 위치와 좌우반전 적용
             bigTipPosition === 'start' ? 'left-4 [&>img]:scale-x-[-1]' : 'right-4',
           )}
