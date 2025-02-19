@@ -219,7 +219,7 @@ const Badge = ({
             <Button
               variant="text"
               size="sm"
-              className="w-fit bg-neutral-85 text-neutral-0 py-4 px7"
+              className="w-fit bg-neutral-85 text-neutral-0 py-4 px-7"
             >
               대표 배지로 설정하기
             </Button>
