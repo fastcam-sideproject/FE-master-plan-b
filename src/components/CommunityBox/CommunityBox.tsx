@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import {
   IconBookmark,
   IconBookmarkFilled,
-  IconBubble,
   IconEye,
   IconHeart,
+  IconMessageCircle,
   IconUpload,
 } from '@tabler/icons-react';
 import useGetTimeAgo from '@/hooks/useGetTimeAgo';
@@ -95,7 +95,7 @@ const CommunityBox = () => {
           <li>{formatNumber(item.view)}</li>
         </ul>
         <ul className="flex items-center gap-2">
-          <IconBubble />
+          <IconMessageCircle />
           <li>{formatNumber(item.reply)}</li>
         </ul>
         <ul className="flex items-center gap-2">

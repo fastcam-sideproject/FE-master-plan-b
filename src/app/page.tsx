@@ -1,6 +1,6 @@
 'use client';
 
-import { IconAccessible, IconQuestionMark } from '@tabler/icons-react';
+import { IconAccessible } from '@tabler/icons-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import Category from '@/components/Category/Category';
@@ -36,7 +36,8 @@ import { Input } from '@/components/ui/input';
 import { LiveChip } from '@/components/LiveChip';
 import CommunityBox from '@/components/CommunityBox/CommunityBox';
 import CommunityInfo from '@/components/CommunityInfo/CommunityInfo';
-import { Popover } from '@/components/ui/popover';
+import Popover from '@/components/Popover/Popover';
+import Badge from '@/components/Badge/Badge';
 
 const difBarGraphData = [
   { label: '쉬워요', value: 30 },
@@ -85,6 +86,7 @@ const stepperData = [
   { label: '듣기평가(LC)', time: 45 },
   { label: '읽기평가(RC)', time: 75 },
 ];
+
 export default function Home() {
   const breadcrumbItems = [
     { label: '홈', href: '/' },
@@ -239,7 +241,7 @@ export default function Home() {
       <Input placeholder="여기에 텍스트 입력" size="text_md" disabled />
       <CommunityBox />
       <CommunityInfo />
-      <div className="p-5">
+      <div className="p-5 border border-neutral-90 w-fit box-border">
         <Popover label="여기에 다크모드 텍스트 입력" tipPosition="start" mode="dark" />
         <Popover label="여기에 다크모드 텍스트 입력" tipPosition="center" mode="dark" />
         <Popover label="여기에 다크모드 텍스트 입력" tipPosition="end" mode="dark" />
@@ -262,7 +264,7 @@ export default function Home() {
           tipDirection="up"
         />
       </div>
-      <div className="bg-neutral-90 p-5">
+      <div className="bg-neutral-90 p-5 w-fit">
         <Popover label="여기에 화이트모드 텍스트 입력" tipPosition="start" mode="light" />
         <Popover label="여기에 화이트모드 텍스트 입력" tipPosition="center" mode="light" />
         <Popover label="여기에 화이트모드 텍스트 입력" tipPosition="end" mode="light" />
@@ -285,7 +287,7 @@ export default function Home() {
           tipDirection="up"
         />
       </div>
-      <div className="p-5">
+      <div className="p-5 border border-neutral-90 w-fit box-border">
         <Popover
           label="앞으로 가는 길이 조금 멀어보여도, 한 걸음씩 걷다보면 어느새 도착해 있을 거예요."
           mode="big"
@@ -295,6 +297,12 @@ export default function Home() {
           mode="big"
           bigTipPosition="start"
         />
+      </div>
+      <div className="flex gap-3 bg-neutral-70 w-fit p-5 box-border">
+        <Badge achieveItem="electronicsMaestro" />
+        <Badge variant="default" achieveItem="growthApprentice" />
+        <Badge variant="default" achieveItem="expert" selected={true} achieve={true} />
+        <Badge variant="secondary" achieveItem="businessBrain" achieve={true} />
       </div>
     </>
   );
