@@ -5,13 +5,9 @@ import { cn } from '@/lib/utils';
 import BadgeIcon from './BadgeIcon';
 import { Button } from '../ui/button';
 
-// 배지 이미지(이미지 대신 텍스트가 들어갈 수 있음)와 타이틀
-// 노란색 border와 체크 표시가 되어 있는 배지
-// 사각 프레임이 있는 배지
-// 달성 여부에 따라 흑백(미달성)/컬러(달성) 상태 만들 것(최종 전달 화면에 근거)
-// 캐릭터 이미지, 배지에 들어갈 이미지 public 폴더에 넣어서 사용
 // achieveItem='all'을 선택하면 모든 달성 항목이 출력됨
-// achieveItem=''
+// achieveItem: 'apprentice'와 같이 이름을 적어넣을 경우 해당 내용만 출력됨
+// selected={true}일 경우 노란색 border와 체크 표시가 출력됨.
 
 type BadgeIconType =
   | 'chick'
