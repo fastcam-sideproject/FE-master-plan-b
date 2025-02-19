@@ -32,7 +32,6 @@ interface Achievement {
   achieveItem: string;
   title: string;
   condition: string;
-  achieve: boolean;
   badgeIconName: BadgeIconType;
 }
 
@@ -41,112 +40,96 @@ const achievements: Achievement[] = [
     achieveItem: 'apprentice',
     title: '견습생',
     condition: '자격증 취득\n1개 이상',
-    achieve: true,
     badgeIconName: 'chick',
   },
   {
     achieveItem: 'expert',
     title: '숙련자',
     condition: '자격증 취득\n3개 이상',
-    achieve: true,
     badgeIconName: 'medal',
   },
   {
     achieveItem: 'master',
     title: '달인',
     condition: '자격증 취득\n5개 이상',
-    achieve: false,
     badgeIconName: 'trophy',
   },
   {
     achieveItem: 'grandMaster',
     title: '마스터',
     condition: '자격증 취득\n10개 이상',
-    achieve: false,
     badgeIconName: 'fire',
   },
   {
     achieveItem: 'businessBrain',
     title: '경영계 브레인',
     condition: '경영 회계 사무\n자격증 취득',
-    achieve: true,
     badgeIconName: 'chart',
   },
   {
     achieveItem: 'financeFairy',
     title: '금융요정',
     condition: '금융 보험\n자격증 취득',
-    achieve: true,
     badgeIconName: 'coin',
   },
   {
     achieveItem: 'knowledgeExplorer',
     title: '지식탐험가',
     condition: '교육 사회과학\n자격증 취득',
-    achieve: true,
     badgeIconName: 'book',
   },
   {
     achieveItem: 'healthMentor',
     title: '건강멘토',
     condition: '보건 의료\n자격증 취득',
-    achieve: false,
     badgeIconName: 'pill',
   },
   {
     achieveItem: 'designMaster',
     title: '디자인 마스터',
     condition: '예술 디자인\n자격증 취득',
-    achieve: true,
     badgeIconName: 'palette',
   },
   {
     achieveItem: 'machineEnthusiast',
     title: '기계덕후',
     condition: '건설 기계\n자격증 취득',
-    achieve: false,
     badgeIconName: 'gear',
   },
   {
     achieveItem: 'electronicsMaestro',
     title: '전자 마에스트로',
     condition: '전기 전자\n자격증 취득',
-    achieve: false,
     badgeIconName: 'lightBulb',
   },
   {
     achieveItem: 'codingPro',
     title: '코딩프로',
     condition: '정보통신 IT\n자격증 취득',
-    achieve: true,
     badgeIconName: 'laptop',
   },
   {
     achieveItem: 'globalCommunicator',
     title: '글로벌 커뮤니케이터',
     condition: '외국어\n자격증 취득',
-    achieve: true,
     badgeIconName: 'globe',
   },
   {
     achieveItem: 'sprinter',
     title: '스프린터',
     condition: '한 달 이내\n자격증 취득',
-    achieve: true,
     badgeIconName: 'bullseye',
   },
   {
     achieveItem: 'communityChampion',
     title: '커뮤니티 활동왕',
     condition: '커뮤니티/게시글\n30개 이상',
-    achieve: false,
     badgeIconName: 'speechbubble',
   },
   {
     achieveItem: 'growthApprentice',
     title: '폭풍성장 견습생',
     condition: '자격증\n재도전',
-    achieve: true,
     badgeIconName: 'turtle',
   },
 ];
@@ -166,10 +149,12 @@ const Badge = ({
   achieveItem,
   variant = 'default',
   selected = false,
+  achieve = false,
 }: {
   achieveItem: string;
   variant?: 'default' | 'secondary';
   selected?: boolean;
+  achieve?: boolean;
 }) => {
   // 선택된 배지를 추적하기 위한 state 추가
   const [selectedBadge, setSelectedBadge] = React.useState<string>('');
@@ -204,7 +189,7 @@ const Badge = ({
             <div
               className={cn(
                 'bg-neutral-80 rounded-10 w-[100px] h-[100px] flex justify-center items-center relative',
-                !item.achieve && 'grayscale',
+                !achieve && 'grayscale',
                 selected && 'border-2 border-primary-40 box-border',
               )}
             >
@@ -214,7 +199,7 @@ const Badge = ({
               <div
                 className={cn(
                   'absolute contents-[""] right-0 top-0 rounded-10 bg-primary-40',
-                  selected === true ? '' : 'invisible',
+                  !selected && 'invisible',
                 )}
               >
                 <IconCheck className="text-neutral-0" />
@@ -222,13 +207,13 @@ const Badge = ({
               <div
                 className={cn(
                   'text-neutral-0 text-center whitespace-pre-line text-body-xsmall-desktop absolute z-10',
-                  item.achieve && 'invisible',
+                  achieve && 'invisible',
                 )}
               >
                 {item.condition}
               </div>
             </div>
-            <div className="">{item.title}</div>
+            <div>{item.title}</div>
           </div>
           {variant === 'secondary' && (
             <Button

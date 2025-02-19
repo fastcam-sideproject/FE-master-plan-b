@@ -36,7 +36,7 @@ import { Input } from '@/components/ui/input';
 import { LiveChip } from '@/components/LiveChip';
 import CommunityBox from '@/components/CommunityBox/CommunityBox';
 import CommunityInfo from '@/components/CommunityInfo/CommunityInfo';
-import Popover from '@/components/Popover/popover';
+import Popover from '@/components/Popover/Popover';
 import Badge from '@/components/Badge/Badge';
 
 const difBarGraphData = [
@@ -301,8 +301,8 @@ export default function Home() {
       <div className="flex gap-3 bg-neutral-70 w-fit p-6">
         <Badge achieveItem="electronicsMaestro" />
         <Badge variant="default" achieveItem="growthApprentice" />
-        <Badge variant="default" achieveItem="expert" selected={true} />
-        <Badge variant="secondary" achieveItem="businessBrain" />
+        <Badge variant="default" achieveItem="expert" selected={true} achieve={true} />
+        <Badge variant="secondary" achieveItem="businessBrain" achieve={true} />
       </div>
     </>
   );
