@@ -36,7 +36,7 @@ import { Input } from '@/components/ui/input';
 import { LiveChip } from '@/components/LiveChip';
 import CommunityBox from '@/components/CommunityBox/CommunityBox';
 import CommunityInfo from '@/components/CommunityInfo/CommunityInfo';
-import { Popover } from '@/components/ui/popover';
+import Popover from '@/components/Popover/popover';
 import Badge from '@/components/Badge/Badge';
 
 const difBarGraphData = [
@@ -86,6 +86,7 @@ const stepperData = [
   { label: '듣기평가(LC)', time: 45 },
   { label: '읽기평가(RC)', time: 75 },
 ];
+
 export default function Home() {
   const breadcrumbItems = [
     { label: '홈', href: '/' },
@@ -297,8 +298,11 @@ export default function Home() {
           bigTipPosition="start"
         />
       </div>
-      <div>
-        <Badge />
+      <div className="flex gap-3 bg-neutral-70 w-fit p-6">
+        <Badge achieveItem="electronicsMaestro" />
+        <Badge variant="default" achieveItem="growthApprentice" />
+        <Badge variant="default" achieveItem="expert" selected={true} />
+        <Badge variant="secondary" achieveItem="businessBrain" />
       </div>
     </>
   );

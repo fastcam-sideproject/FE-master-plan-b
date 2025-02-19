@@ -1,5 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
+import { cva } from 'class-variance-authority';
+import { cn } from '@/lib/utils';
 
 // 모든 배지 이미지 import
 const badges = {

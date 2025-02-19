@@ -131,6 +131,4 @@ const Popover = ({
   );
 };
 
-Popover.displayName = 'Popover';
-
-export { Popover };
+export default Popover;
