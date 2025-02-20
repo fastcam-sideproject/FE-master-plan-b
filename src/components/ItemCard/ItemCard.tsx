@@ -42,7 +42,7 @@ export default function ItemCard({ type, data }: ItemCardProps) {
 
   return (
     <div
-      className={`${card}  flex flex-col justify-between shadow-2 rounded-6 border-2 border-transparent transition duration-300 hover:border-neutral-70 cursor-pointer`}
+      className={`${card}  flex flex-col justify-between shadow-2 rounded-6 border-2 border-transparent transition duration-300 hover:border-neutral-70 cursor-pointer bg-neutral-0`}
     >
       <div className={`${gap} flex flex-col`}>
         <div className="flex justify-between">
