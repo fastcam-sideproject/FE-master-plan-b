@@ -21,7 +21,7 @@ const headerNavLi = [
   {
     id: 3,
     navName: "관심 자격증",
-    navPath: "/favorites",
+    navPath: "/interested-certifications",
   },
   {
     id: 4,

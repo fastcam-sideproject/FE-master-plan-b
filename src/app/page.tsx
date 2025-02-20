@@ -1,309 +1,107 @@
 'use client';
 
-import { IconAccessible } from '@tabler/icons-react';
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import Category from '@/components/Category/Category';
-import SearchBar from '@/components/SearchBar/SearchBar';
-import Chip from '@/components/Chip/Chip';
-import StarRating from '@/components/common/StarRating/StarRating';
-import { NumberInput } from '@/components/common/NumberInput';
-import { ContentsHeader } from '@/components/common/ContentsHeader';
-import SideBarMyHome from '@/components/SideBar/SideBarMyHome';
-import SideBarFavoriteCertifications from '@/components/SideBar/SideBarFavoriteCertifications';
-import BarGraph from '@/components/DashBoard/BarGraph';
-import LearningTimeGraph from '@/components/DashBoard/LearningTimeGraph';
-import DonutGraph from '@/components/DashBoard/DonutGraph';
-import BtnOnboarding from '@/components/Onboarding/BtnOnboarding';
-import { Avatar } from '@/components/common/Avatar';
-import { ItemList, MainItemList } from '@/components/ItemList';
-import TabVertical from '@/components/common/Tab/TabVertical';
-import { Dropdown } from '@/components/Dropdown';
-import { Calendar } from '@/components/ui/calendar';
-import ItemCard from '@/components/ItemCard/ItemCard';
-import { TooltipComponent } from '@/components/common/TooltipComponent';
-import TabHorizon from '@/components/common/Tab/TabHorizon';
-import TabVerticalSmall from '@/components/common/Tab/TabVerticalSmall';
-import TabHorizonMedium from '@/components/common/Tab/TabHorizonMedium';
-import TabHorizonSmall from '@/components/common/Tab/TabHorizonSmall';
-import Stepper from '@/components/Stepper/Stepper';
-import { NumberPagination } from '@/components/common/Pagination';
-import { AppleLoginBtn, GoogleLoginBtn, KakaoLoginBtn } from '@/components/LoginButton';
-import ChatList from '@/components/Chat/ChatList';
-import StudyCardList from '@/components/StudyCard/StudyCardList';
-import Textarea from '@/components/ui/textarea';
-import { Input } from '@/components/ui/input';
-import { LiveChip } from '@/components/LiveChip';
-import CommunityBox from '@/components/CommunityBox/CommunityBox';
-import CommunityInfo from '@/components/CommunityInfo/CommunityInfo';
-import Popover from '@/components/Popover/Popover';
-import Badge from '@/components/Badge/Badge';
+import Image from "next/image";
+import Category from "@/components/Category/Category";
+import TabButton from "@/components/common/Tab/TabButton";
+import SearchBar from "@/components/SearchBar/SearchBar";
+import ItemCard from "@/components/ItemCard/ItemCard";
+import { Dropdown } from "@/components/Dropdown";
+import { Button } from "@/components/ui/button";
+import { MainItemList } from "@/components/ItemList";
 
-const difBarGraphData = [
-  { label: '쉬워요', value: 30 },
-  { label: '보통이에요', value: 95 },
-  { label: '어려워요', value: 90 },
-];
-const methodBarGraphData = [
-  { label: '책', value: 30 },
-  { label: '인터넷강의', value: 10 },
-  { label: '유튜브', value: 90 },
-];
-const learningTimeGraphData = [
-  { label: '과목1', value: 20 },
-  { label: '과목2', value: 10 },
-  { label: '과목3', value: 25 },
-  { label: '과목4', value: 15 },
-  { label: '과목5', value: 40 },
-];
-const reflectionData = [
-  { label: '미반영', value: 70 },
-  { label: '일부 반영', value: 10 },
-  { label: '적극 반영', value: 20 },
-];
-const timeData = [
-  { label: '부족했어요', value: 30 },
-  { label: '적절했어요', value: 40 },
-  { label: '여유로웠어요', value: 30 },
-];
-const selectedDates = ['2025-01-24', '2025-01-28', '2025-02-03'];
-const ItemCardDummyData = {
-  examId: '1',
-  exam: '정보처리기사',
-  host: '국가기술자격',
-  bookmark: false,
-  starRating: 4,
-  category: '정보통신',
-  regStartDate: '2025-01-22',
-  regEndDate: '2025-02-28',
-  examStartDate: '2025-02-28',
-};
-const stepperData = [
-  { label: '답안지 작성 관련 OT', time: 15 },
-  { label: '수험자 휴식시간', time: 5 },
-  { label: '신분 확인 및 휴대폰 제출', time: 15 },
-  { label: '문제지 배부 및 파본 확인', time: 5 },
-  { label: '듣기평가(LC)', time: 45 },
-  { label: '읽기평가(RC)', time: 75 },
-];
 
 export default function Home() {
-  const breadcrumbItems = [
-    { label: '홈', href: '/' },
-    { label: '하위 페이지', href: '#' },
-  ];
-  const [expanded, setExpanded] = useState(false);
-  const [date, setDate] = useState<Date | undefined>(undefined);
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 10;
-
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
+  const ItemCardDummyData = {
+    examId: '1',
+    exam: '정보처리기사',
+    host: '국가기술자격',
+    bookmark: false,
+    starRating: 4,
+    category: '정보통신',
+    regStartDate: '2025-01-22',
+    regEndDate: '2025-02-28',
+    examStartDate: '2025-02-28',
   };
-
   return (
-    <>
-      <LiveChip />
-      <main className="bg-neutral-10 border shadow-1 stroke-normal rounded-10 font-semibold">
-        안녕하세요 마스터 플랜 비 입니다
-        <Category />
-      </main>
-      <KakaoLoginBtn />
-      <AppleLoginBtn />
-      <GoogleLoginBtn />
+    <main className="bg-[url('/background/desktop-background.png')] tablet:bg-[url('/background/tablet-background.png')] mobile:bg-[url('/background/mobile-background.png')]  bg-cover bg-center h-[3142px] mobile:h-[2423px] w-full flex justify-center items-center">
+      <article className="w-[1200px] h-[2926px] tablet:w-[688px] mobile:w-[343px] flex flex-col gap-[304px] pt-20 pb-32">
 
-      <NumberPagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-        className="custom-class"
-      />
-      <MainItemList
-        title="제목을 입력해주세요"
-        labels={['Label', 'Label']}
-        tags={['하루 1~2시간 학습', '비전공자', '6개월 준비']}
-        content="필기는 기출문제를 정복하면 절반은 먹고 들어갑니다. 저는 5년 치 기출문제를 다운로드해서 한 번 풀어본 뒤, 틀린 문제만 다시 정리했어요. 기출문제는 반복되는 경향이 강하니까 시험 직전까지 최소 3번은 돌려보는 걸 추천합니다. 암기 팁으로는 **'키워드 중심으로 정리'**하는 게 중요해요. 책 한 권을 다 외우려 하지 말고, 꼭 나오는 핵심 개념만 메모하면서 공부했어요."
-      />
-      <Dropdown
-        items={['검은색 1', '검은색 2', '검은색 3', '검은색 4', '검은색 5']}
-        size="w-[165px]"
-        color="bg-neutral-90"
-      />
+        <section className="flex flex-col gap-[104px]">
+          <section className="flex gap-[54px]">
+            <div className="flex flex-col justify-end pb-6">
+              <div className="flex gap-4">
+                <div className="flex flex-col gap-8">
+                  <p className="text-heading-small-desktop text-neutral-0">
+                    <span className="text-primary-40">D-00</span><br />
+                    <span className="text-primary-40">정보처리기사</span> 시험이<br /> 얼마 남지않았어요
+                  </p>
+                  <TabButton innerText={"학습하러가기"} link={""} />
+                </div>
+                <Image width={261} height={286} src={"/character/web/MainPage.png"} alt={""} />
+              </div>
+              <SearchBar type={"main"} />
+            </div>
 
-      <div className="flex items-center justify-center">
-        <TooltipComponent />
-      </div>
-      <Dropdown items={['흰색 1', '흰색 2', '흰색 3', '흰색 4', '흰색 5']} />
-      <div className="w-px h-6 bg-neutral-30" />
-      <Avatar size="xl" src="/icons/gnb/user-filled.svg" alt="asdsa" />
-      <Avatar src="/icons/gnb/user-filled.svg" alt="Custom icon" size="lg" />
-      <Avatar src="/icons/gnb/user-filled.svg" alt="Custom icon" size="md" />
-      <Avatar src="/icons/gnb/user-filled.svg" alt="Custom icon" size="sm" />
-      <Avatar src="/icons/gnb/user-filled.svg" alt="" size="xs" />
-      <ItemList
-        title="필기시험은 기출문제 무조건 반복하세요"
-        labels={['멜딕기관기능사', '정호안', '2024.12.03']}
-        tags={['하루 1~2시간 학습', '비전공자', '6개월 준비']}
-        content="기출문제만 잘 활용해도 필기시험의 반은 준비된 거나 다름없습니다. 저는 최근 5년간의 기출문제를 풀어본 후, 틀린 문제들을 모아 다시 복습하면서 약점을 보완했어요. 필기시험을 대비할 때 가장 중요한 건 기출문제를 정복하는 거예요. 저는 5년 치 기출문제를 풀어본 후, 틀린 문제들을 따로 정리하고 반복해서 공부했더니 효과가 좋았어요."
-        initialLikes={10}
-        writtenDifficulty="보통"
-        practicalDifficulty="어려움"
-        writtenStudy="인터넷 강의"
-        practicalStudy="인터넷 강의"
-      />
-      <div className="w-px h-6 bg-neutral-30 " />
-      <Category />
-      <SearchBar type="main" />
-      <SearchBar type="default" />
-      <Chip size="large" keyword="테스트" selected={false} disabled />
-      <Chip size="small" keyword="테스트" selected={false} disabled />
-      <Chip size="xsmall" keyword="테스트" selected={false} disabled />
-      <StarRating size="large" rating={1} />
-      <StarRating size="large" rating={2} />
-      <StarRating size="large" rating={3} />
-      <StarRating size="large" rating={4} />
-      <StarRating size="large" rating={5} />
-      <StarRating size="small" rating={1} />
-      <StarRating size="small" rating={2} />
-      <StarRating size="small" rating={3} />
-      <StarRating size="small" rating={4} />
-      <StarRating size="small" rating={5} />
-      <NumberInput min={0} max={100} defaultValue={0} />
-      <ContentsHeader
-        size="large"
-        title="Main Title"
-        description="Detail Text"
-        icon={<IconAccessible />}
-      />
-      <Button variant="secondary" size="lg" className="font-medium">
-        라지 박스
-      </Button>
-      <Button variant="secondary" size="md" className="text-neutral-80 ga">
-        미디움 박스
-      </Button>
-      <Button variant="secondary" size="sm" className="text-neutral-80">
-        스몰 박스
-      </Button>
-      <Button variant="default" size="sm">
-        Default Box
-      </Button>
-      <SideBarMyHome />
-      <SideBarFavoriteCertifications />
-      <LearningTimeGraph data={learningTimeGraphData} />
-      <div className="flex flex-col gap-6 ">
-        <div className="flex gap-6">
-          <BarGraph type={'difficulty'} data={difBarGraphData} />
-          <BarGraph type={'method'} data={methodBarGraphData} />
-        </div>
-        <div className="flex gap-6">
-          <DonutGraph type={'reflection'} data={reflectionData} />
-          <DonutGraph type={'time'} data={timeData} />
-        </div>
-      </div>
-      <div className="flex gap-9">
-        <BtnOnboarding type={'general'} />
-        <BtnOnboarding type={'specific'} />
-      </div>
-      <StudyCardList />
-      <TabVertical />
-      <TabVerticalSmall />
-      <TabHorizon isDark={true} />
-      <TabHorizon isDark={false} />
+            <div>
+              <Image width={588} height={445} src={"/background/test.png"} alt={""} />
+            </div>
+          </section>
 
-      <TabHorizonMedium isDark={true} />
-      <TabHorizonMedium isDark={false} />
+          <section className="flex flex-col gap-8">
+            <div className="flex flex-col gap-2">
+              <p className="text-neutral-40 text-body-large-desktop">추천 자격증</p>
+              <Dropdown items={['정보처리', '흰색 2', '흰색 3', '흰색 4', '흰색 5']} />
+            </div>
+            <div className="flex gap-6">
+              <ItemCard type={'info'} data={ItemCardDummyData} />
+              <ItemCard type={'info'} data={ItemCardDummyData} />
+              <ItemCard type={'info'} data={ItemCardDummyData} />
+              <ItemCard type={'info'} data={ItemCardDummyData} />
+            </div>
+          </section>
 
-      <TabHorizonSmall isDark={true} />
-      <TabHorizonSmall isDark={false} />
+        </section>
 
-      <div className="flex gap-3">
-        <Calendar date={selectedDates} bg={'light'} size={'large'} />
-        <Calendar date={selectedDates} bg={'dark'} size={'large'} />
-      </div>
-      <div className="flex gap-3">
-        <Calendar date={selectedDates} bg={'light'} size={'small'} />
-        <Calendar date={selectedDates} bg={'dark'} size={'small'} />
-      </div>
-      <div className="flex gap-5 mx-5 my-5">
-        <ItemCard type={'community'} data={ItemCardDummyData} />
-        <ItemCard type={'info'} data={ItemCardDummyData} />
-        <ItemCard type={'date'} data={ItemCardDummyData} />
-        button 컴포넌트 수정필요함
-      </div>
-      <div className="w-[1200px] tablet:w-[780px] mobile:w-[360px]">
-        <Stepper data={stepperData} />
-      </div>
-      <ChatList />
-      <Textarea placeholder="여기에 텍스트 입력" />
-      <Textarea placeholder="여기에 텍스트 입력" disabled />
-      <Input placeholder="여기에 텍스트 입력" size="text_md" />
-      <Input placeholder="여기에 텍스트 입력" size="text_md" disabled />
-      <CommunityBox />
-      <CommunityInfo />
-      <div className="p-5 border border-neutral-90 w-fit box-border">
-        <Popover label="여기에 다크모드 텍스트 입력" tipPosition="start" mode="dark" />
-        <Popover label="여기에 다크모드 텍스트 입력" tipPosition="center" mode="dark" />
-        <Popover label="여기에 다크모드 텍스트 입력" tipPosition="end" mode="dark" />
-        <Popover
-          label="여기에 다크모드 텍스트 입력"
-          tipPosition="start"
-          mode="dark"
-          tipDirection="up"
-        />
-        <Popover
-          label="여기에 다크모드 텍스트 입력"
-          tipPosition="center"
-          mode="dark"
-          tipDirection="up"
-        />
-        <Popover
-          label="여기에 다크모드 텍스트 입력"
-          tipPosition="end"
-          mode="dark"
-          tipDirection="up"
-        />
-      </div>
-      <div className="bg-neutral-90 p-5 w-fit">
-        <Popover label="여기에 화이트모드 텍스트 입력" tipPosition="start" mode="light" />
-        <Popover label="여기에 화이트모드 텍스트 입력" tipPosition="center" mode="light" />
-        <Popover label="여기에 화이트모드 텍스트 입력" tipPosition="end" mode="light" />
-        <Popover
-          label="여기에 화이트모드 텍스트 입력"
-          tipPosition="start"
-          mode="light"
-          tipDirection="up"
-        />
-        <Popover
-          label="여기에 화이트모드 텍스트 입력"
-          tipPosition="center"
-          mode="light"
-          tipDirection="up"
-        />
-        <Popover
-          label="여기에 화이트모드 텍스트 입력"
-          tipPosition="end"
-          mode="light"
-          tipDirection="up"
-        />
-      </div>
-      <div className="p-5 border border-neutral-90 w-fit box-border">
-        <Popover
-          label="앞으로 가는 길이 조금 멀어보여도, 한 걸음씩 걷다보면 어느새 도착해 있을 거예요."
-          mode="big"
-        />
-        <Popover
-          label="앞으로 가는 길이 조금 멀어보여도, 한 걸음씩 걷다보면 어느새 도착해 있을 거예요."
-          mode="big"
-          bigTipPosition="start"
-        />
-      </div>
-      <div className="flex gap-3 bg-neutral-70 w-fit p-5 box-border">
-        <Badge achieveItem="electronicsMaestro" />
-        <Badge variant="default" achieveItem="growthApprentice" />
-        <Badge variant="default" achieveItem="expert" selected={true} achieve={true} />
-        <Badge variant="secondary" achieveItem="businessBrain" achieve={true} />
-      </div>
-    </>
+
+        <section className="flex flex-col">
+          <div className="flex justify-center items-center">
+            <Category />
+          </div>
+          <div className="flex justify-between mt-20">
+            <div>
+              <p className="text-heading-small-desktop">웹디자인 기능사 마스터님의<br />비법을 전수받아보세요</p>
+              <Button />
+            </div>
+            <Image width={370} height={370} src={"/character/web/MainPage2.png"} alt="마스터플랜비 캐릭터" />
+          </div>
+          <div className="grid grid-cols-2 gap-7 mt-10">
+            <MainItemList
+              title="제목을 입력해주세요"
+              labels={['Label', 'Label']}
+              tags={['하루 1~2시간 학습', '비전공자', '6개월 준비']}
+              content="필기는 기출문제를 정복하면 절반은 먹고 들어갑니다. 저는 5년 치 기출문제를 다운로드해서 한 번 풀어본 뒤, 틀린 문제만 다시 정리했어요. 기출문제는 반복되는 경향이 강하니까 시험 직전까지 최소 3번은 돌려보는 걸 추천합니다. 암기 팁으로는 **'키워드 중심으로 정리'**하는 게 중요해요. 책 한 권을 다 외우려 하지 말고, 꼭 나오는 핵심 개념만 메모하면서 공부했어요."
+            />
+            <MainItemList
+              title="제목을 입력해주세요"
+              labels={['Label', 'Label']}
+              tags={['하루 1~2시간 학습', '비전공자', '6개월 준비']}
+              content="필기는 기출문제를 정복하면 절반은 먹고 들어갑니다. 저는 5년 치 기출문제를 다운로드해서 한 번 풀어본 뒤, 틀린 문제만 다시 정리했어요. 기출문제는 반복되는 경향이 강하니까 시험 직전까지 최소 3번은 돌려보는 걸 추천합니다. 암기 팁으로는 **'키워드 중심으로 정리'**하는 게 중요해요. 책 한 권을 다 외우려 하지 말고, 꼭 나오는 핵심 개념만 메모하면서 공부했어요."
+            />
+            <MainItemList
+              title="제목을 입력해주세요"
+              labels={['Label', 'Label']}
+              tags={['하루 1~2시간 학습', '비전공자', '6개월 준비']}
+              content="필기는 기출문제를 정복하면 절반은 먹고 들어갑니다. 저는 5년 치 기출문제를 다운로드해서 한 번 풀어본 뒤, 틀린 문제만 다시 정리했어요. 기출문제는 반복되는 경향이 강하니까 시험 직전까지 최소 3번은 돌려보는 걸 추천합니다. 암기 팁으로는 **'키워드 중심으로 정리'**하는 게 중요해요. 책 한 권을 다 외우려 하지 말고, 꼭 나오는 핵심 개념만 메모하면서 공부했어요."
+            />
+            <MainItemList
+              title="제목을 입력해주세요"
+              labels={['Label', 'Label']}
+              tags={['하루 1~2시간 학습', '비전공자', '6개월 준비']}
+              content="필기는 기출문제를 정복하면 절반은 먹고 들어갑니다. 저는 5년 치 기출문제를 다운로드해서 한 번 풀어본 뒤, 틀린 문제만 다시 정리했어요. 기출문제는 반복되는 경향이 강하니까 시험 직전까지 최소 3번은 돌려보는 걸 추천합니다. 암기 팁으로는 **'키워드 중심으로 정리'**하는 게 중요해요. 책 한 권을 다 외우려 하지 말고, 꼭 나오는 핵심 개념만 메모하면서 공부했어요."
+            />
+          </div>
+        </section>
+      </article>
+    </main>
   );
 }
