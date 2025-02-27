@@ -11,7 +11,6 @@ import useGetTimeAgo from '@/hooks/useGetTimeAgo';
 import { Avatar } from '../common/Avatar';
 
 // TODO: handleCopyLink는 api가 나온 이후에 반영할 것.
-// TODO: 말풍선 아이콘을 찾지 못함. 임시로 다른 말풍선을 넣었습니다.
 
 interface CommunityDataProps {
   uploadedTime: string;

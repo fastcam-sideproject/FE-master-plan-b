@@ -28,7 +28,7 @@ const CommunityInfo = () => {
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 767.9);
-      console.log('잘 된다?');
+      // console.log('잘 된다?');
     };
     handleResize();
     window.addEventListener('resize', handleResize);
