@@ -39,7 +39,7 @@ export function Dropdown({
 
   return (
     <div className="flex flex-col gap-2">
-      {title && <h3 className="text-body-large-desktop font-medium text-neutral-85">{title}</h3>}
+      {title && <h3 className="text-body-large-desktop font-medium text-neutral-85"></h3>}
       <DropdownMenu onOpenChange={handleOpenChange}>
         <DropdownMenuTrigger asChild className="focus:outline-none">
           <button
