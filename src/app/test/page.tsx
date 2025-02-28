@@ -1,43 +1,43 @@
 'use client';
 
-import { IconAccessible } from "@tabler/icons-react";
-import { useState } from "react";
-import Badge from "@/components/Badge/Badge";
-import Category from "@/components/Category/Category";
-import Chip from "@/components/Chip/Chip";
-import { Avatar } from "@/components/common/Avatar";
-import { ContentsHeader } from "@/components/common/ContentsHeader";
-import { NumberInput } from "@/components/common/NumberInput";
-import { NumberPagination } from "@/components/common/Pagination";
-import StarRating from "@/components/common/StarRating/StarRating";
-import TabHorizon from "@/components/common/Tab/TabHorizon";
-import TabHorizonMedium from "@/components/common/Tab/TabHorizonMedium";
-import TabHorizonSmall from "@/components/common/Tab/TabHorizonSmall";
-import TabVertical from "@/components/common/Tab/TabVertical";
-import TabVerticalSmall from "@/components/common/Tab/TabVerticalSmall";
-import { TooltipComponent } from "@/components/common/TooltipComponent";
-import BarGraph from "@/components/DashBoard/BarGraph";
-import DonutGraph from "@/components/DashBoard/DonutGraph";
-import LearningTimeGraph from "@/components/DashBoard/LearningTimeGraph";
-import { Dropdown } from "@/components/Dropdown";
-import ItemCard from "@/components/ItemCard/ItemCard";
-import { ItemList, MainItemList } from "@/components/ItemList";
-import { LiveChip } from "@/components/LiveChip";
-import { AppleLoginBtn, GoogleLoginBtn, KakaoLoginBtn } from "@/components/LoginButton";
-import BtnOnboarding from "@/components/Onboarding/BtnOnboarding";
-import Popover from "@/components/Popover/Popover";
-import SearchBar from "@/components/SearchBar/SearchBar";
-import SideBarFavoriteCertifications from "@/components/SideBar/SideBarFavoriteCertifications";
-import SideBarMyHome from "@/components/SideBar/SideBarMyHome";
-import StudyCardList from "@/components/StudyCard/StudyCardList";
-import ChatList from "@/components/Chat/ChatList";
-import Stepper from "@/components/Stepper/Stepper";
-import Textarea from "@/components/ui/textarea";
-import { Input } from "@/components/ui/input";
-import CommunityBox from "@/components/CommunityBox/CommunityBox";
-import CommunityInfo from "@/components/CommunityInfo/CommunityInfo";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
+import { IconAccessible } from '@tabler/icons-react';
+import { useState } from 'react';
+import Badge from '@/components/Badge/Badge';
+import Category from '@/components/Category/Category';
+import Chip from '@/components/Chip/Chip';
+import { Avatar } from '@/components/common/Avatar';
+import { ContentsHeader } from '@/components/common/ContentsHeader';
+import { NumberInput } from '@/components/common/NumberInput';
+import { NumberPagination } from '@/components/common/Pagination';
+import StarRating from '@/components/common/StarRating/StarRating';
+import TabHorizon from '@/components/common/Tab/TabHorizon';
+import TabHorizonMedium from '@/components/common/Tab/TabHorizonMedium';
+import TabHorizonSmall from '@/components/common/Tab/TabHorizonSmall';
+import TabVertical from '@/components/common/Tab/TabVertical';
+import TabVerticalSmall from '@/components/common/Tab/TabVerticalSmall';
+import { TooltipComponent } from '@/components/common/TooltipComponent';
+import BarGraph from '@/components/DashBoard/BarGraph';
+import DonutGraph from '@/components/DashBoard/DonutGraph';
+import LearningTimeGraph from '@/components/DashBoard/LearningTimeGraph';
+import { Dropdown } from '@/components/Dropdown';
+import ItemCard from '@/components/ItemCard/ItemCard';
+import { ItemList, MainItemList } from '@/components/ItemList';
+import { LiveChip } from '@/components/LiveChip';
+import { AppleLoginBtn, GoogleLoginBtn, KakaoLoginBtn } from '@/components/LoginButton';
+import BtnOnboarding from '@/components/Onboarding/BtnOnboarding';
+import Popover from '@/components/Popover/Popover';
+import SearchBar from '@/components/SearchBar/SearchBar';
+import SideBarFavoriteCertifications from '@/components/SideBar/SideBarFavoriteCertifications';
+import SideBarMyHome from '@/components/SideBar/SideBarMyHome';
+import StudyCardList from '@/components/StudyCard/StudyCardList';
+import ChatList from '@/components/Chat/ChatList';
+import Stepper from '@/components/Stepper/Stepper';
+import Textarea from '@/components/ui/textarea';
+import { Input } from '@/components/ui/input';
+import CommunityBox from '@/components/CommunityBox/CommunityBox';
+import CommunityInfo from '@/components/CommunityInfo/CommunityInfo';
+import { Button } from '@/components/ui/button';
+import { Calendar } from '@/components/ui/calendar';
 
 const difBarGraphData = [
   { label: '쉬워요', value: 30 },
@@ -85,6 +85,30 @@ const stepperData = [
   { label: '문제지 배부 및 파본 확인', time: 5 },
   { label: '듣기평가(LC)', time: 45 },
   { label: '읽기평가(RC)', time: 75 },
+];
+const communityData = [
+  {
+    uploadedTime: '2025-02-07T18:51:00',
+    title: '오늘 자 시험 난이도 어땠나요?',
+    category: '시험 꿀팁',
+    content: `안녕하세요! 오늘 토익 첫 시험을 봤는데, RC에서 시간이 부족해서 끝까지 못 풀었어요. 😭 다들
+        시간 관리 어떻게 하세요? 문제 풀 때 팁이나 전략 있으면 공유 부탁드려요! 🙏`,
+    view: 12345,
+    reply: 12345,
+    like: 12345,
+    shareLink: 'https://localhost:3000/communityLinks',
+  },
+  {
+    uploadedTime: '2025-02-07T18:51:00',
+    title: '치킨 먹고 싶어요요',
+    category: '시험 꿀팁',
+    content: `안녕하세요! 오늘 토익 첫 시험을 봤는데, RC에서 시간이 부족해서 끝까지 못 풀었어요. 😭 다들
+        시간 관리 어떻게 하세요? 문제 풀 때 팁이나 전략 있으면 공유 부탁드려요! 🙏`,
+    view: 12345,
+    reply: 12345,
+    like: 12345,
+    shareLink: 'https://localhost:3000/communityLinks',
+  },
 ];
 
 export default function Home() {
@@ -239,7 +263,9 @@ export default function Home() {
       <Textarea placeholder="여기에 텍스트 입력" disabled />
       <Input placeholder="여기에 텍스트 입력" size="text_md" />
       <Input placeholder="여기에 텍스트 입력" size="text_md" disabled />
-      <CommunityBox />
+      {communityData.map((item, index) => (
+        <CommunityBox key={index} data={item} />
+      ))}
       <CommunityInfo />
       <div className="p-5 border border-neutral-90 w-fit box-border">
         <Popover label="여기에 다크모드 텍스트 입력" tipPosition="start" mode="dark" />
