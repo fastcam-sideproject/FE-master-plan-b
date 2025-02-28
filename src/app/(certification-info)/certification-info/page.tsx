@@ -10,8 +10,10 @@ import ItemCard from '@/components/ItemCard/ItemCard';
 import SearchBar from '@/components/SearchBar/SearchBar';
 import { NumberPagination } from '@/components/common/Pagination';
 
-// 검색 api: /api/v1/exam?page={page}&size={size}&sort={sort}
-// 이동 경로: /api/v1/exam/{exam-id}
+// todo: 검색 api: /api/v1/exam?page={page}&size={size}&sort={sort}
+// todo: 이동 경로: /api/v1/exam/{exam-id}
+// todo: 검색 결과 및 순서 분류를 다른 컴포넌트로 제작할지 고민 예정
+// todo: dropdown 옵션 확인하고 고칠 수 있다면 고칠 것.
 
 const ItemCardDummyData = [
   {
