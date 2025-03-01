@@ -10,7 +10,7 @@ export default function StarRating({ size, rating }: StarRatingProps) {
 
   const isLarge = size === 'large';
   const gap = isLarge ? 'gap-2' : 'gap-1';
-  const starSize = isLarge ? 'size-7' : 'size-4';
+  const starSize = isLarge ? 'size-7' : 'size-6';
   const filledStarsColor = 'text-primary-40';
   const emptyStarsColor = isLarge ? 'text-neutral-70' : 'text-neutral-5';
 

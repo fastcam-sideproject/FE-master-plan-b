@@ -10,7 +10,7 @@ import {
 } from '@tabler/icons-react';
 import { Avatar } from '../common/Avatar';
 
-type ItemListProps = {
+export type ItemListProps = {
   title: string;
   labels: string[];
   tags: string[];
@@ -60,18 +60,18 @@ export function ItemList({
   }));
 
   return (
-    <div className="w-[1080px] px-9 py-8 bg-white border border-neutral-10 rounded-lg shadow-sm">
+    <div className="rounded-lg border border-neutral-10 bg-white px-9 py-8 shadow-sm">
       <div className="flex flex-col gap-7">
-        <div className="flex justify-between items-start">
+        <div className="flex items-start justify-between">
           <div className="flex gap-4">
             <Avatar src="/icons/gnb/user-filled.svg" alt="아바타 아이콘" size="lg" />
             <div>
-              <h3 className="text-neutral-85 font-medium text-lg">{title}</h3>
-              <div className="flex items-center gap-3 mt-2">
+              <h3 className="text-lg font-medium text-neutral-85">{title}</h3>
+              <div className="mt-2 flex items-center gap-3">
                 {labels.map((label, index) => (
                   <React.Fragment key={index}>
-                    <span className="text-neutral-50 text-sm">{label}</span>
-                    {index < labels.length - 1 && <span className="w-[1px] h-4 bg-neutral-10" />}
+                    <span className="text-sm text-neutral-50">{label}</span>
+                    {index < labels.length - 1 && <span className="h-4 w-[1px] bg-neutral-10" />}
                   </React.Fragment>
                 ))}
               </div>
@@ -89,12 +89,12 @@ export function ItemList({
           </div>
         </div>
 
-        <div className="flex justify-between items-center pl-[66px]">
-          <div className="flex gap-5 flex-wrap">
+        <div className="flex items-center justify-between pl-[66px]">
+          <div className="flex flex-wrap gap-5">
             {tagsWithIcons.map(({ tag, icon }, index) => (
               <div
                 key={index}
-                className="px-4 h-[34px] flex items-center justify-center gap-2 border rounded-10 border-blue-5 text-body-small-desktop font-medium text-blue-30"
+                className="flex h-[34px] items-center justify-center gap-2 rounded-10 border border-blue-5 px-4 text-body-small-desktop font-medium text-blue-30"
               >
                 {icon}
                 {tag}
@@ -104,47 +104,47 @@ export function ItemList({
           <button
             onClick={toggleExpanded}
             type="button"
-            className="w-[28px] h-[28px] rounded-4 border active:bg-neutral-5 flex items-center justify-center"
+            className="flex h-[28px] w-[28px] items-center justify-center rounded-4 border active:bg-neutral-5"
           >
             {expanded ? <IconChevronUp size={20} /> : <IconChevronDown size={20} />}
           </button>
         </div>
       </div>
       {expanded && (
-        <div className="mt-8 border-t border-neutral-10 pt-7 flex flex-col gap-9">
+        <div className="mt-8 flex flex-col gap-9 border-t border-neutral-10 pt-7">
           <div className="grid grid-cols-2">
             <div className="flex flex-col gap-4">
-              <div className="flex gap-5 items-center">
-                <span className="text-neutral-30 text-body-xsmall-desktop font-medium">
+              <div className="flex items-center gap-5">
+                <span className="text-body-xsmall-desktop font-medium text-neutral-30">
                   필기 난이도
                 </span>
-                <span className="text-neutral-85 text-body-xsmall-desktop font-medium">
+                <span className="text-body-xsmall-desktop font-medium text-neutral-85">
                   {writtenDifficulty}
                 </span>
               </div>
-              <div className="flex gap-5 items-center">
-                <span className="text-neutral-30 text-body-xsmall-desktop font-medium">
+              <div className="flex items-center gap-5">
+                <span className="text-body-xsmall-desktop font-medium text-neutral-30">
                   필기 공부
                 </span>
-                <span className="text-neutral-85 text-body-xsmall-desktop font-medium">
+                <span className="text-body-xsmall-desktop font-medium text-neutral-85">
                   {writtenStudy}
                 </span>
               </div>
             </div>
             <div className="flex flex-col gap-4">
-              <div className="flex gap-5 items-center">
-                <span className="text-neutral-30 text-body-xsmall-desktop font-medium">
+              <div className="flex items-center gap-5">
+                <span className="text-body-xsmall-desktop font-medium text-neutral-30">
                   실기 난이도
                 </span>
-                <span className="text-neutral-85 text-body-xsmall-desktop font-medium">
+                <span className="text-body-xsmall-desktop font-medium text-neutral-85">
                   {practicalDifficulty}
                 </span>
               </div>
-              <div className="flex gap-5 items-center">
-                <span className="text-neutral-30 text-body-xsmall-desktop font-medium">
+              <div className="flex items-center gap-5">
+                <span className="text-body-xsmall-desktop font-medium text-neutral-30">
                   실기 공부
                 </span>
-                <span className="text-neutral-85 text-body-xsmall-desktop font-medium">
+                <span className="text-body-xsmall-desktop font-medium text-neutral-85">
                   {practicalStudy}
                 </span>
               </div>
@@ -154,7 +154,7 @@ export function ItemList({
             <span className="w-16 text-body-xsmall-desktop font-medium text-neutral-30">
               후기 및 팁
             </span>
-            <p className="text-neutral-100 leading-relaxed">{content}</p>
+            <p className="leading-relaxed text-neutral-100">{content}</p>
           </div>
         </div>
       )}

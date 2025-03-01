@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body suppressHydrationWarning={true}>
+      <body suppressHydrationWarning={true} className="bg-neutral-5">
         <ReactQueryProviders>
           <Header />
           <MswWrapper>{children}</MswWrapper>
