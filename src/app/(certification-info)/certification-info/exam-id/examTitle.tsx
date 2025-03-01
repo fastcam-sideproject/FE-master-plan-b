@@ -12,8 +12,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import StarRating from '@/components/common/StarRating/StarRating';
 
-// hidden으로 기본적으로 아이콘들을 숨기고
-// mobile:flex로 모바일 크기(767.9px 이하)에서만 아이콘들이 보이도록 설정했습니다.
+// hidden으로 기본적으로 아이콘들을 숨기고 mobile:flex로 모바일 크기(767.9px 이하)에서만 아이콘들이 보이도록 설정했습니다.
 // 이렇게 하면 모바일 화면에서만 아이콘들이 표시되고, 태블릿과 데스크톱 화면에서는 숨겨집니다.
 // todo: api 연결 시 텍스트 교체할 것.
 // todo: mobile일 때 자격증 제목 글씨 크기 등 세부 요소 uxui 팀에 물어볼 것. 현재 피그마의 기록과 글씨 크기가 맞지 않음.
