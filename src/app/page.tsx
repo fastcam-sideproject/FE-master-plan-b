@@ -2,13 +2,12 @@
 
 import Image from "next/image";
 import Category from "@/components/Category/Category";
-import TabButton from "@/components/common/Tab/TabButton";
 import SearchBar from "@/components/SearchBar/SearchBar";
 import ItemCard from "@/components/ItemCard/ItemCard";
 import { Dropdown } from "@/components/Dropdown";
 import { Button } from "@/components/ui/button";
 import { MainItemList } from "@/components/ItemList";
-
+import MainButton from "@/components/MainButton/MainButton";
 
 export default function Home() {
   const ItemCardDummyData = {
@@ -23,7 +22,7 @@ export default function Home() {
     examStartDate: '2025-02-28',
   };
   return (
-    <main className="bg-[url('/background/desktop-background.png')] tablet:bg-[url('/background/tablet-background.png')] mobile:bg-[url('/background/mobile-background.png')]  bg-cover bg-center h-[3142px] mobile:h-[2423px] w-full flex justify-center items-center">
+    <main className="flex flex-col bg-[url('/background/desktop-background.png')] tablet:bg-[url('/background/tablet-background.png')] mobile:bg-[url('/background/mobile-background.png')]  bg-cover bg-center h-[3142px] mobile:h-[2423px] w-full justify-center items-center">
       <article className="w-[1200px] h-[2926px] tablet:w-[688px] mobile:w-[343px] flex flex-col gap-[304px] pt-20 pb-32">
 
         <section className="flex flex-col gap-[104px]">
@@ -35,7 +34,7 @@ export default function Home() {
                     <span className="text-primary-40">D-00</span><br />
                     <span className="text-primary-40">정보처리기사</span> 시험이<br /> 얼마 남지않았어요
                   </p>
-                  <TabButton innerText={"학습하러가기"} link={""} />
+                  <MainButton innerText="학습하러가기" link="community" color="black" />
                 </div>
                 <Image width={261} height={286} src={"/character/web/MainPage.png"} alt={""} />
               </div>
@@ -102,6 +101,7 @@ export default function Home() {
           </div>
         </section>
       </article>
+      <MainButton innerText="모든 후기 보러가기" link="" />
     </main>
   );
 }
