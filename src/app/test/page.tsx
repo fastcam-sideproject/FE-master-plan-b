@@ -129,7 +129,7 @@ export default function Home() {
   return (
     <>
       <LiveChip />
-      <main className="bg-neutral-10 border shadow-1 stroke-normal rounded-10 font-semibold">
+      <main className="rounded-10 border bg-neutral-10 stroke-normal font-semibold shadow-1">
         안녕하세요 마스터 플랜 비 입니다
         <Category />
       </main>
@@ -159,7 +159,7 @@ export default function Home() {
         <TooltipComponent />
       </div>
       <Dropdown items={['흰색 1', '흰색 2', '흰색 3', '흰색 4', '흰색 5']} />
-      <div className="w-px h-6 bg-neutral-30" />
+      <div className="h-6 w-px bg-neutral-30" />
       <Avatar size="xl" src="/icons/gnb/user-filled.svg" alt="asdsa" />
       <Avatar src="/icons/gnb/user-filled.svg" alt="Custom icon" size="lg" />
       <Avatar src="/icons/gnb/user-filled.svg" alt="Custom icon" size="md" />
@@ -176,7 +176,7 @@ export default function Home() {
         writtenStudy="인터넷 강의"
         practicalStudy="인터넷 강의"
       />
-      <div className="w-px h-6 bg-neutral-30 " />
+      <div className="h-6 w-px bg-neutral-30" />
       <Category />
       <SearchBar type="main" />
       <SearchBar type="default" />
@@ -203,7 +203,7 @@ export default function Home() {
       <Button variant="secondary" size="lg" className="font-medium">
         라지 박스
       </Button>
-      <Button variant="secondary" size="md" className="text-neutral-80 ga">
+      <Button variant="secondary" size="md" className="ga text-neutral-80">
         미디움 박스
       </Button>
       <Button variant="secondary" size="sm" className="text-neutral-80">
@@ -213,9 +213,9 @@ export default function Home() {
         Default Box
       </Button>
       <SideBarMyHome />
-      <SideBarFavoriteCertifications />
+      {/* <SideBarFavoriteCertifications /> */}
       <LearningTimeGraph data={learningTimeGraphData} />
-      <div className="flex flex-col gap-6 ">
+      <div className="flex flex-col gap-6">
         <div className="flex gap-6">
           <BarGraph type={'difficulty'} data={difBarGraphData} />
           <BarGraph type={'method'} data={methodBarGraphData} />
@@ -229,7 +229,7 @@ export default function Home() {
         <BtnOnboarding type={'general'} />
         <BtnOnboarding type={'specific'} />
       </div>
-      <StudyCardList />
+      {/* <StudyCardList /> */}
       <TabVertical />
       <TabVerticalSmall />
       <TabHorizon isDark={true} />
@@ -249,15 +249,15 @@ export default function Home() {
         <Calendar date={selectedDates} bg={'light'} size={'small'} />
         <Calendar date={selectedDates} bg={'dark'} size={'small'} />
       </div>
-      <div className="flex gap-5 mx-5 my-5">
+      <div className="mx-5 my-5 flex gap-5">
         <ItemCard type={'community'} data={ItemCardDummyData} />
         <ItemCard type={'info'} data={ItemCardDummyData} />
         <ItemCard type={'date'} data={ItemCardDummyData} />
         button 컴포넌트 수정필요함
       </div>
-      <div className="w-[1200px] tablet:w-[780px] mobile:w-[360px]">
+      {/* <div className="w-[1200px] tablet:w-[780px] mobile:w-[360px]">
         <Stepper data={stepperData} />
-      </div>
+      </div> */}
       <ChatList />
       <Textarea placeholder="여기에 텍스트 입력" />
       <Textarea placeholder="여기에 텍스트 입력" disabled />
@@ -267,7 +267,7 @@ export default function Home() {
         <CommunityBox key={index} data={item} />
       ))}
       <CommunityInfo />
-      <div className="p-5 border border-neutral-90 w-fit box-border">
+      <div className="box-border w-fit border border-neutral-90 p-5">
         <Popover label="여기에 다크모드 텍스트 입력" tipPosition="start" mode="dark" />
         <Popover label="여기에 다크모드 텍스트 입력" tipPosition="center" mode="dark" />
         <Popover label="여기에 다크모드 텍스트 입력" tipPosition="end" mode="dark" />
@@ -290,7 +290,7 @@ export default function Home() {
           tipDirection="up"
         />
       </div>
-      <div className="bg-neutral-90 p-5 w-fit">
+      <div className="w-fit bg-neutral-90 p-5">
         <Popover label="여기에 화이트모드 텍스트 입력" tipPosition="start" mode="light" />
         <Popover label="여기에 화이트모드 텍스트 입력" tipPosition="center" mode="light" />
         <Popover label="여기에 화이트모드 텍스트 입력" tipPosition="end" mode="light" />
@@ -313,7 +313,7 @@ export default function Home() {
           tipDirection="up"
         />
       </div>
-      <div className="p-5 border border-neutral-90 w-fit box-border">
+      <div className="box-border w-fit border border-neutral-90 p-5">
         <Popover
           label="앞으로 가는 길이 조금 멀어보여도, 한 걸음씩 걷다보면 어느새 도착해 있을 거예요."
           mode="big"
@@ -324,7 +324,7 @@ export default function Home() {
           bigTipPosition="start"
         />
       </div>
-      <div className="flex gap-3 bg-neutral-70 w-fit p-5 box-border">
+      <div className="box-border flex w-fit gap-3 bg-neutral-70 p-5">
         <Badge achieveItem="electronicsMaestro" />
         <Badge variant="default" achieveItem="growthApprentice" />
         <Badge variant="default" achieveItem="expert" selected={true} achieve={true} />
