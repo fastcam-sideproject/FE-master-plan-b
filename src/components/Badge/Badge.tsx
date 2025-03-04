@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { IconCheck } from '@tabler/icons-react';
 import { cva } from 'class-variance-authority';
@@ -182,15 +184,15 @@ const Badge = ({
         >
           <div
             className={cn(
-              'flex flex-col justify-center items-center',
+              'flex flex-col items-center justify-center',
               variant === 'secondary' ? 'gap-5' : 'gap-2',
             )}
           >
             <div
               className={cn(
-                'bg-neutral-80 rounded-10 w-[100px] h-[100px] flex justify-center items-center relative',
+                'relative flex h-[100px] w-[100px] items-center justify-center rounded-10 bg-neutral-80',
                 !achieve && 'grayscale',
-                selected && 'border-2 border-primary-40 box-border',
+                selected && 'box-border border-2 border-primary-40',
               )}
             >
               <div>
@@ -198,7 +200,7 @@ const Badge = ({
               </div>
               <div
                 className={cn(
-                  'absolute contents-[""] right-0 top-0 rounded-10 bg-primary-40',
+                  'contents-[""] absolute right-0 top-0 rounded-10 bg-primary-40',
                   !selected && 'invisible',
                 )}
               >
@@ -206,7 +208,7 @@ const Badge = ({
               </div>
               <div
                 className={cn(
-                  'text-neutral-0 text-center whitespace-pre-line text-body-xsmall-desktop absolute z-10',
+                  'absolute z-10 whitespace-pre-line text-center text-body-xsmall-desktop text-neutral-0',
                   achieve && 'invisible',
                 )}
               >
@@ -219,7 +221,7 @@ const Badge = ({
             <Button
               variant="text"
               size="sm"
-              className="w-fit bg-neutral-85 text-neutral-0 py-4 px-7"
+              className="w-fit bg-neutral-85 px-7 py-4 text-neutral-0"
             >
               대표 배지로 설정하기
             </Button>

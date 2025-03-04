@@ -7,7 +7,7 @@ export default function MypageLayout({ children }: { children: React.ReactNode }
     <div className="flex">
       <SideBarFavoriteCertifications />
       <div className="max-h-[100vh] w-full overflow-auto">
-        <div className="flex justify-center py-[120px]">{children}</div>
+        <div className="flex justify-center">{children}</div>
         <Footer />
       </div>
     </div>

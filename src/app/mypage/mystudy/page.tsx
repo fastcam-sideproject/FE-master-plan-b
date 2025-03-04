@@ -14,17 +14,19 @@ const recordedStudy = {
 
 const MyStudyPage = () => {
   return (
-    <div className="w-[1208px] rounded-[30px] bg-neutral-0 p-7 shadow-2">
-      <MyStudyInfoCard />
-      <div className="flex justify-center gap-6 pb-9 pt-[64px]">
-        <HexagonCalendar
-          date={recordedStudy.dates}
-          studyInfo={recordedStudy.studyInfo}
-          bg="light"
-          size="large"
-        />
-        <div className="border-r border-dashed"></div>
-        <MyStudyInfoRecord />
+    <div className="py-[120px]">
+      <div className="w-[1208px] rounded-[30px] bg-neutral-0 p-7 shadow-2">
+        <MyStudyInfoCard />
+        <div className="flex justify-center gap-6 pb-9 pt-[64px]">
+          <HexagonCalendar
+            date={recordedStudy.dates}
+            studyInfo={recordedStudy.studyInfo}
+            bg="light"
+            size="large"
+          />
+          <div className="border-r border-dashed"></div>
+          <MyStudyInfoRecord />
+        </div>
       </div>
     </div>
   );

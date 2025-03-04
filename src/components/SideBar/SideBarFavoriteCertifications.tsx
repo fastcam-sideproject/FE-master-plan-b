@@ -25,16 +25,26 @@ export default function SideBarFavoriteCertifications() {
           <ul className="flex flex-col items-center justify-center text-neutral-0">
             <SideBarLi Href="/mypage" liName={'My 홈'} isCollapsed={isCollapsed} Icon={IconHome} />
             <SideBarLi
-              Href="/"
+              Href="/mypage/my-certification"
               liName={'자격증 모아보기'}
               isCollapsed={isCollapsed}
               Icon={IconCalendarWeek}
             />
-            <SideBarLi Href="/" liName={'내 활동'} isCollapsed={isCollapsed} Icon={IconGraph} />
+            <SideBarLi
+              Href="/mypage/history"
+              liName={'내 활동'}
+              isCollapsed={isCollapsed}
+              Icon={IconGraph}
+            />
           </ul>
         </div>
         <ul className="flex flex-col items-center justify-center text-neutral-0">
-          <SideBarLi Href="/" liName={'알림설정'} isCollapsed={isCollapsed} Icon={IconBell} />
+          <SideBarLi
+            Href="/mypage/alarm"
+            liName={'알림설정'}
+            isCollapsed={isCollapsed}
+            Icon={IconBell}
+          />
           <SideBarLi Href="/" liName={'설정'} isCollapsed={isCollapsed} Icon={IconSettings} />
         </ul>
       </nav>

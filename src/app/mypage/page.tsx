@@ -58,7 +58,7 @@ const dummyStudyData = [
 
 export default function MypagePage() {
   return (
-    <div className="flex w-[1280px] flex-col justify-start gap-9 px-9">
+    <div className="flex w-[1280px] flex-col justify-start gap-9 px-9 py-[120px]">
       <h1 className="text-heading-small-desktop text-neutral-80">나의 시험</h1>
       <TabHorizonMedium isDark={false} />
       <div className="flex items-center gap-10">
