@@ -20,7 +20,7 @@ const popoverVariants = cva('text-center', {
       light: 'bg-[rgba(255,255,255,0.7)] relative w-fit px-6 py-5 rounded-4  box-border',
       dark: 'bg-[rgba(28,28,28,0.7)] relative w-fit px-6 py-5 rounded-4 box-border',
       // 큰 말풍선
-      big: 'w-[263px] h-[136px] bg-neutral-90 rounded-10 flex !justify-center items-center relative z-0',
+      big: 'w-[263px] h-[136px] bg-neutral-80 rounded-10 flex !justify-center items-center relative z-0',
     },
     tipColor: {
       light: 'after:border-t-[rgba(255,255,255,0.7)] after:border-b-[rgba(255,255,255,0.7)]',
@@ -56,7 +56,7 @@ const textVariants = cva('', {
     text: {
       light: 'text-label-small-desktop text-neutral-80 font-bold',
       dark: 'text-label-small-desktop text-neutral-0 font-bold',
-      big: 'text-body-small-desktop text-neutral-0 font-medium w-[160px] h-[104px] font-thin',
+      big: 'text-body-small-desktop text-neutral-0 font-medium w-[160px] h-[104px]',
     },
   },
   defaultVariants: {
@@ -119,7 +119,7 @@ const Popover = ({
       {mode === 'big' && (
         <div
           className={cn(
-            "absolute before:content-[''] bottom-[-20px] z-0",
+            "absolute bottom-[-20px] z-0 before:content-['']",
             // bigTipPosition에 따라 위치와 좌우반전 적용
             bigTipPosition === 'start' ? 'left-4 [&>img]:scale-x-[-1]' : 'right-4',
           )}

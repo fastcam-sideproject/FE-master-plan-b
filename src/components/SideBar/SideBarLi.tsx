@@ -1,14 +1,20 @@
-type SideBarIcon = {
-  liName: string,
-  isCollapsed: boolean
-  Icon: React.ElementType
-}
+import Link from 'next/link';
 
-export default function SideBarLi({ liName, isCollapsed, Icon }: SideBarIcon) {
+type SideBarIcon = {
+  liName: string;
+  isCollapsed: boolean;
+  Icon: React.ElementType;
+  Href: string;
+};
+
+export default function SideBarLi({ liName, isCollapsed, Icon, Href }: SideBarIcon) {
   return (
-    <li className={`flex items-center ${isCollapsed ? "justify-center px-4 py-4" : "w-[90%] px-5 py-4 gap-4 "} hover:cursor-pointer hover:bg-neutral-70 hover:rounded-full active:bg-neutral-0 active:text-neutral-85`}>
+    <Link
+      href={Href}
+      className={`flex items-center ${isCollapsed ? 'justify-center px-4 py-4' : 'w-[90%] gap-4 px-5 py-4'} hover:cursor-pointer hover:rounded-full hover:bg-neutral-70 active:bg-neutral-0 active:text-neutral-85`}
+    >
       <Icon className="text-neutral-0" />
-      <span className={isCollapsed ? "hidden" : ""}>{liName}</span>
-    </li>
+      <span className={isCollapsed ? 'hidden' : ''}>{liName}</span>
+    </Link>
   );
 }

@@ -44,15 +44,15 @@ export function Dropdown({
         <DropdownMenuTrigger asChild className="focus:outline-none">
           <button
             type="button"
-            className="w-[165px] h-8 flex items-center gap-[17px] px-4 py-2 text-neutral-85"
+            className="flex h-8 w-fit items-center gap-[17px] px-4 py-2 text-neutral-85"
           >
             <span className="min-w-8 text-body-xlarge-desktop font-normal">{selectedItem}</span>
-            <div className="w-[28px] h-[28px] border rounded-4 bg-neutral-5 stroke-normal">
+            <div className="h-[28px] w-[28px] rounded-4 border bg-neutral-5 stroke-normal">
               {expanded ? <IconChevronUp size={24} /> : <IconChevronDown size={24} />}
             </div>
           </button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className={`${size} p-6 ${color} border rounded-7 shadow-1`}>
+        <DropdownMenuContent className={`${size} p-6 ${color} rounded-7 border shadow-1`}>
           {items.map((item, index) => (
             <DropdownMenuItem
               key={index}
