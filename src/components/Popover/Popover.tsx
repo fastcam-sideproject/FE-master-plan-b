@@ -10,6 +10,25 @@ import { cn } from '@/lib/utils';
 // tipPosition: 말풍선 꼭지를 왼쪽/가운데/오른쪽 셋 중 어디에 둘지 선택합니다. start는 왼쪽, center는 가운데, end는 오른쪽입니다.
 // textVariants는 light, dark, big 모드를 추종해 자동으로 반영됩니다.
 
+// 사용법(가운데에 팁이 있는 말풍선 활용하기)
+// const [isPopoverVisible1, setIsPopoverVisible1] = useState(false);
+{
+  /* <li className="relative w-fit">
+  <IconHelp
+    onMouseEnter={() => setIsPopoverVisible1(true)}
+    onMouseLeave={() => setIsPopoverVisible1(false)}
+  />
+  {isPopoverVisible1 && (
+    <Popover
+      label="대표 배지를 설정하고 프로필에 등록해 봐요"
+      mode="light"
+      tipDirection="up"
+      tipPosition="center"
+    />
+  )}
+</li>; */
+}
+
 const popoverTipPath = '/images/popoverTip.svg';
 
 const popoverVariants = cva('text-center', {

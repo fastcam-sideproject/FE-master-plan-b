@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { IconQuestionMark } from '@tabler/icons-react';
+import { IconHelp, IconQuestionMark } from '@tabler/icons-react';
 import Badge from '@/components/Badge/Badge';
 import Popover from '@/components/Popover/Popover';
 
@@ -21,19 +21,16 @@ const ActivityBadge = () => {
           <ul className="flex">
             <li>나의 대표 배지</li>
             <li className="relative w-fit">
-              <p
-                className="h-fit w-fit rounded-10 border"
+              <IconHelp
                 onMouseEnter={() => setIsPopoverVisible1(true)}
                 onMouseLeave={() => setIsPopoverVisible1(false)}
-              >
-                <IconQuestionMark />
-              </p>
+              />
               {isPopoverVisible1 && (
                 <Popover
                   label="대표 배지를 설정하고 프로필에 등록해 봐요"
                   mode="light"
                   tipDirection="up"
-                  tipPosition="end"
+                  tipPosition="center"
                 />
               )}
             </li>
@@ -45,14 +42,11 @@ const ActivityBadge = () => {
           <ul className="flex justify-between">
             <ul className="flex">
               <li>전체 배지</li>
-              <li className="relative">
-                <p
-                  className="h-fit w-fit rounded-10 border"
+              <li className="relative w-fit">
+                <IconHelp
                   onMouseEnter={() => setIsPopoverVisible2(true)}
                   onMouseLeave={() => setIsPopoverVisible2(false)}
-                >
-                  <IconQuestionMark />
-                </p>
+                />
                 {isPopoverVisible2 && (
                   <Popover
                     label="대표 배지를 설정하고 프로필에 등록해 봐요"
