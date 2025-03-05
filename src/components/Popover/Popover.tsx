@@ -10,6 +10,25 @@ import { cn } from '@/lib/utils';
 // tipPosition: 말풍선 꼭지를 왼쪽/가운데/오른쪽 셋 중 어디에 둘지 선택합니다. start는 왼쪽, center는 가운데, end는 오른쪽입니다.
 // textVariants는 light, dark, big 모드를 추종해 자동으로 반영됩니다.
 
+// 사용법(가운데에 팁이 있는 말풍선 활용하기)
+// const [isPopoverVisible1, setIsPopoverVisible1] = useState(false);
+{
+  /* <li className="relative w-fit">
+  <IconHelp
+    onMouseEnter={() => setIsPopoverVisible1(true)}
+    onMouseLeave={() => setIsPopoverVisible1(false)}
+  />
+  {isPopoverVisible1 && (
+    <Popover
+      label="대표 배지를 설정하고 프로필에 등록해 봐요"
+      mode="light"
+      tipDirection="up"
+      tipPosition="center"
+    />
+  )}
+</li>; */
+}
+
 const popoverTipPath = '/images/popoverTip.svg';
 
 const popoverVariants = cva('text-center', {
@@ -17,23 +36,25 @@ const popoverVariants = cva('text-center', {
     variant: { default: '' },
     mode: {
       // 작은 말풍선
-      light: 'bg-[rgba(255,255,255,0.7)] relative w-fit px-6 py-5 rounded-4  box-border',
-      dark: 'bg-[rgba(28,28,28,0.7)] relative w-fit px-6 py-5 rounded-4 box-border',
+      light:
+        'bg-[rgba(255,255,255,0.7)] absolute w-fit min-w-[200px] whitespace-nowrap px-6 py-5 rounded-4 box-border',
+      dark: 'bg-[rgba(28,28,28,0.7)] absolute w-fit min-w-[200px] whitespace-nowrap px-6 py-5 rounded-4 box-border',
       // 큰 말풍선
-      big: 'w-[263px] h-[136px] bg-neutral-80 rounded-10 flex !justify-center items-center relative z-0',
+      big: 'w-[263px] h-[136px] bg-neutral-80 rounded-10 flex !justify-center items-center absolute z-0',
     },
     tipColor: {
       light: 'after:border-t-[rgba(255,255,255,0.7)] after:border-b-[rgba(255,255,255,0.7)]',
       dark: 'after:border-t-[rgba(28,28,28,0.7)] after:border-b-[rgba(28,28,28,0.7)]',
     },
     tipDirection: {
-      down: 'mb-[6px] after:content-[""] after:absolute after:w-0 after:h-0 after:border-l-[6px] after:border-l-transparent after:border-r-[6px] after:border-r-transparent after:border-t-[6px] after:-bottom-[6px]',
-      up: 'mt-[6px] after:content-[""] after:absolute after:w-0 after:h-0 after:border-l-[6px] after:border-l-transparent after:border-r-[6px] after:border-r-transparent after:border-b-[6px] after:-top-[6px]',
+      up: 'top-full mt-[6px] after:content-[""] after:absolute after:w-0 after:h-0 after:border-l-[6px] after:border-l-transparent after:border-r-[6px] after:border-r-transparent after:border-b-[6px] after:-top-[6px] z-50',
+      down: 'bottom-full mb-[6px] after:content-[""] after:absolute after:w-0 after:h-0 after:border-l-[6px] after:border-l-transparent after:border-r-[6px] after:border-r-transparent after:border-t-[6px] after:-bottom-[6px] z-50',
     },
     tipPosition: {
-      start: '[&:after]:!left-5 [&:after]:!right-auto',
-      center: '[&:after]:!left-1/2 [&:after]:!-translate-x-1/2 [&:after]:!right-auto',
-      end: '[&:after]:!right-5 [&:after]:!left-auto',
+      start: '[&:after]:!left-5 [&:after]:!right-auto left-[-10px]',
+      center:
+        '[&:after]:!left-1/2 [&:after]:!-translate-x-1/2 [&:after]:!right-auto left-1/2 -translate-x-1/2',
+      end: '[&:after]:!right-5 [&:after]:!left-auto right-[-10px]',
     },
     // 큰 말풍선 화살표 위치
     bigTipPosition: {
