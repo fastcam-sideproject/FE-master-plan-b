@@ -9,6 +9,7 @@ import { Button } from '../ui/button';
 
 // achieveItem='all'을 선택하면 모든 달성 항목이 출력됨
 // achieveItem: 'apprentice'와 같이 이름을 적어넣을 경우 해당 내용만 출력됨
+//
 // selected={true}일 경우 노란색 border와 체크 표시가 출력됨.
 
 type BadgeIconType =
@@ -139,14 +140,15 @@ const achievements: Achievement[] = [
 const badgeVariants = cva('flex flex-col justify-between items-center', {
   variants: {
     variant: {
-      default: 'text-body-xsmall-desktop text-neutral-0',
+      // 프레임 없음
+      default: 'text-body-xsmall-desktop text-neutral-0 w-[100px] break-keep',
+      // 프레임 있음
       secondary:
         'w-[229px] h-[280px] rounded-7 p-6 text-body-large-desktop font-bold text-neutral-0 radial-gradient(59.53% 59.53% at 12.86% 22.03%, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%), rgba(66, 66, 66, 0.8)',
     },
   },
 });
 
-// , withFrame 이라는 이름으로 프레임 선택 여부 넣기
 const Badge = ({
   achieveItem,
   variant = 'default',
@@ -215,7 +217,7 @@ const Badge = ({
                 {item.condition}
               </div>
             </div>
-            <div>{item.title}</div>
+            <div className="text-center">{item.title}</div>
           </div>
           {variant === 'secondary' && (
             <Button
