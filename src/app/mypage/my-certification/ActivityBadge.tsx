@@ -112,7 +112,7 @@ const ActivityBadge = () => {
                 </li>
               </ul>
             </ul>
-            <Badge variant="secondary" achieveItem="growthApprentice" achieve />
+            <Badge variant="secondary" achieveItem="growthApprentice" achieve selected="none" />
           </div>
           {/* 전체 배지 영역 */}
           <div className="flex flex-col gap-3">
@@ -154,15 +154,20 @@ const ActivityBadge = () => {
                 <div className="flex flex-col gap-9">
                   <div className="flex flex-col gap-6">
                     <p className="text-title-small-desktop text-neutral-30">취득 배지</p>
-                    <div className="grid grid-cols-5 gap-y-6">
+                    <div className="grid grid-cols-5">
                       {achieveTrue.map((item, index) => (
-                        <Badge key={index} achieveItem={item.achieveItem} achieve />
+                        <Badge
+                          key={index}
+                          achieveItem={item.achieveItem}
+                          achieve={true}
+                          onClick={() => alert(`${item.achieveItem} 선택 ㄱ?`)}
+                        />
                       ))}
                     </div>
                   </div>
                   <div className="flex flex-col gap-6">
                     <p className="text-title-small-desktop text-neutral-30">분야별 배지</p>
-                    <div className="grid grid-cols-5 gap-y-6">
+                    <div className="grid grid-cols-5">
                       {achieveFalse.map((item, index) => (
                         <Badge key={index} achieveItem={item.achieveItem} />
                       ))}

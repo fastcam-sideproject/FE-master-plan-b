@@ -152,13 +152,15 @@ const badgeVariants = cva('flex flex-col justify-between items-center', {
 const Badge = ({
   achieveItem,
   variant = 'default',
-  selected = false,
+  selected = 'none',
   achieve = false,
+  onClick,
 }: {
   achieveItem: string;
   variant?: 'default' | 'secondary';
-  selected?: boolean;
+  selected?: 'none' | 'true' | 'false';
   achieve?: boolean;
+  onClick?: () => void;
 }) => {
   // 선택된 배지를 추적하기 위한 state 추가
   const [selectedBadge, setSelectedBadge] = React.useState<string>('');
@@ -174,7 +176,10 @@ const Badge = ({
         <div
           key={index}
           className={cn(badgeVariants({ variant }))}
-          onClick={() => setSelectedBadge(item.achieveItem)}
+          onClick={() => {
+            setSelectedBadge(item.achieveItem);
+            onClick?.();
+          }}
           style={
             variant === 'secondary'
               ? {
@@ -188,22 +193,35 @@ const Badge = ({
             className={cn(
               'flex flex-col items-center justify-center',
               variant === 'secondary' ? 'gap-5' : 'gap-2',
+              variant === 'default' && achieve === true && 'cursor-pointer',
             )}
           >
             <div
               className={cn(
                 'relative flex h-[100px] w-[100px] items-center justify-center rounded-10 bg-neutral-80',
                 !achieve && 'grayscale',
-                selected && 'box-border border-2 border-primary-40',
+                selected === 'true' &&
+                  variant === 'default' &&
+                  'box-border border-2 border-primary-40',
               )}
             >
-              <div>
+              <div
+                className={`${selected === 'none' && variant === 'secondary' ? 'invisible' : ''}`}
+              >
                 <BadgeIcon type={item.badgeIconName} />
               </div>
+              <p
+                className={`${selected === 'none' && variant === 'secondary' ? '' : 'invisible'} absolute`}
+              >
+                -
+              </p>
+
               <div
                 className={cn(
                   'contents-[""] absolute right-0 top-0 rounded-10 bg-primary-40',
-                  !selected && 'invisible',
+                  (selected === 'false' || 'none') &&
+                    (variant === 'default' || 'secondary') &&
+                    'invisible',
                 )}
               >
                 <IconCheck className="text-neutral-0" />
@@ -217,13 +235,20 @@ const Badge = ({
                 {item.condition}
               </div>
             </div>
-            <div className="text-center">{item.title}</div>
+            <div className="text-center">
+              <p className={`${selected === 'none' && variant === 'secondary' ? 'invisible' : ''}`}>
+                {item.title}
+              </p>
+              <p className={`${selected === 'none' && variant === 'secondary' ? '' : 'invisible'}`}>
+                -
+              </p>
+            </div>
           </div>
           {variant === 'secondary' && (
             <Button
               variant="text"
               size="sm"
-              className="w-fit bg-neutral-85 px-7 py-4 text-neutral-0"
+              className={`w-fit bg-neutral-85 px-7 py-4 text-neutral-0 ${selected === 'none' ? 'invisible' : ''}`}
             >
               대표 배지로 설정하기
             </Button>
