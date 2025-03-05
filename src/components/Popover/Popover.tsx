@@ -47,8 +47,8 @@ const popoverVariants = cva('text-center', {
       dark: 'after:border-t-[rgba(28,28,28,0.7)] after:border-b-[rgba(28,28,28,0.7)]',
     },
     tipDirection: {
-      up: 'top-full mt-[6px] after:content-[""] after:absolute after:w-0 after:h-0 after:border-l-[6px] after:border-l-transparent after:border-r-[6px] after:border-r-transparent after:border-b-[6px] after:-top-[6px]',
-      down: 'bottom-full mb-[6px] after:content-[""] after:absolute after:w-0 after:h-0 after:border-l-[6px] after:border-l-transparent after:border-r-[6px] after:border-r-transparent after:border-t-[6px] after:-bottom-[6px]',
+      up: 'top-full mt-[6px] after:content-[""] after:absolute after:w-0 after:h-0 after:border-l-[6px] after:border-l-transparent after:border-r-[6px] after:border-r-transparent after:border-b-[6px] after:-top-[6px] z-50',
+      down: 'bottom-full mb-[6px] after:content-[""] after:absolute after:w-0 after:h-0 after:border-l-[6px] after:border-l-transparent after:border-r-[6px] after:border-r-transparent after:border-t-[6px] after:-bottom-[6px] z-50',
     },
     tipPosition: {
       start: '[&:after]:!left-5 [&:after]:!right-auto left-[-10px]',
