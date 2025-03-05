@@ -29,7 +29,7 @@ const ActivityBadge = () => {
                 <Popover
                   label="대표 배지를 설정하고 프로필에 등록해 봐요"
                   mode="light"
-                  tipDirection="up"
+                  tipDirection="down"
                   tipPosition="center"
                 />
               )}
