@@ -31,7 +31,7 @@ export default function SideBarFavoriteCertifications() {
               Icon={IconCalendarWeek}
             />
             <SideBarLi
-              Href="/mypage/history"
+              Href="/mypage/my-history"
               liName={'내 활동'}
               isCollapsed={isCollapsed}
               Icon={IconGraph}
@@ -45,7 +45,12 @@ export default function SideBarFavoriteCertifications() {
             isCollapsed={isCollapsed}
             Icon={IconBell}
           />
-          <SideBarLi Href="/" liName={'설정'} isCollapsed={isCollapsed} Icon={IconSettings} />
+          <SideBarLi
+            Href="/mypage/account-info"
+            liName={'회원정보 수정'}
+            isCollapsed={isCollapsed}
+            Icon={IconSettings}
+          />
         </ul>
       </nav>
     </aside>
