@@ -24,9 +24,9 @@ const buttonVariants = cva(
       },
       size: {
         default: '',
-        sm: 'rounded-4 px-5 py-3 gap-[10px] text-label-small-desktop',
-        md: 'rounded-4 px-7 py-4 gap-[10px] text-label-medium-desktop',
-        lg: 'rounded-5 px-5 py-8 gap-[10px] text-label-large-desktop',
+        sm: 'rounded-4 px-[16px] py-[8px] gap-[10px] text-label-small-desktop',
+        md: 'rounded-4 px-[24px] py-[12px] gap-[10px] text-label-medium-desktop',
+        lg: 'rounded-5 px-[32px] py-[16px] gap-[10px] text-label-large-desktop',
         icon: 'h-10 w-10',
       },
       // 텍스트 사이즈만
