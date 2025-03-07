@@ -203,6 +203,8 @@ export default function Home() {
       <Button variant="secondary" size="lg" className="font-medium">
         라지 박스
       </Button>
+      <Button variant="secondary" size="lg" className="font-medium" label="라지박스" />
+
       <Button variant="secondary" size="md" className="ga text-neutral-80">
         미디움 박스
       </Button>
