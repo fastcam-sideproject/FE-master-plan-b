@@ -38,6 +38,7 @@ import CommunityBox from '@/components/CommunityBox/CommunityBox';
 import CommunityInfo from '@/components/CommunityInfo/CommunityInfo';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
+import DayInput from '@/components/DayInput/DayInput';
 
 const difBarGraphData = [
   { label: '쉬워요', value: 30 },
@@ -332,6 +333,7 @@ export default function Home() {
         <Badge variant="default" achieveItem="expert" selected={true} achieve={true} />
         <Badge variant="secondary" achieveItem="businessBrain" achieve={true} />
       </div> */}
+      <DayInput />
     </>
   );
 }

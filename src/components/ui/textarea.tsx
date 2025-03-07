@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 
-const baseStyles = 'w-full max-w-[1048px] resize-none rounded-6 border border-neutral-20 px-6 py-5';
+const baseStyles = 'w-full resize-none rounded-6 border border-neutral-20 px-6 py-5';
 const textareaStyles = cn(
   baseStyles,
   'disabled:bg-neutral-5 box-border text-body-medium-desktop placeholder:text-neutral-20',
