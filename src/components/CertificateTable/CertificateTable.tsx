@@ -7,6 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import { Button } from '../ui/button';
 
 export function CertificateTable() {
   const certificates = [
@@ -35,10 +36,10 @@ export function CertificateTable() {
       <TableHeader>
         <TableRow>
           <TableHead className="w-[220px]">자격증명</TableHead>
-          <TableHead className="w-40 h-[50px]">기관명</TableHead>
+          <TableHead className="h-[50px] w-40">기관명</TableHead>
           <TableHead className="w-[130px]">취득일</TableHead>
           <TableHead className="w-[130px]">만료일</TableHead>
-          <TableHead className="text-center w-[80px]">점수</TableHead>
+          <TableHead className="w-[80px] text-center">점수</TableHead>
           <TableHead className="w-40">자격증 번호</TableHead>
         </TableRow>
       </TableHeader>
@@ -50,27 +51,27 @@ export function CertificateTable() {
             <TableCell>{cert.issueDate}</TableCell>
             <TableCell>{cert.expiryDate}</TableCell>
             <TableCell>
-              <div className="border rounded-4 bg-neutral-10 flex items-center justify-center">
+              <div className="flex items-center justify-center rounded-4 border bg-neutral-10">
                 <span className="text-neutral-85">{cert.score}</span>
               </div>
             </TableCell>
             <TableCell>{cert.reference}</TableCell>
             <TableCell>
               <div className="flex items-center gap-6">
-                <button
-                  type="button"
-                  className="w-[145px] h-[50px] bg-neutral-70 hover:bg-neutral-30 p-4 text-label-small-desktop font-[400] text-neutral-0 rounded-4 "
-                >
-                  후기 입력하기
-                </button>
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  className="rounded-4 bg-neutral-70"
+                  label="후기 입력하기"
+                ></Button>
                 <div className="flex items-center gap-4">
-                  <div className="h-6 bg-neutral-20 w-1" />
-                  <button type="button">
-                    <IconPencil width={24} height={24} color="#c2c2c2" />
-                  </button>
-                  <button type="button">
-                    <IconTrash width={24} height={24} color="#c2c2c2" />
-                  </button>
+                  <div className="h-6 w-1 bg-neutral-20" />
+                  <Button variant="none">
+                    <IconPencil width={24} height={24} className="w-[24px] text-neutral-20" />
+                  </Button>
+                  <Button variant="none">
+                    <IconTrash width={24} height={24} className="text-neutral-20" />
+                  </Button>
                 </div>
               </div>
             </TableCell>

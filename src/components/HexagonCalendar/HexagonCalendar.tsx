@@ -13,6 +13,7 @@ import { cn } from '@/lib/utils';
 import { HexagonCalendarProps, ClickedDate } from './types';
 import { getStyles } from './styles';
 import { getHexagonColor } from './utils';
+import { Button } from '../ui/button';
 
 function HexagonCalendar({
   date,
@@ -125,12 +126,13 @@ function HexagonCalendar({
                 <div
                   className={`${styles.captionTextSize} ${styles.baseYearMonthColor} font-[800]`}
                 >{`${year}. ${month}`}</div>
-                <button
-                  className="h-[38px] rounded-4 border border-neutral-20 px-5 text-label-small-desktop"
+                <Button
+                  // className="h-[38px] rounded-4 border border-neutral-20 px-5 text-label-small-desktop"
+                  variant="outline"
+                  size="sm"
                   onClick={() => alert('그래서 언제로 이동하지?')}
-                >
-                  시험일로 이동하기
-                </button>
+                  label="시험일로 이동하기"
+                />
               </div>
               <div className="flex gap-3">
                 <button

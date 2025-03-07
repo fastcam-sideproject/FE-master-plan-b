@@ -38,13 +38,12 @@ const MyStudyInfoRecord = () => {
         </div>
       </div>
       <div className="flex justify-end gap-4">
-        <Button
-          className="w-[80px] rounded-4 px-5 py-3 text-label-small-desktop"
-          variant={'outline'}
-        >
+        <Button className="w-[80px]" variant="outline" size="sm">
           취소
         </Button>
-        <Button className="w-[80px] rounded-4 px-5 py-3 text-label-small-desktop">작성 완료</Button>
+        <Button className="w-[80px]" variant="default" size="sm">
+          작성 완료
+        </Button>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@
 import TabHorizonMedium from '@/components/common/Tab/TabHorizonMedium';
 import StudyCard from '@/components/StudyCard/StudyCard';
 import StudyCardList from '@/components/StudyCard/StudyCardList';
+import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 
 const selectedDatesAndExams = [
@@ -64,9 +65,11 @@ export default function MypagePage() {
       <div className="flex items-center gap-10">
         <StudyCardList studyData={dummyStudyData} />
         <div>
-          <button className="h-[141px] w-[154px] rounded-6 bg-neutral-85 text-neutral-0">
-            (임시)시험 등록하기
-          </button>
+          <Button
+            variant="secondary"
+            className="h-[141px] w-[154px] rounded-6"
+            label="시험 등록하기"
+          />
         </div>
       </div>
       <div className="flex w-full gap-9 rounded-6 bg-neutral-0 p-10">
