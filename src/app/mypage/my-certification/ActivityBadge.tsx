@@ -130,7 +130,7 @@ const ActivityBadge = () => {
                 </li>
               </ul>
             </ul>
-            <Badge variant="secondary" achieveItem="growthApprentice" achieve selected="none" />
+            <Badge variant="secondary" achieveItem="growthApprentice" achieve selected="true" />
           </div>
           {/* 전체 배지 영역 */}
           <div className="flex flex-col gap-3">

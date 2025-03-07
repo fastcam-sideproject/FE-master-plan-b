@@ -77,7 +77,7 @@ const textVariants = cva('', {
     text: {
       light: 'text-label-small-desktop text-neutral-80 font-bold',
       dark: 'text-label-small-desktop text-neutral-0 font-bold',
-      big: 'text-body-small-desktop text-neutral-0 font-medium w-[160px] h-[104px]',
+      big: 'text-body-small-desktop text-neutral-0 font-medium w-[160px] h-[104px] font-regular',
     },
   },
   defaultVariants: {
@@ -131,7 +131,7 @@ const Popover = ({
         className={cn(
           textVariants({ text: mode }),
           // big 모드일 때 z-index 추가
-          mode === 'big' ? 'relative z-10' : '',
+          mode === 'big' ? 'relative z-10 h-fit' : '',
         )}
       >
         {label}

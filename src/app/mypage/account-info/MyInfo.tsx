@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { IconPlus } from '@tabler/icons-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import Chip from '@/components/Chip/Chip';
 
 const AccountLogoImages = {
   // 컬러(연동됨)
@@ -37,7 +38,7 @@ const MyInfo = () => {
           <div className="flex flex-col gap-4">
             <ul className="flex justify-between">
               <li>닉네임</li>
-              <li>수정하기</li>
+              <Button label="수정하기" variant="text" />
             </ul>
             <Input placeholder="정윤아" />
           </div>
@@ -96,28 +97,29 @@ const MyInfo = () => {
         <div className="flex flex-col gap-4">
           <ul className="flex items-center justify-between">
             <li>관심 직무 · 직군</li>
-            <li className="flex gap-2 text-body-small-desktop font-[700] text-blue-40">
-              <IconPlus className="h-[20px] w-[20px] text-blue-40" />
+            <Button
+              variant="none"
+              className="flex gap-2 text-body-small-desktop font-[700] text-blue-40"
+            >
+              <IconPlus size={20} className="!h-[20px] !w-[20px] text-blue-40" />
               <p>추가하기</p>
-            </li>
+            </Button>
           </ul>
           <div className="flex flex-col gap-8">
             <div className="h-[342px] w-[600px] bg-red-10">
               여기는 관심 직무 및 직군 선택 영역임둥
             </div>
-            <div>여기는 선택 항목이 태그로 나타나는 곳임둥</div>
+            <div>
+              <Chip size="large" keyword="테스트" selected={false} disabled />
+            </div>
           </div>
         </div>
       </div>
       <div className="flex flex-col gap-5">
         <p className="flex justify-end text-red-40">계정 삭제하기</p>
         <div className="flex gap-5">
-          <Button className="w-full" variant="third" size="lg">
-            돌아가기
-          </Button>
-          <Button className="w-full" variant="secondary" size="lg">
-            저장하기
-          </Button>
+          <Button className="w-full" variant="third" size="lg" label="돌아가기" />
+          <Button className="w-full" variant="secondary" size="lg" label="저장하기" />
         </div>
       </div>
     </div>

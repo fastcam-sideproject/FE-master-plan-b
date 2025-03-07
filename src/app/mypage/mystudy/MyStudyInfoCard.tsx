@@ -21,13 +21,14 @@ const MyStudyInfoCard = () => {
           </ul>
         </div>
         <div className="flex gap-4">
-          <Button className="rounded-4 px-7 py-4 text-label-medium-desktop">학습 로드맵</Button>
-          <Button className="rounded-4 bg-neutral-70 px-7 py-4 text-label-medium-desktop text-neutral-0">
-            자격증 정보
-          </Button>
-          <Button className="rounded-4 bg-neutral-70 px-7 py-4 text-label-medium-desktop text-neutral-0">
-            시험 주관 사이트 바로가기
-          </Button>
+          <Button variant="default" size="md" label="학습 로드맵" />
+          <Button className="bg-neutral-70" variant="secondary" size="md" label="자격증 정보" />
+          <Button
+            className="bg-neutral-70"
+            variant="secondary"
+            size="md"
+            label="시험 주관 사이트 바로가기"
+          />
         </div>
       </div>
       <Quotes />

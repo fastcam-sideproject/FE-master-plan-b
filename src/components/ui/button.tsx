@@ -12,7 +12,7 @@ const buttonVariants = cva(
         default:
           'text-neutral-85 font-medium bg-primary-40 hover:bg-primary-50 active:bg-primary-60 disabled:bg-neutral-5 disabled:text-neutral-20 text-label-large-desktop gap-[10px]',
         secondary:
-          'w-[136px] text-neutral-0 !text-neutral-0 font-medium bg-neutral-85 hover:bg-neutral-80 active:bg-neutral-70 disabled:bg-neutral-5 disabled:text-neutral-20  disabled:!text-neutral-20 text-label-large-desktop gap-3',
+          'text-neutral-0 !text-neutral-0 font-medium bg-neutral-85 hover:bg-neutral-80 active:bg-neutral-70 disabled:bg-neutral-5 disabled:text-neutral-20  disabled:!text-neutral-20 text-label-large-desktop gap-3',
         third:
           'text-neutral-80 bg-neutral-10 font-medium hover:bg-neutral-20 active:bg-neutral-20 disabled:bg-neutral-5 disabled:text-neutral-20 text-label-large-desktop gap-[10px]',
         outline:
@@ -24,9 +24,9 @@ const buttonVariants = cva(
       },
       size: {
         default: '',
-        sm: 'rounded-3 px-[16px] py-[8px] gap-[10px] text-label-small-desktop',
+        sm: 'rounded-4 px-[16px] py-[8px] gap-[10px] text-label-small-desktop',
         md: 'rounded-4 px-[24px] py-[12px] gap-[10px] text-label-medium-desktop',
-        lg: 'rounded-4 px-[32px] py-[16px] gap-[10px] text-label-large-desktop',
+        lg: 'rounded-5 px-[32px] py-[16px] gap-[10px] text-label-large-desktop',
         icon: 'h-10 w-10',
       },
       // 텍스트 사이즈만

@@ -246,12 +246,11 @@ const Badge = ({
           </div>
           {variant === 'secondary' && (
             <Button
-              variant="text"
-              size="sm"
-              className={`w-fit bg-neutral-85 px-7 py-4 text-neutral-0 ${selected === 'none' ? 'invisible' : ''}`}
-            >
-              대표 배지로 설정하기
-            </Button>
+              variant="secondary"
+              size="md"
+              className={`w-fit ${selected === 'none' ? 'invisible' : ''}`}
+              label="대표 배지로 설정하기"
+            />
           )}
         </div>
       ))}
