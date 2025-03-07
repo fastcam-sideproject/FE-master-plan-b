@@ -40,7 +40,7 @@ const DayInput = () => {
   return (
     <div className="relative" ref={calendarRef}>
       <button
-        className="flex h-[50px] w-[245px] items-center rounded-6 border border-neutral-20 bg-neutral-0 px-5 py-4 text-body-medium-desktop font-[400]"
+        className="flex h-[50px] w-[245px] items-center rounded-4 border border-neutral-20 bg-neutral-0 px-5 py-4 text-body-medium-desktop font-[400]"
         onClick={calendarOpen}
       >
         <span className="w-full">{format(selectedDate, 'yyyy년 MM월 dd일', { locale: ko })}</span>
