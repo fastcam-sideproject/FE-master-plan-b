@@ -324,12 +324,12 @@ export default function Home() {
           bigTipPosition="start"
         />
       </div>
-      <div className="box-border flex w-fit gap-3 bg-neutral-70 p-5">
+      {/* <div className="box-border flex w-fit gap-3 bg-neutral-70 p-5">
         <Badge achieveItem="electronicsMaestro" />
         <Badge variant="default" achieveItem="growthApprentice" />
         <Badge variant="default" achieveItem="expert" selected={true} achieve={true} />
         <Badge variant="secondary" achieveItem="businessBrain" achieve={true} />
-      </div>
+      </div> */}
     </>
   );
 }
