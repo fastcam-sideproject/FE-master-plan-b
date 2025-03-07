@@ -112,8 +112,12 @@ const MyInfo = () => {
       <div className="flex flex-col gap-5">
         <p className="flex justify-end text-red-40">계정 삭제하기</p>
         <div className="flex gap-5">
-          <Button className="h-[61px] w-full">돌아가기</Button>
-          <Button className="h-[61px] w-full">저장하기</Button>
+          <Button className="w-full" variant="third" size="lg">
+            돌아가기
+          </Button>
+          <Button className="w-full" variant="secondary" size="lg">
+            저장하기
+          </Button>
         </div>
       </div>
     </div>
