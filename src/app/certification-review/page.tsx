@@ -7,6 +7,10 @@ import WrittenTest from './WrittenTest';
 import PracticalTest from './PracticalTest';
 import SweetyTips from './SweetyTips';
 
+// todo: examInfo에서 불합격을 선택할 경우, 아래의 모든 입력 필드 비활성화
+// todo: 점수 기반 시험인 경우,
+// todo: '취득일'은 '시험일'로, '자격증 번호'는 '점수/등급'으로 교체, '취득 상태' 항목은 가림 처리
+
 const CertificationReviewPage = () => {
   return (
     <div>
