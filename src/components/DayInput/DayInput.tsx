@@ -4,13 +4,19 @@ import React, { useState, useEffect, useRef } from 'react';
 import { IconCalendarWeek } from '@tabler/icons-react';
 import { format } from 'date-fns';
 import { ko } from 'date-fns/locale';
-import { Calendar } from '../ui/calendar';
+import { CalendarForDayInput } from './CalendarForDayInput';
 
 // todo: 날짜 선택 기능 어떻게 추가할지 물어보기
 
-const DayInput = () => {
+type DayInputProps = {
+  minDate?: Date; // 최소 날짜 추가
+  maxDate?: Date; // 최대 날짜 추가
+  onSelect?: (date: Date | undefined) => void; // onSelect prop 추가
+};
+
+const DayInput = ({ minDate, maxDate, onSelect }: DayInputProps) => {
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const calendarRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -48,16 +54,19 @@ const DayInput = () => {
       </button>
       {isCalendarOpen && (
         <div className="absolute top-[54px] z-10 h-fit w-fit rounded-4 bg-neutral-0 p-4 shadow-2">
-          <Calendar
-            date={[formatDateToString(selectedDate)]}
+          <CalendarForDayInput
+            date={selectedDate}
             size="small"
             bg="light"
-            // onSelect={(date: Date | undefined) => {
-            //   if (date) {
-            //     setSelectedDate(date);
-            //     setIsCalendarOpen(false);
-            //   }
-            // }}
+            minDate={minDate}
+            maxDate={maxDate}
+            onSelect={(date) => {
+              if (date) {
+                setSelectedDate(date);
+                setIsCalendarOpen(false);
+                onSelect?.(date); // 부모 컴포넌트의 onSelect 호출
+              }
+            }}
           />
         </div>
       )}
