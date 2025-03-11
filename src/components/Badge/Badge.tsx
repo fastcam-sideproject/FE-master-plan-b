@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { IconCheck } from '@tabler/icons-react';
 import { cva } from 'class-variance-authority';
@@ -7,6 +9,7 @@ import { Button } from '../ui/button';
 
 // achieveItem='all'을 선택하면 모든 달성 항목이 출력됨
 // achieveItem: 'apprentice'와 같이 이름을 적어넣을 경우 해당 내용만 출력됨
+//
 // selected={true}일 경우 노란색 border와 체크 표시가 출력됨.
 
 type BadgeIconType =
@@ -137,24 +140,27 @@ const achievements: Achievement[] = [
 const badgeVariants = cva('flex flex-col justify-between items-center', {
   variants: {
     variant: {
-      default: 'text-body-xsmall-desktop text-neutral-0',
+      // 프레임 없음
+      default: 'text-body-xsmall-desktop text-neutral-0 w-[100px] break-keep',
+      // 프레임 있음
       secondary:
         'w-[229px] h-[280px] rounded-7 p-6 text-body-large-desktop font-bold text-neutral-0 radial-gradient(59.53% 59.53% at 12.86% 22.03%, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%), rgba(66, 66, 66, 0.8)',
     },
   },
 });
 
-// , withFrame 이라는 이름으로 프레임 선택 여부 넣기
 const Badge = ({
   achieveItem,
   variant = 'default',
-  selected = false,
+  selected = 'none',
   achieve = false,
+  onClick,
 }: {
   achieveItem: string;
   variant?: 'default' | 'secondary';
-  selected?: boolean;
+  selected?: 'none' | 'true' | 'false';
   achieve?: boolean;
+  onClick?: () => void;
 }) => {
   // 선택된 배지를 추적하기 위한 state 추가
   const [selectedBadge, setSelectedBadge] = React.useState<string>('');
@@ -170,7 +176,10 @@ const Badge = ({
         <div
           key={index}
           className={cn(badgeVariants({ variant }))}
-          onClick={() => setSelectedBadge(item.achieveItem)}
+          onClick={() => {
+            setSelectedBadge(item.achieveItem);
+            onClick?.();
+          }}
           style={
             variant === 'secondary'
               ? {
@@ -182,47 +191,66 @@ const Badge = ({
         >
           <div
             className={cn(
-              'flex flex-col justify-center items-center',
+              'flex flex-col items-center justify-center',
               variant === 'secondary' ? 'gap-5' : 'gap-2',
+              variant === 'default' && achieve === true && 'cursor-pointer',
             )}
           >
             <div
               className={cn(
-                'bg-neutral-80 rounded-10 w-[100px] h-[100px] flex justify-center items-center relative',
+                'relative flex h-[100px] w-[100px] items-center justify-center rounded-10 bg-neutral-80',
                 !achieve && 'grayscale',
-                selected && 'border-2 border-primary-40 box-border',
+                selected === 'true' &&
+                  variant === 'default' &&
+                  'box-border border-2 border-primary-40',
               )}
             >
-              <div>
+              <div
+                className={`${selected === 'none' && variant === 'secondary' ? 'invisible' : ''}`}
+              >
                 <BadgeIcon type={item.badgeIconName} />
               </div>
+              <p
+                className={`${selected === 'none' && variant === 'secondary' ? '' : 'invisible'} absolute`}
+              >
+                -
+              </p>
+
               <div
                 className={cn(
-                  'absolute contents-[""] right-0 top-0 rounded-10 bg-primary-40',
-                  !selected && 'invisible',
+                  'contents-[""] absolute right-0 top-0 rounded-10 bg-primary-40',
+                  (selected === 'false' || 'none') &&
+                    (variant === 'default' || 'secondary') &&
+                    'invisible',
                 )}
               >
                 <IconCheck className="text-neutral-0" />
               </div>
               <div
                 className={cn(
-                  'text-neutral-0 text-center whitespace-pre-line text-body-xsmall-desktop absolute z-10',
+                  'absolute z-10 whitespace-pre-line text-center text-body-xsmall-desktop text-neutral-0',
                   achieve && 'invisible',
                 )}
               >
                 {item.condition}
               </div>
             </div>
-            <div>{item.title}</div>
+            <div className="text-center">
+              <p className={`${selected === 'none' && variant === 'secondary' ? 'invisible' : ''}`}>
+                {item.title}
+              </p>
+              <p className={`${selected === 'none' && variant === 'secondary' ? '' : 'invisible'}`}>
+                -
+              </p>
+            </div>
           </div>
           {variant === 'secondary' && (
             <Button
-              variant="text"
-              size="sm"
-              className="w-fit bg-neutral-85 text-neutral-0 py-4 px-7"
-            >
-              대표 배지로 설정하기
-            </Button>
+              variant="secondary"
+              size="md"
+              className={`w-fit ${selected === 'none' ? 'invisible' : ''}`}
+              label="대표 배지로 설정하기"
+            />
           )}
         </div>
       ))}

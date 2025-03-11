@@ -7,6 +7,7 @@ import ExamInformation from './examInformation';
 
 // 이동 경로: /api/v1/exam/{exam-id}
 // todo: 패러미터 적용을 위한 대괄호 폴더에 넣기.
+// todo: 전체 후기에 관한 질문 남기기(특정 과목의 전체 후기인지, 모든 과목의 전체 후기인지)
 
 const examTitleData = {
   title: 'exam1',

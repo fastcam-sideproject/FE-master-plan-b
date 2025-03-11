@@ -1,31 +1,21 @@
-import StudyCard from "./StudyCard";
+import StudyCard from './StudyCard';
 
-const dummyStudyData = [
-  {
-    id: 1,
-    title: "TOEIC",
-    daysRemaining: 10,
-    progress: 5,
-  },
-  {
-    id: 2,
-    title: "JLPT N2",
-    daysRemaining: 20,
-    progress: 3,
-  },
-  {
-    id: 3,
-    title: "정보처리기사",
-    daysRemaining: 15,
-    progress: 6,
-  },
-];
+interface StudyData {
+  id: number;
+  title: string;
+  daysRemaining: number;
+  progress: number;
+}
 
-export default function StudyCardList() {
+interface StudyCardListProps {
+  studyData: StudyData[];
+}
+
+export default function StudyCardList({ studyData }: StudyCardListProps) {
   return (
-    <div className="h-[400px] flex justify-center items-center bg-black overflow-x-scroll">
-      <ul className="grid grid-cols-3 gap-2">
-        {dummyStudyData.map((data) => (
+    <div className="flex h-[270px] items-end overflow-x-scroll pb-4 disabled:bg-neutral-5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-neutral-20 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:h-[6px]">
+      <ul className="flex gap-4">
+        {studyData.map((data) => (
           <StudyCard
             key={data.id}
             title={data.title}
