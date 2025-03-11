@@ -1,3 +1,5 @@
+import CommunityMain from "@/components/Community/CommunityMain";
+
 export default function CommunityPage() {
-  return <>커뮤니티</>;
+  return <CommunityMain />;
 }
