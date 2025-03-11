@@ -1,6 +1,5 @@
 import useResponsive from '@/hooks/useResponsive';
 import { formatDateWeek } from '@/lib/utils';
-import React from 'react';
 import { Button } from '../ui/button';
 
 type CardContentDateProps = {
