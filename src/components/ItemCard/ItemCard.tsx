@@ -1,6 +1,3 @@
-import React from 'react';
-
-import useDateConverter from '@/hooks/useDateConverter';
 import BookmarkButton from './BookmarkButton';
 import StarRating from '../common/StarRating/StarRating';
 import RegDateBadge from './RegDateBadge';
@@ -26,9 +23,9 @@ type ItemCardProps = {
 const getCardStyles = () => {
   return {
     card:
-      'desktop:w-[285px] desktop:h-[270px] desktop:pt-[24px] desktop:pr-[21px] desktop:pb-[34px] desktop:pl-[19px] ' +
-      'tablet:w-[218px] tablet:h-[219px] tablet:pt-[21px] tablet:pr-[12px] tablet:pb-[21px] tablet:pl-[16px] ' +
-      'mobile:w-[163px] mobile:h-[179px] mobile:pt-[19px] mobile:pr-[17px] mobile:pb-[13px] mobile:pl-[16px]',
+      'desktop:min-w-[285px] desktop:h-[270px] desktop:pt-[24px] desktop:pr-[21px] desktop:pb-[34px] desktop:pl-[19px] ' +
+      'tablet:min-w-[218px] tablet:h-[219px] tablet:pt-[21px] tablet:pr-[12px] tablet:pb-[21px] tablet:pl-[16px] ' +
+      'mobile:min-w-[163px] mobile:h-[179px] mobile:pt-[19px] mobile:pr-[17px] mobile:pb-[13px] mobile:pl-[16px]',
     gap: 'desktop:gap-5 tablet:gap-3 mobile:gap-3',
     textSize:
       'desktop:text-body-xxlarge-desktop tablet:text-body-xlarge-desktop mobile:text-body-xlarge-mobile',

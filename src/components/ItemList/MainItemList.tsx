@@ -21,7 +21,7 @@ export function MainItemList({ title, labels, tags, content }: MainItemListProps
   }));
 
   return (
-    <div className="w-full mobile:w-[335px] px-10 mobile:px-6 py-12 mobile:py-7 bg-neutral-0 rounded-9 mobile:rounded-8 flex-col justify-center items-center inline-flex">
+    <div className="w-full px-10 mobile:px-6 py-12 mobile:py-7 bg-neutral-0 rounded-9 mobile:rounded-8 flex-col justify-center items-center inline-flex">
       <div className="w-full flex-col justify-start items-end mobile:gap-4 gap-5 flex">
         <div className="flex-col justify-start items-start mobile:gap-6 gap-7 flex">
           <div className="flex-col justify-start items-start mobile:gap-5 gap-6 flex">
