@@ -1,39 +1,35 @@
-// import axios from "@/utils/axios";
-// import toAxios from "@/utils/toAxios";
-// import { GetCenterData } from "@/models/ApiTypes";
-// import { CENTER_API_PATH } from "@/apis/path";
-
-import axios from '@/lib/hyejeong-test/axios';
-import toAxios from '@/lib/hyejeong-test/toAxios';
+import { apiClient } from '../apiClient';
 import { MY_HISTORY_API_PATH } from '../path';
 
-interface MyHistoryData {
-  // 백엔드에서 받아오는 데이터 타입을 정의하세요
-  postId: number;
+export interface Post {
+  id: number;
   title: string;
   content: string;
-  nickname: string;
   createdAt: string;
-  category: string;
-  likeCount: number;
-  viewCount: number;
-  commentCount: number;
+  updatedAt: string;
 }
 
-interface MyHistoryResponse {
-  data: {
-    content: MyHistoryData[];
-    pageable: {
-      pageNumber: number;
-      pageSize: number;
-    };
-    totalElements: number;
-    totalPages: number;
-  };
+export interface MyPostResponse {
+  posts: Post[];
+  totalCount: number;
 }
 
-const getMyHistory = async () => {
-  return toAxios<MyHistoryResponse>(axios.get(MY_HISTORY_API_PATH.my));
+export interface ApiResponse<T> {
+  data: T;
+  message: string;
+  status: number;
+}
+
+export const myHistoryApi = {
+  getMyPosts: async () => {
+    return await apiClient.get<ApiResponse<MyPostResponse>>(MY_HISTORY_API_PATH.my);
+  },
+
+  deletePost: async (postId: number) => {
+    return await apiClient.delete<ApiResponse<void>>(`/api/v1/posts/${postId}`);
+  },
+
+  updatePost: async (postId: number, data: Partial<Post>) => {
+    return await apiClient.patch<ApiResponse<Post>>(`/api/v1/posts/${postId}`, data);
+  },
 };
-
-export default getMyHistory;
