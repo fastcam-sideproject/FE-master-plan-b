@@ -12,6 +12,7 @@ import {
   IconTrash,
 } from '@tabler/icons-react';
 import useGetTimeAgo from '@/hooks/useGetTimeAgo';
+import type { Post } from '@/app/mypage/my-history/page';
 import { Avatar } from '../common/Avatar';
 
 interface CommunityDataProps {
@@ -27,9 +28,20 @@ interface CommunityDataProps {
     commentCount: number;
   }>;
   variant?: 'written' | 'bookmarked' | 'liked';
+  onDelete?: (postId: number) => void;
+  onEdit?: (postId: number, data: Partial<Post>) => void;
+  onShare?: (postId: number) => void;
+  onStore?: (postId: number) => void;
 }
 
-const CommunityBox = ({ data, variant = 'bookmarked' }: CommunityDataProps) => {
+const CommunityBox = ({
+  data,
+  variant = 'bookmarked',
+  onDelete,
+  onEdit,
+  onShare,
+  onStore,
+}: CommunityDataProps) => {
   const { getTimeAgo } = useGetTimeAgo();
 
   const [isBookmarked, setIsBookmarked] = useState(false);
@@ -68,8 +80,42 @@ const CommunityBox = ({ data, variant = 'bookmarked' }: CommunityDataProps) => {
     return new Intl.NumberFormat('ko-KR').format(num);
   };
 
+  const handleEdit = (postId: number) => {
+    if (onEdit) {
+      // 수정할 데이터를 준비하여 전달
+      const postToEdit = data.find((post) => post.postId === postId);
+      if (postToEdit) {
+        onEdit(postId, postToEdit);
+      }
+    }
+  };
+
+  const handleDelete = (postId: number) => {
+    if (onDelete) {
+      if (window.confirm('정말로 이 게시글을 삭제하시겠습니까?')) {
+        console.log('Deleting post:', postId);
+        onDelete(postId);
+      }
+    }
+  };
+
+  const handleShare = (postId: number) => {
+    if (onShare) {
+      onShare(postId);
+    } else {
+      handleCopyLink(String(postId));
+    }
+  };
+
+  const handleStore = (postId: number) => {
+    if (onStore) {
+      onStore(postId);
+    }
+    setIsBookmarked((prev) => !prev);
+  };
+
   return (
-    <>
+    <div className="flex w-full flex-col gap-4">
       {data.map((item) => (
         <div
           key={item.postId}
@@ -94,18 +140,19 @@ const CommunityBox = ({ data, variant = 'bookmarked' }: CommunityDataProps) => {
               <ul className="flex items-center gap-5">
                 <li className="cursor-pointer">
                   {variant === 'liked' ? null : variant === 'written' ? (
-                    <IconPencil />
+                    <IconPencil onClick={() => handleEdit(item.postId)} />
                   ) : (
-                    <IconUpload
-                      onClick={() => handleCopyLink(String(item.postId))}
-                    />
+                    <IconUpload onClick={() => handleShare(item.postId)} />
                   )}
                 </li>
                 <li className="cursor-pointer">
-                  {variant === 'written' || 'liked' ? (
-                    <IconTrash className="text-red-40" />
+                  {variant === 'written' || variant === 'liked' ? (
+                    <IconTrash
+                      className="text-red-40"
+                      onClick={() => handleDelete(item.postId)}
+                    />
                   ) : (
-                    <div onClick={handleBookmarkClicked}>
+                    <div onClick={() => handleStore(item.postId)}>
                       {isBookmarked ? <IconBookmarkFilled /> : <IconBookmark />}
                     </div>
                   )}
@@ -137,7 +184,7 @@ const CommunityBox = ({ data, variant = 'bookmarked' }: CommunityDataProps) => {
           </div>
         </div>
       ))}
-    </>
+    </div>
   );
 };
 
