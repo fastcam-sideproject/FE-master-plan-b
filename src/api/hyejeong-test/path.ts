@@ -2,9 +2,11 @@ export const MY_HISTORY_API_PATH = {
   // 내가 쓴 글 조회
   my: 'api/v1/posts/my',
   // 내가 좋아요한 글 조회
-  like: 'api/v1/posts/liked',
+  liked: 'api/v1/posts/posts/liked',
   // 내가 저장한 글 조회
   stored: 'api/v1/posts/stored',
+  // 내가 저장한 글 등록 & 삭제(post)(/api/v1/{postId}/store)
+  storeTo: 'api/v1',
   // 게시글 삭제(delete)
   // 게시글 수정(patch)
   posts: '/api/v1/posts',

@@ -10,6 +10,7 @@ import {
   IconUpload,
   IconPencil,
   IconTrash,
+  IconHeartFilled,
 } from '@tabler/icons-react';
 import useGetTimeAgo from '@/hooks/useGetTimeAgo';
 import type { Post } from '@/app/mypage/my-history/page';
@@ -27,27 +28,34 @@ interface CommunityDataProps {
     viewCount: number;
     commentCount: number;
   }>;
-  variant?: 'written' | 'bookmarked' | 'liked';
+  variant?: 'written' | 'stored' | 'liked';
   onDelete?: (postId: number) => void;
   onEdit?: (postId: number, data: Partial<Post>) => void;
   onShare?: (postId: number) => void;
   onStore?: (postId: number) => void;
+  onLike?: (postId: number) => void;
 }
 
 const CommunityBox = ({
   data,
-  variant = 'bookmarked',
+  variant = 'stored',
   onDelete,
   onEdit,
   onShare,
   onStore,
+  onLike,
 }: CommunityDataProps) => {
   const { getTimeAgo } = useGetTimeAgo();
 
-  const [isBookmarked, setIsBookmarked] = useState(false);
+  const [storedPosts, setStoredPosts] = useState<{ [key: number]: boolean }>(
+    {},
+  );
 
-  const handleBookmarkClicked = () => {
-    setIsBookmarked((prev) => !prev);
+  const handleBookmarkClicked = (postId: number) => {
+    setStoredPosts((prev) => ({
+      ...prev,
+      [postId]: !prev[postId],
+    }));
   };
 
   const getCategoryDisplay = (category: string): string => {
@@ -111,7 +119,7 @@ const CommunityBox = ({
     if (onStore) {
       onStore(postId);
     }
-    setIsBookmarked((prev) => !prev);
+    handleBookmarkClicked(postId);
   };
 
   return (
@@ -149,11 +157,27 @@ const CommunityBox = ({
                   {variant === 'written' || variant === 'liked' ? (
                     <IconTrash
                       className="text-red-40"
-                      onClick={() => handleDelete(item.postId)}
+                      onClick={() => {
+                        if (variant === 'liked') {
+                          if (
+                            window.confirm(
+                              '정말로 이 글의 좋아요를 취소하시겠습니까?',
+                            )
+                          ) {
+                            onLike?.(item.postId);
+                          }
+                        } else {
+                          handleDelete(item.postId);
+                        }
+                      }}
                     />
                   ) : (
                     <div onClick={() => handleStore(item.postId)}>
-                      {isBookmarked ? <IconBookmarkFilled /> : <IconBookmark />}
+                      {storedPosts[item.postId] ? (
+                        <IconBookmarkFilled className="text-red-40" />
+                      ) : (
+                        <IconBookmark />
+                      )}
                     </div>
                   )}
                 </li>
@@ -178,7 +202,11 @@ const CommunityBox = ({
               <li>{formatNumber(item.commentCount)}</li>
             </ul>
             <ul className="flex items-center gap-2">
-              <IconHeart />
+              {variant === 'liked' ? (
+                <IconHeartFilled className="text-red-40" />
+              ) : (
+                <IconHeart />
+              )}
               <li>{formatNumber(item.likeCount)}</li>
             </ul>
           </div>

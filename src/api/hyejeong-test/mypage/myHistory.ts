@@ -3,9 +3,9 @@ import { MY_HISTORY_API_PATH } from '../path';
 import { ApiResponse, MyPostResponse, Post } from './type';
 
 export const myHistoryApi = {
-  getMyPosts: async () => {
+  getMyPosts: async (page: number = 0) => {
     return await apiClient.get<ApiResponse<MyPostResponse>>(
-      MY_HISTORY_API_PATH.my,
+      `${MY_HISTORY_API_PATH.my}?page=${page}&size=20`,
     );
   },
 

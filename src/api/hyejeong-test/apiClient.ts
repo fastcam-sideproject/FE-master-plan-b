@@ -16,6 +16,16 @@ class ApiClient {
     });
   }
 
+  async post<T>(url: string, data?: any) {
+    try {
+      const response = await this.client.post<T>(url, data);
+      return [null, response.data] as const;
+    } catch (error) {
+      console.error('POST 요청 중 오류:', error);
+      return [error, null] as const;
+    }
+  }
+
   async get<T>(url: string) {
     try {
       const response = await this.client.get<T>(url);
