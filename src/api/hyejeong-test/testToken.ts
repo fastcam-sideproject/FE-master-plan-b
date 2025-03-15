@@ -1,0 +1,4 @@
+const testToken =
+  'Bearer%20eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QHRlc3QuY29tIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTc0MjA0NjA1MSwiaWF0IjoxNzQyMDQyNDUxLCJqdGkiOiIyNDcyZmIwNC0wMzI4LTRkYWEtYjA3My1hOGJiMGI5NjJkMzEifQ.QbVyetngWcRFEpD7Gm79Zr0NGvID2kgKwqTmO3rdbBM';
+
+export default testToken;
