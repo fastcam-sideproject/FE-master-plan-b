@@ -61,6 +61,7 @@ const MyHistoryPage = () => {
 
   return (
     <div className="flex w-full flex-col items-center gap-4 py-[120px]">
+      <></>
       {communityData.length === 0 ? (
         <div>작성하신 글이 없습니다.</div>
       ) : (
