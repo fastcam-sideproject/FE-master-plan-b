@@ -7,7 +7,7 @@ export const MY_HISTORY_API_PATH = {
   stored: 'api/v1/posts/stored',
   // 게시글 삭제(delete)
   // 게시글 수정(patch)
-  posts: '/api/v1/posts/{postId}',
+  posts: '/api/v1/posts/',
 } as const;
 
 export const MY_EXAM_SESSION_API_PATH = {

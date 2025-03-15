@@ -6,12 +6,35 @@ export interface Post {
   title: string;
   content: string;
   createdAt: string;
-  updatedAt: string;
+  nickname: string;
+  category: string;
+  likeCount: number;
+  viewCount: number;
+  commentCount: number;
 }
 
 export interface MyPostResponse {
-  posts: Post[];
-  totalCount: number;
+  content: Post[];
+  pageable: {
+    pageNumber: number;
+    pageSize: number;
+    sort: {
+      empty: boolean;
+      sorted: boolean;
+      unsorted: boolean;
+    };
+    offset: number;
+    paged: boolean;
+    unpaged: boolean;
+  };
+  totalPages: number;
+  totalElements: number;
+  last: boolean;
+  size: number;
+  number: number;
+  numberOfElements: number;
+  first: boolean;
+  empty: boolean;
 }
 
 export interface ApiResponse<T> {
@@ -22,14 +45,21 @@ export interface ApiResponse<T> {
 
 export const myHistoryApi = {
   getMyPosts: async () => {
-    return await apiClient.get<ApiResponse<MyPostResponse>>(MY_HISTORY_API_PATH.my);
+    return await apiClient.get<ApiResponse<MyPostResponse>>(
+      MY_HISTORY_API_PATH.my,
+    );
   },
 
   deletePost: async (postId: number) => {
-    return await apiClient.delete<ApiResponse<void>>(`/api/v1/posts/${postId}`);
+    return await apiClient.delete<ApiResponse<void>>(
+      MY_HISTORY_API_PATH.posts + `${postId}`,
+    );
   },
 
-  updatePost: async (postId: number, data: Partial<Post>) => {
-    return await apiClient.patch<ApiResponse<Post>>(`/api/v1/posts/${postId}`, data);
+  patchPost: async (postId: number, data: Partial<Post>) => {
+    return await apiClient.patch<ApiResponse<Post>>(
+      MY_HISTORY_API_PATH.posts + `${postId}`,
+      data,
+    );
   },
 };
