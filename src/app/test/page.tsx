@@ -23,7 +23,11 @@ import { Dropdown } from '@/components/Dropdown';
 import ItemCard from '@/components/ItemCard/ItemCard';
 import { ItemList, MainItemList } from '@/components/ItemList';
 import { LiveChip } from '@/components/LiveChip';
-import { AppleLoginBtn, GoogleLoginBtn, KakaoLoginBtn } from '@/components/LoginButton';
+import {
+  AppleLoginBtn,
+  GoogleLoginBtn,
+  KakaoLoginBtn,
+} from '@/components/LoginButton';
 import BtnOnboarding from '@/components/Onboarding/BtnOnboarding';
 import Popover from '@/components/Popover/Popover';
 import SearchBar from '@/components/SearchBar/SearchBar';
@@ -204,7 +208,12 @@ export default function Home() {
       <Button variant="secondary" size="lg" className="font-medium">
         라지 박스
       </Button>
-      <Button variant="secondary" size="lg" className="font-medium" label="라지박스" />
+      <Button
+        variant="secondary"
+        size="lg"
+        className="font-medium"
+        label="라지박스"
+      />
 
       <Button variant="secondary" size="md" className="ga text-neutral-80">
         미디움 박스
@@ -266,14 +275,26 @@ export default function Home() {
       <Textarea placeholder="여기에 텍스트 입력" disabled />
       <Input placeholder="여기에 텍스트 입력" size="text_md" />
       <Input placeholder="여기에 텍스트 입력" size="text_md" disabled />
-      {communityData.map((item, index) => (
-        <CommunityBox key={index} data={item} />
-      ))}
+
+      {/* <CommunityBox key={index} data={item} /> */}
+
       <CommunityInfo />
       <div className="box-border w-fit border border-neutral-90 p-5">
-        <Popover label="여기에 다크모드 텍스트 입력" tipPosition="start" mode="dark" />
-        <Popover label="여기에 다크모드 텍스트 입력" tipPosition="center" mode="dark" />
-        <Popover label="여기에 다크모드 텍스트 입력" tipPosition="end" mode="dark" />
+        <Popover
+          label="여기에 다크모드 텍스트 입력"
+          tipPosition="start"
+          mode="dark"
+        />
+        <Popover
+          label="여기에 다크모드 텍스트 입력"
+          tipPosition="center"
+          mode="dark"
+        />
+        <Popover
+          label="여기에 다크모드 텍스트 입력"
+          tipPosition="end"
+          mode="dark"
+        />
         <Popover
           label="여기에 다크모드 텍스트 입력"
           tipPosition="start"
@@ -294,9 +315,21 @@ export default function Home() {
         />
       </div>
       <div className="w-fit bg-neutral-90 p-5">
-        <Popover label="여기에 화이트모드 텍스트 입력" tipPosition="start" mode="light" />
-        <Popover label="여기에 화이트모드 텍스트 입력" tipPosition="center" mode="light" />
-        <Popover label="여기에 화이트모드 텍스트 입력" tipPosition="end" mode="light" />
+        <Popover
+          label="여기에 화이트모드 텍스트 입력"
+          tipPosition="start"
+          mode="light"
+        />
+        <Popover
+          label="여기에 화이트모드 텍스트 입력"
+          tipPosition="center"
+          mode="light"
+        />
+        <Popover
+          label="여기에 화이트모드 텍스트 입력"
+          tipPosition="end"
+          mode="light"
+        />
         <Popover
           label="여기에 화이트모드 텍스트 입력"
           tipPosition="start"
