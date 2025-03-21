@@ -1,3 +1,3 @@
 export * from './KakaoLoginBtn';
 export * from './AppleLoginBtn';
-export * from './GoogleLoginBtn';
+export * from './LoginBtn';

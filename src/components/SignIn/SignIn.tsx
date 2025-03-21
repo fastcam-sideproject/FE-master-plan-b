@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { AppleLoginBtn, GoogleLoginBtn, KakaoLoginBtn } from "../LoginButton";
+import { LoginBtn } from "../LoginButton";
 
 function SignIn() {
   return (
@@ -11,9 +11,10 @@ function SignIn() {
       </section>
 
       <section className="flex flex-col items-center gap-5">
-        <KakaoLoginBtn />
-        <AppleLoginBtn />
-        <GoogleLoginBtn />
+        <LoginBtn loginType={"kakao"} />
+        <LoginBtn loginType={"naver"} />
+        <LoginBtn loginType={"google"} />
+        <LoginBtn loginType={"email"} />
       </section>
     </div>
   );
