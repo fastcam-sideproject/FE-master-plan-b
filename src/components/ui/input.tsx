@@ -8,7 +8,7 @@ const inputVariants = cva('flex w-full text-neutral-85 font-medium', {
   variants: {
     variant: {
       default:
-        'px-6 py-4 rounded-6 border border-neutral-20 focus:outline-none disabled:bg-neutral-5 placeholder:text-neutral-20',
+        'px-6 py-4 rounded-4 border border-neutral-20 focus:outline-none disabled:bg-neutral-5 placeholder:text-neutral-20',
       secondary:
         'h-full p-0 text-center border-none [&::-webkit-inner-spin-button]:appearance-none',
     },
@@ -26,7 +26,7 @@ const inputVariants = cva('flex w-full text-neutral-85 font-medium', {
 
 interface InputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>,
-    VariantProps<typeof inputVariants> {}
+  VariantProps<typeof inputVariants> { }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, placeholder, disabled, variant, size, ...props }, ref) => {
