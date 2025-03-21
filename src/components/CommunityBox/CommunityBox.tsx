@@ -13,7 +13,7 @@ import {
   IconHeartFilled,
 } from '@tabler/icons-react';
 import useGetTimeAgo from '@/hooks/useGetTimeAgo';
-import type { Post } from '@/app/mypage/my-history/page';
+import type { Post } from '@/app/(withAuth)/mypage/my-history/page';
 import { Avatar } from '../common/Avatar';
 
 interface CommunityDataProps {
@@ -47,17 +47,6 @@ const CommunityBox = ({
 }: CommunityDataProps) => {
   const { getTimeAgo } = useGetTimeAgo();
 
-  const [storedPosts, setStoredPosts] = useState<{ [key: number]: boolean }>(
-    {},
-  );
-
-  const handleBookmarkClicked = (postId: number) => {
-    setStoredPosts((prev) => ({
-      ...prev,
-      [postId]: !prev[postId],
-    }));
-  };
-
   const getCategoryDisplay = (category: string): string => {
     switch (category) {
       case 'TIP':
@@ -68,7 +57,7 @@ const CommunityBox = ({
         return '시험장';
       case 'PROBLEM':
         return '시험 문제';
-      case 'PASS':
+      case 'CHECK':
         return '합격자 조회';
       default:
         return category;
@@ -116,10 +105,19 @@ const CommunityBox = ({
   };
 
   const handleStore = (postId: number) => {
-    if (onStore) {
-      onStore(postId);
+    if (variant === 'stored') {
+      // 저장된 글 목록에서는 확인 메시지 표시 후 삭제
+      if (window.confirm('정말로 이 글의 저장을 취소하시겠습니까?')) {
+        if (onStore) {
+          onStore(postId);
+        }
+      }
+    } else {
+      // 다른 화면에서는 즉시 저장 상태 변경
+      if (onStore) {
+        onStore(postId);
+      }
     }
-    handleBookmarkClicked(postId);
   };
 
   return (
@@ -173,7 +171,7 @@ const CommunityBox = ({
                     />
                   ) : (
                     <div onClick={() => handleStore(item.postId)}>
-                      {storedPosts[item.postId] ? (
+                      {variant === 'stored' ? (
                         <IconBookmarkFilled className="text-red-40" />
                       ) : (
                         <IconBookmark />
