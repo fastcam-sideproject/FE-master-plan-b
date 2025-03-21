@@ -1,3 +1,5 @@
+import SignUp from "@/components/SignUp/SignUp";
+
 export default function Page() {
-  return <>회원가입</>;
+  return <div className="my-[120px]"><SignUp /></div>;
 };

@@ -1,7 +1,8 @@
 import SignInEmail from "@/components/SignIn/SignInEmail";
 
-function Page() {
-  return <SignInEmail />;
+export default function Page() {
+  return (
+    <div className="py-[167px]">
+      <SignInEmail />
+    </div>);
 }
-
-export default Page;
