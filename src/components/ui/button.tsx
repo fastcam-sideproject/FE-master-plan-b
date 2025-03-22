@@ -58,8 +58,8 @@ export interface ButtonProps
   asChild?: boolean;
   withIcon?: boolean;
   label?: string;
-  onClick: () => void;
-  onSubmit: () => void;
+  onClick?: () => void;
+  onSubmit?: () => void;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(

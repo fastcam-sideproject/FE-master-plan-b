@@ -21,7 +21,12 @@ const SignInFormPage = () => {
           <p>아이디</p>
           <div className="flex">
             <Input placeholder="아이디를 입력해주세요" />
-            <Button label="인증하기" variant="third" size="sm" />
+            <Button
+              label="인증하기"
+              variant="third"
+              size="sm"
+              onSubmit={handleSubmit}
+            />
           </div>
         </div>
         <div>
