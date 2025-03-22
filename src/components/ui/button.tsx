@@ -58,18 +58,35 @@ export interface ButtonProps
   asChild?: boolean;
   withIcon?: boolean;
   label?: string;
+  onClick?: () => void;
+  onSubmit?: () => void;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { className, variant, size, asChild = false, children, withIcon = false, label, ...props },
+    {
+      className,
+      variant,
+      size,
+      asChild = false,
+      children,
+      withIcon = false,
+      label,
+      onClick,
+      onSubmit,
+      ...props
+    },
     ref,
   ) => {
     const Comp = asChild ? Slot : 'button';
     const iconSize = size === 'sm' ? '16px' : '20px';
 
     return (
-      <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props}>
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      >
         {withIcon === true && (
           <img
             src="/icons/active/check.svg"
