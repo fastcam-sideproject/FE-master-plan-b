@@ -1,7 +1,14 @@
+export const SIGN_IN_API_PATH = {
+  verification: '/api/v1/member/verification',
+  sendVerificationCode: '/api/v1/member/send-verification-code',
+  create: '/api/v1/member/create',
+};
+
 export const USERS_API_PATH = {
+  // 셋 모두 post 사용
   login: '/api/v1/member/login',
   logout: '/api/v1/member/logout',
-  verify: '/api/v1/member/verify',
+  create: '/api/v1/member/create',
 } as const;
 
 export const MY_HISTORY_API_PATH = {

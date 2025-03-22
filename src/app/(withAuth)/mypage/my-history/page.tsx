@@ -1,13 +1,15 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import { useSession } from 'next-auth/react';
 import CommunityBox from '@/components/CommunityBox/CommunityBox';
-import myHistoryApi from '@/api/mypage/myHistory/myHistory';
+
 import { myHistoryLikeApi } from '@/api/mypage/myHistory/myHistoryLike';
 import { myHistoryStoredApi } from '@/api/mypage/myHistory/myHistoryStored';
 import type { Post as ApiPost } from '@/api/mypage/myHistory/type';
 import TabHorizonSmall from '@/app/(withAuth)/mypage/my-history/TabHorizonSmall copy';
 import { NumberPagination } from '@/components/common/Pagination';
+import { myHistoryApi } from '@/api/mypage/myHistory/myHistory';
 
 // todo: store, like의 포스트는 되는데 delete가 안 되고 있음(저번엔 잘 됨).
 
@@ -41,42 +43,56 @@ const tabButtonProps: TabButtonProp[] = [
 ] as const;
 
 const MyHistoryPage = () => {
+  const { data: session, status } = useSession();
   const [communityData, setCommunityData] = useState<Post[]>([]);
   const [activeTab, setActiveTab] = useState<'liked' | 'written' | 'stored'>(
     'liked',
   );
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchPosts = async (page: number) => {
-    let error, response;
-
-    switch (activeTab) {
-      case 'liked':
-        [error, response] = await myHistoryLikeApi.getMyLikedPosts(page - 1);
-        break;
-      case 'written':
-        [error, response] = await myHistoryApi.getMyPosts(page - 1);
-        break;
-      case 'stored':
-        [error, response] = await myHistoryStoredApi.getMyStoredPosts(page - 1);
-        break;
-    }
-
-    if (error) {
-      console.error('데이터를 가져오는 중 오류가 발생했습니다:', error);
+    if (status !== 'authenticated' || !session) {
+      console.log('세션이 준비되지 않았습니다.');
       return;
     }
-    if (response?.data) {
-      console.log('API 응답 데이터(전체):', response.data.content);
-      const transformedData = response.data.content.map((post: ApiPost) => {
-        return {
-          ...post,
-        };
-      });
-      console.log('변환된 데이터:', transformedData);
-      setCommunityData(transformedData);
-      setTotalPages(response.data.totalPages);
+
+    setIsLoading(true);
+    let error, response;
+
+    try {
+      switch (activeTab) {
+        case 'liked':
+          [error, response] = await myHistoryLikeApi.getMyLikedPosts(page - 1);
+          break;
+        case 'written':
+          [error, response] = await myHistoryApi.getMyPosts(page - 1);
+          break;
+        case 'stored':
+          [error, response] = await myHistoryStoredApi.getMyStoredPosts(
+            page - 1,
+          );
+          break;
+      }
+
+      if (error) {
+        console.error('데이터를 가져오는 중 오류가 발생했습니다:', error);
+        return;
+      }
+      if (response?.data) {
+        const transformedData = response.data.content.map((post: ApiPost) => {
+          return {
+            ...post,
+          };
+        });
+        setCommunityData(transformedData);
+        setTotalPages(response.data.totalPages);
+      }
+    } catch (error) {
+      console.error('데이터 로딩 중 오류:', error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -108,7 +124,7 @@ const MyHistoryPage = () => {
   };
 
   const handleStorePost = async (postId: number) => {
-    const [error] = await myHistoryStoredApi.editMyStoredPost(postId);
+    const [error, response] = await myHistoryStoredApi.editMyStoredPost(postId);
     if (error) {
       console.error('저장 상태 변경 중 오류:', error);
       return;
@@ -117,7 +133,7 @@ const MyHistoryPage = () => {
   };
 
   const handleLikePost = async (postId: number) => {
-    const [error] = await myHistoryLikeApi.editMyLikedPost(postId);
+    const [error, response] = await myHistoryLikeApi.editMyLikedPost(postId);
     if (error) {
       console.error('저장 상태 변경 중 오류:', error);
       return;
@@ -126,8 +142,10 @@ const MyHistoryPage = () => {
   };
 
   useEffect(() => {
-    fetchPosts(currentPage);
-  }, [activeTab]);
+    if (status === 'authenticated') {
+      fetchPosts(currentPage);
+    }
+  }, [activeTab, status]);
 
   const handleCopyLink = (postId: number) => {
     // 링크 복사 로직 구현 필요
@@ -141,48 +159,60 @@ const MyHistoryPage = () => {
 
   return (
     <div className="flex w-[1080px] flex-col gap-9 py-[120px]">
-      <div className="flex w-full flex-col gap-3">
-        <h1 className="text-heading-small-desktop">내 활동</h1>
-        <p className="text-body-large-desktop font-[400] text-neutral-50">
-          {activeTab === 'liked' &&
-            '내가 좋아요 한 글을 수정하고 삭제할 수 있습니다.'}
-          {activeTab === 'written' &&
-            '내가 저장한 글을 확인하고 삭제할 수 있습니다.'}
-          {activeTab === 'stored' && '내가 저장한 글을 확인할 수 있습니다.'}
-        </p>
-      </div>
-      <TabHorizonSmall
-        btnProps={tabButtonProps}
-        onTabChange={(type) => setActiveTab(type)}
-      />
-      {communityData.length === 0 ? (
-        <div>
-          {activeTab === 'liked' && '좋아요한 글이 없습니다.'}
-          {activeTab === 'written' && '작성한 글이 없습니다.'}
-          {activeTab === 'stored' && '저장한 글이 없습니다.'}
+      {status === 'loading' || isLoading ? (
+        <div className="flex min-h-[400px] items-center justify-center">
+          <p className="text-body-large-desktop">로딩 중...</p>
+        </div>
+      ) : status === 'unauthenticated' ? (
+        <div className="flex min-h-[400px] items-center justify-center">
+          <p className="text-body-large-desktop">로그인이 필요합니다.</p>
         </div>
       ) : (
-        <CommunityBox
-          data={communityData}
-          variant={activeTab}
-          onDelete={(postId) => {
-            console.log('삭제 요청된 postId:', postId);
-            handleDeletePost(Number(postId));
-          }}
-          onEdit={handlePatchPost}
-          onShare={(postId) => handleCopyLink(postId)}
-          onStore={(postId) => handleStorePost(postId)}
-          onLike={(postId) => handleLikePost(postId)}
-        />
+        <>
+          <div className="flex w-full flex-col gap-3">
+            <h1 className="text-heading-small-desktop">내 활동</h1>
+            <p className="text-body-large-desktop font-[400] text-neutral-50">
+              {activeTab === 'liked' &&
+                '내가 좋아요 한 글을 수정하고 삭제할 수 있습니다.'}
+              {activeTab === 'written' &&
+                '내가 저장한 글을 확인하고 삭제할 수 있습니다.'}
+              {activeTab === 'stored' && '내가 저장한 글을 확인할 수 있습니다.'}
+            </p>
+          </div>
+          <TabHorizonSmall
+            btnProps={tabButtonProps}
+            onTabChange={(type) => setActiveTab(type)}
+          />
+          {communityData.length === 0 ? (
+            <div>
+              {activeTab === 'liked' && '좋아요한 글이 없습니다.'}
+              {activeTab === 'written' && '작성한 글이 없습니다.'}
+              {activeTab === 'stored' && '저장한 글이 없습니다.'}
+            </div>
+          ) : (
+            <CommunityBox
+              data={communityData}
+              variant={activeTab}
+              onDelete={(postId) => {
+                console.log('삭제 요청된 postId:', postId);
+                handleDeletePost(Number(postId));
+              }}
+              onEdit={handlePatchPost}
+              onShare={(postId) => handleCopyLink(postId)}
+              onStore={(postId) => handleStorePost(postId)}
+              onLike={(postId) => handleLikePost(postId)}
+            />
+          )}
+          <div className="flex justify-center">
+            <NumberPagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+              className="custom-class"
+            />
+          </div>
+        </>
       )}
-      <div className="flex justify-center">
-        <NumberPagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-          className="custom-class"
-        />
-      </div>
     </div>
   );
 };

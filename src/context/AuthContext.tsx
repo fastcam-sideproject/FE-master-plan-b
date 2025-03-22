@@ -1,8 +1,14 @@
 'use client';
 
-import { createContext, useContext, ReactNode } from 'react';
+import { createContext, useContext, ReactNode, useEffect } from 'react';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+
+interface SessionUpdateEvent extends CustomEvent {
+  detail: {
+    accessToken: string;
+  };
+}
 
 interface AuthContextType {
   isAuthenticated: boolean;
@@ -20,8 +26,32 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const { data: session, status } = useSession();
+  const { data: session, status, update } = useSession();
   const router = useRouter();
+
+  useEffect(() => {
+    const handleSessionUpdate = async (event: SessionUpdateEvent) => {
+      const { accessToken } = event.detail;
+      await update({
+        ...session,
+        user: {
+          ...session?.user,
+          accessToken,
+        },
+      });
+    };
+
+    window.addEventListener(
+      'session-update',
+      handleSessionUpdate as EventListener,
+    );
+    return () => {
+      window.removeEventListener(
+        'session-update',
+        handleSessionUpdate as EventListener,
+      );
+    };
+  }, [session, update]);
 
   const login = async (email: string, password: string) => {
     try {
