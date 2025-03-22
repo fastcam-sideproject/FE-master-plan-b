@@ -43,12 +43,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     window.addEventListener(
       'session-update',
-      handleSessionUpdate as EventListener,
+      handleSessionUpdate as unknown as EventListener,
     );
     return () => {
       window.removeEventListener(
         'session-update',
-        handleSessionUpdate as EventListener,
+        handleSessionUpdate as unknown as EventListener,
       );
     };
   }, [session, update]);

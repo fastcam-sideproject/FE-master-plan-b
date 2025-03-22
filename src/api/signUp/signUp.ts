@@ -1,6 +1,6 @@
 import { createApiCall } from '@/lib/apiUtils';
 import apiClient from '../apiClient';
-import { SIGN_IN_API_PATH } from '../path';
+import { SIGN_UP_API_PATH } from '../path';
 import {
   ApiResponse,
   CreateUserRequest,
@@ -9,28 +9,30 @@ import {
   VerificationRequest,
 } from './type';
 
-export const signinMasterplanApi = {
+export const signUpMasterplanApi = {
   postVerification: () =>
     createApiCall<User>(
       () =>
         apiClient.post<ApiResponse<VerificationRequest>>(
-          `${SIGN_IN_API_PATH.verification}`,
+          `${SIGN_UP_API_PATH.verification}`,
         ),
       '인증번호 일치 확인 실패',
     ),
-  sendVerificationCode: () =>
+  sendVerificationCode: (data: SendVerificationCodeRequest) =>
     createApiCall<User>(
       () =>
         apiClient.post<ApiResponse<SendVerificationCodeRequest>>(
-          `${SIGN_IN_API_PATH.sendVerificationCode}`,
+          `${SIGN_UP_API_PATH.sendVerificationCode}`,
+          data,
         ),
       '이메일 중복 확인 및 인증번호 발송 실패',
     ),
-  create: () =>
+  create: (data: CreateUserRequest) =>
     createApiCall<User>(
       () =>
         apiClient.post<ApiResponse<CreateUserRequest>>(
-          `${SIGN_IN_API_PATH.create}`,
+          `${SIGN_UP_API_PATH.create}`,
+          data,
         ),
       '회원가입 실패',
     ),
