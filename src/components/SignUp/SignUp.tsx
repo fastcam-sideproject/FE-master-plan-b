@@ -1,10 +1,10 @@
 'use client';
 
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import AgreementCheckboxes from "./AgreementCheckboxes";
-import { useState } from "react";
 
 export default function SignUp() {
   const router = useRouter();
@@ -12,9 +12,9 @@ export default function SignUp() {
 
   const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    router.push("/welcome")
-    console.log("회원가입 버튼 클릭")
-  }
+    router.push("/welcome");
+    console.log("회원가입 버튼 클릭");
+  };
 
   return (
     <section className="flex flex-col items-center">
