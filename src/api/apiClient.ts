@@ -93,7 +93,7 @@ class ApiClient {
             this.failedQueue.forEach((prom) => {
               prom.reject(refreshError);
             });
-            await signOut({ redirect: true, callbackUrl: '/login' });
+            await signOut({ redirect: true, callbackUrl: '/signin/email' });
             return Promise.reject(refreshError);
           } finally {
             this.isRefreshing = false;

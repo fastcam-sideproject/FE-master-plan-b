@@ -1,4 +1,4 @@
-import { LOGIN_FORMS } from '@/app/login/constants';
+import { LOGIN_FORMS } from '@/components/SignIn/constants';
 import { LoginRequest } from '@/models/ApiTypes';
 
 // 로그인 요청의 기본 유효성 검사

@@ -13,7 +13,7 @@ export default function withAuth<P extends object>(
 
     useEffect(() => {
       if (!loading && !isAuthenticated) {
-        router.push('/login');
+        router.push('/signin/email');
       }
     }, [loading, isAuthenticated, router]);
 

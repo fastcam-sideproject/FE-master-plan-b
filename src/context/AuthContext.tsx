@@ -73,7 +73,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const logout = async () => {
     await signOut({ redirect: false });
-    router.push('/login');
+    router.push('/signin/email');
   };
 
   const value = {

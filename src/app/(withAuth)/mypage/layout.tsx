@@ -17,7 +17,7 @@ export default function MypageLayout({
   useEffect(() => {
     // 인증되지 않은 경우 로그인 페이지로 리다이렉트
     if (!isAuthenticated) {
-      router.push('/login');
+      router.push('/signin/email');
     }
   }, [isAuthenticated, router]);
 
