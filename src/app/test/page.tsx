@@ -25,7 +25,7 @@ import { ItemList, MainItemList } from '@/components/ItemList';
 import { LiveChip } from '@/components/LiveChip';
 import {
   AppleLoginBtn,
-  GoogleLoginBtn,
+  // GoogleLoginBtn,
   KakaoLoginBtn,
 } from '@/components/LoginButton';
 import BtnOnboarding from '@/components/Onboarding/BtnOnboarding';
@@ -140,7 +140,7 @@ export default function Home() {
       </main>
       <KakaoLoginBtn />
       <AppleLoginBtn />
-      <GoogleLoginBtn />
+      {/* <GoogleLoginBtn /> */}
 
       <NumberPagination
         currentPage={currentPage}
