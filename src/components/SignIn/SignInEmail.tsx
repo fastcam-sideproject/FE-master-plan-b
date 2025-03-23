@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 import { FormProvider, useForm } from 'react-hook-form';
 import type { SubmitHandler } from 'react-hook-form';
+import Link from 'next/link';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 
@@ -73,15 +74,16 @@ export default function SignInEmail() {
         </form>
       </FormProvider>
       <div className="my-8">또는</div>
-      <Button
-        type="button"
-        className="w-[360px]"
-        variant={'outline'}
-        size={'md'}
-        textColor={'gray'}
-        label="이메일로 회원가입"
-        onClick={() => router.push('/signup')}
-      />
+      <Link href="/signup">
+        <Button
+          type="button"
+          className="w-[360px]"
+          variant={'outline'}
+          size={'md'}
+          textColor={'gray'}
+          label="이메일로 회원가입"
+        />
+      </Link>
     </section>
   );
 }

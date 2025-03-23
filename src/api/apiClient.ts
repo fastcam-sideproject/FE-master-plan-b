@@ -59,7 +59,7 @@ class ApiClient {
               throw new Error('리프레시 토큰이 없습니다.');
             }
 
-            const response = await fetch(`${BASE_URL}/api/v1/auth/refresh`, {
+            const response = await fetch(`${BASE_URL}/api/v1/member/login`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -72,6 +72,7 @@ class ApiClient {
             }
 
             const newAccessToken = response.headers.get('authorization');
+            const newRefreshToken = response.headers.get('refresh-token');
 
             if (!newAccessToken) {
               throw new Error('새 액세스 토큰을 받지 못했습니다.');
@@ -79,7 +80,10 @@ class ApiClient {
 
             // 새 토큰을 세션에 저장
             const event = new CustomEvent('session-update', {
-              detail: { accessToken: newAccessToken },
+              detail: {
+                accessToken: newAccessToken,
+                refreshToken: newRefreshToken,
+              },
             });
             window.dispatchEvent(event);
 

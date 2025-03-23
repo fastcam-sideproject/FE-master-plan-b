@@ -1,7 +1,7 @@
-export const SIGNIN_ERROR_MESSAGE =
+export const SIGNUP_ERROR_MESSAGE =
   '아이디 또는 비밀번호가 맞지 않습니다. 다시 확인해주세요.';
 
-export const SIGNIN_FORMS = [
+export const SIGNUP_FORMS = [
   {
     id: 'username',
     type: 'text',
@@ -17,6 +17,17 @@ export const SIGNIN_FORMS = [
     id: 'password',
     type: 'password',
     placeholder: '비밀번호를 입력해주세요.',
+    required: '비밀번호를 입력하세요.',
+    pattern: [
+      {
+        regExp: /^.{1,}$/,
+      },
+    ],
+  },
+  {
+    id: 'passwordCheck',
+    type: 'passwordCheck',
+    placeholder: '비밀번호를를',
     required: '비밀번호를 입력하세요.',
     pattern: [
       {

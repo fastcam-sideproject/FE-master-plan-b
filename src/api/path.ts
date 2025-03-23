@@ -1,4 +1,4 @@
-export const SIGN_IN_API_PATH = {
+export const SIGN_UP_API_PATH = {
   verification: '/api/v1/member/verification',
   sendVerificationCode: '/api/v1/member/send-verification-code',
   create: '/api/v1/member/create',
