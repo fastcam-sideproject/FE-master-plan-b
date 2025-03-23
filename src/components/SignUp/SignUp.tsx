@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { AxiosError } from 'axios';
 import { signUpMasterplanApi } from '@/api/signUp/signUp';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
@@ -44,7 +45,7 @@ export default function SignUp() {
 
       if (error) {
         // 에러 처리
-        if (error.response?.status === 409) {
+        if ((error as AxiosError).response?.status === 409) {
           setEmailExist(true);
         } else {
           alert(

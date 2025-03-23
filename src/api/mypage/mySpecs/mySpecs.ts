@@ -1,4 +1,4 @@
-import { apiClient } from '../../apiClient';
+import apiClient from '@/api/apiClient';
 import { MY_SPECS_API_PATH } from '../../path';
 
 export const mySpecsApi = {

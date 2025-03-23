@@ -1,4 +1,4 @@
-import { apiClient } from '../../apiClient';
+import apiClient from '@/api/apiClient';
 import { MY_STUDY_LOGS_API_PATH } from '../../path';
 import {
   StudyLogs,
