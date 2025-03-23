@@ -7,6 +7,8 @@ import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import AgreementCheckboxes from './AgreementCheckboxes';
 
+// todo: 이메일 인증 api 사용 시 로딩 중 메시지 표시할 수 있게 하기
+
 export default function SignUp() {
   const router = useRouter();
   const [isAgreementChecked, setIsAgreementChecked] = useState(false);
@@ -18,6 +20,7 @@ export default function SignUp() {
   const [nickname, setNickname] = useState('');
   const [emailExist, setEmailExist] = useState(false);
   const [emailAvailable, setEmailAvailable] = useState(false);
+  const [isEmailVerified, setIsEmailVerified] = useState(false);
 
   const handleEmailVerificationCode = async () => {
     if (!email) {
@@ -28,6 +31,7 @@ export default function SignUp() {
     // 상태 초기화
     setEmailExist(false);
     setEmailAvailable(false);
+    setIsEmailVerified(false);
 
     try {
       console.log('인증코드 발송 시도');
@@ -52,6 +56,7 @@ export default function SignUp() {
 
       // 성공 시 실행
       setEmailAvailable(true);
+      setIsEmailVerified(true);
       alert('인증 코드가 발송되었습니다!');
     } catch (error: any) {
       console.error('상세 에러:', error);
@@ -101,9 +106,16 @@ export default function SignUp() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!isEmailVerified) {
+      alert('이메일 인증이 필요합니다.');
+      return;
+    }
+
     if (!validatePassword(password, passwordConfirm)) {
       return;
     }
+
     try {
       await signUpMasterplanApi.create({
         email,
@@ -123,6 +135,13 @@ export default function SignUp() {
     if (value.length <= 16) {
       setNickname(value);
     }
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+    setEmailExist(false);
+    setEmailAvailable(false);
+    setIsEmailVerified(false);
   };
 
   return (
@@ -151,11 +170,7 @@ export default function SignUp() {
               placeholder="아이디를 입력해주세요"
               required
               value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-                setEmailExist(false);
-                setEmailAvailable(false);
-              }}
+              onChange={handleEmailChange}
             />
             <Button
               label="인증하기"
