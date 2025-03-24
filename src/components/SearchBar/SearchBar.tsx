@@ -45,10 +45,12 @@ const buttonVariants = cva(
 interface SearchBarProps {
   variant?: 'default' | 'secondary';
   type: 'main' | 'default';
+  onSearch?: (value: string) => void;
 }
 
-export default function SearchBar({ variant, type }: SearchBarProps) {
+export default function SearchBar({ variant, type, onSearch }: SearchBarProps) {
   const [inputValue, setInputValue] = React.useState('');
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -57,11 +59,11 @@ export default function SearchBar({ variant, type }: SearchBarProps) {
   //search api 추가 해야됨.
   const handleSearch = () => {
     if (inputValue.trim()) {
-      console.log('검색:', inputValue);
-    } else {
-      console.log('공백');
+      onSearch?.(inputValue.trim()); // 부모로 전달
+      setInputValue(''); // 입력창 비우기
     }
   };
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       handleSearch();

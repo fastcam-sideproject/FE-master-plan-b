@@ -12,14 +12,14 @@ export default function BtnOnboarding({ type }: BtnOnboardingProps) {
       altText: 'generalImg',
       description: '토익, 오픽, 컴퓨터활용능력시험 등',
       title: '직무에 상관없이 <br /> 도움되는 자격증',
-      link: '/',
+      link: '/onboarding/step3',
     },
     specific: {
       imageSrc: '/images/specific.png',
       altText: 'specificImg',
       description: '정보처리기사, GTQ, 공인중개사, 회계사 등',
       title: '관심있는 직무의 <br /> 전문적인 자격증',
-      link: '/',
+      link: '/onboarding/step4',
     },
   };
 
