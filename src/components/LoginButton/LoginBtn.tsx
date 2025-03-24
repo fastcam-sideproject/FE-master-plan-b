@@ -19,19 +19,19 @@ export function LoginBtn({ loginType }: LoginBtnProps) {
       icon: <Image width={25} height={25} src="/icons/login/google.svg" alt="google icon" />,
       text: "구글로 시작하기",
       bgColor: "bg-white border border-gray-300",
-      onClick: () => window.location.href = "https://your-api.com/auth/google",
+      onClick: () => window.location.href = "https://masterplanb.site/oauth2/authorization/google",
     },
     naver: {
       icon: <Image width={25} height={25} src="/icons/login/naver.svg" alt="naver icon" />,
       text: "네이버로 시작하기",
       bgColor: "bg-[#03CF5D] text-white",
-      onClick: () => window.location.href = "https://your-api.com/auth/apple",
+      onClick: () => window.location.href = "https://masterplanb.site/oauth2/authorization/naver",
     },
     kakao: {
       icon: <Image width={25} height={25} src="/icons/login/kakao.svg" alt="kakao icon" />,
       text: "카카오로 시작하기",
       bgColor: "bg-yellow-400 text-black",
-      onClick: () => window.location.href = "https://your-api.com/auth/kakao",
+      onClick: () => window.location.href = "https://masterplanb.site/oauth2/authorization/kakao",
     },
     email: {
       icon: <IconMail className="w-6 h-6" />,
