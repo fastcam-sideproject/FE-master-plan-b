@@ -43,6 +43,7 @@ import CommunityInfo from '@/components/CommunityInfo/CommunityInfo';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import DayInput from '@/components/DayInput/DayInput';
+import Modal from '@/components/common/Modal/Modal';
 
 const difBarGraphData = [
   { label: '쉬워요', value: 30 },
@@ -367,6 +368,26 @@ export default function Home() {
         <Badge variant="secondary" achieveItem="businessBrain" achieve={true} />
       </div> */}
       <DayInput />
+      <div className="flex gap-5">
+        <Button label="모달버튼 1" size={'sm'} variant={'secondary'} />
+        <Button label="모달버튼 2" size={'sm'} variant={'secondary'} />
+        <Button label="모달버튼 3" size={'sm'} variant={'secondary'} />
+        <Button label="모달버튼 4" size={'sm'} variant={'secondary'} />
+        <Button label="모달버튼 5" size={'sm'} variant={'secondary'} />
+        <Button label="모달버튼 6" size={'sm'} variant={'secondary'} />
+      </div>
+      <Modal
+        type="confirm"
+        variant="secondary"
+        subtitle="TOEIC"
+        title1="자격증을 취득하셨나요?"
+        message1="취득한 자격증을 등록해 한 곳에서 관리하세요!"
+        cancelButtonLabel="나중에 등록하기"
+        confirmButtonLabel="자격증 등록하기"
+        onCancel={() => console.log('취소!')}
+        onConfirm={() => console.log('확인!')}
+      />
+      <Modal type="input" onConfirm={() => console.log('확인!')} />
     </>
   );
 }
