@@ -11,7 +11,6 @@ const InputModalVariants = cva(
 );
 
 interface InputModalProps {
-  children: ReactNode;
   onConfirm: () => void;
 }
 
@@ -24,7 +23,7 @@ const InputModal = ({ onConfirm }: InputModalProps) => {
       <ul className="flex flex-col gap-4">
         <li className="flex items-center">
           <span className="w-[120px]">자격증명</span>
-          <SearchBar type="default" />
+          <SearchBar type="default" size="sm" />
         </li>
         <li className="flex items-center">
           <span className="w-[120px]">취득일</span>

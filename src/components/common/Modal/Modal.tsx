@@ -31,8 +31,6 @@ interface ConfirmModalProps extends BaseModalProps {
 
 interface InputModalProps extends BaseModalProps {
   type: 'input';
-  title: string;
-  children: ReactNode;
 }
 
 type ModalProps = ConfirmModalProps | InputModalProps;
