@@ -69,6 +69,39 @@ const ItemCardDummyData = [
     regEndDate: '2025-02-28',
     examStartDate: '2025-02-28',
   },
+  {
+    examId: '5',
+    exam: '정보처리기사',
+    host: '국가기술자격',
+    bookmark: false,
+    starRating: 4,
+    category: '정보통신',
+    regStartDate: '2025-01-22',
+    regEndDate: '2025-02-28',
+    examStartDate: '2025-02-28',
+  },
+  {
+    examId: '6',
+    exam: '정보처리기사',
+    host: '국가기술자격',
+    bookmark: false,
+    starRating: 4,
+    category: '정보통신',
+    regStartDate: '2025-01-22',
+    regEndDate: '2025-02-28',
+    examStartDate: '2025-02-28',
+  },
+  {
+    examId: '7',
+    exam: '정보처리기사',
+    host: '국가기술자격',
+    bookmark: false,
+    starRating: 4,
+    category: '정보통신',
+    regStartDate: '2025-01-22',
+    regEndDate: '2025-02-28',
+    examStartDate: '2025-02-28',
+  },
 ];
 
 // todo: 마스터플랜 페이지는 [] 적용으로 패러미터 값을 줘서 각 자격증에 맞는 마스터플랜 페이지에 접속할 수 있게 해야 함.
@@ -76,7 +109,7 @@ const ItemCardDummyData = [
 const Banner = () => {
   return (
     <div className="flex items-center justify-center bg-neutral-85 pb-[64px] pt-10">
-      <div className="flex flex-col gap-7">
+      <div className="flex flex-col items-center gap-7">
         <div>
           <PageHeader
             variant="left-small"
@@ -91,24 +124,16 @@ const Banner = () => {
             <li>마스터플랜</li>
           </ul>
         </div>
-        <div>
-          <div className="text-title-medium-desktop text-neutral-0">
-            <Dropdown
-              items={dropdownItems}
-              title="학습 기간"
-              color="bg-neutral-90"
-              size="sm"
-            />
-            <p>응시 가능한 시험 날짜예요</p>
-          </div>
-          <div>
-            <Swiper>
-              <SwiperSlide>
-                <ItemCard type={'date'} data={ItemCardDummyData} />
-              </SwiperSlide>
-            </Swiper>
-          </div>
+        <div className="w-[1200px] text-title-medium-desktop text-neutral-0">
+          <Dropdown
+            items={dropdownItems}
+            title="학습 기간"
+            color="bg-neutral-90"
+            size="sm"
+          />
+          <p className="pl-4">응시 가능한 시험 날짜예요</p>
         </div>
+        <ItemCard type="date" data={ItemCardDummyData} />
       </div>
     </div>
   );
