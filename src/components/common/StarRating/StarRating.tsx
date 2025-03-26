@@ -9,13 +9,13 @@ export default function StarRating({ size, rating }: StarRatingProps) {
   const totalStars = 5;
 
   const isLarge = size === 'large';
-  const gap = isLarge ? 'gap-2' : 'gap-1';
-  const starSize = isLarge ? 'size-7' : 'size-6';
+  const gap = isLarge ? 'gap-2 ' : 'gap-1';
+  const starSize = isLarge ? 'size-4' : 'size-4';
   const filledStarsColor = 'text-primary-40';
   const emptyStarsColor = isLarge ? 'text-neutral-70' : 'text-neutral-5';
 
   return (
-    <div className={`flex ${gap}`}>
+    <div className={`flex ${gap} h-5`}>
       {Array.from({ length: totalStars }, (_, index) => (
         <IconStarFilled
           key={index}

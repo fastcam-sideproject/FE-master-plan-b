@@ -73,17 +73,19 @@ const timeData = [
   { label: '여유로웠어요', value: 30 },
 ];
 const selectedDates = ['2025-01-24', '2025-01-28', '2025-02-03'];
-const ItemCardDummyData = {
-  examId: '1',
-  exam: '정보처리기사',
-  host: '국가기술자격',
-  bookmark: false,
-  starRating: 4,
-  category: '정보통신',
-  regStartDate: '2025-01-22',
-  regEndDate: '2025-02-28',
-  examStartDate: '2025-02-28',
-};
+const ItemCardDummyData = [
+  {
+    examId: '1',
+    exam: '정보처리기사',
+    host: '국가기술자격',
+    bookmark: false,
+    starRating: 4,
+    category: '정보통신',
+    regStartDate: '2025-01-22',
+    regEndDate: '2025-02-28',
+    examStartDate: '2025-02-28',
+  },
+];
 const stepperData = [
   { label: '답안지 작성 관련 OT', time: 15 },
   { label: '수험자 휴식시간', time: 5 },
@@ -277,7 +279,6 @@ export default function Home() {
         <ItemCard type={'community'} data={ItemCardDummyData} />
         <ItemCard type={'info'} data={ItemCardDummyData} />
         <ItemCard type={'date'} data={ItemCardDummyData} />
-        button 컴포넌트 수정필요함
       </div>
       {/* <div className="w-[1200px] tablet:w-[780px] mobile:w-[360px]">
         <Stepper data={stepperData} />
