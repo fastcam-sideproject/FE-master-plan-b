@@ -132,6 +132,17 @@ export default function Home() {
     setCurrentPage(page);
   };
 
+  // 모달창 여닫기
+  const [activeModal, setActiveModal] = useState<string | null>(null);
+
+  const handleModalOpen = (modalId: string) => {
+    setActiveModal(modalId);
+  };
+
+  const handleModalClose = () => {
+    setActiveModal(null);
+  };
+
   return (
     <>
       <LiveChip />
@@ -369,25 +380,60 @@ export default function Home() {
       </div> */}
       <DayInput />
       <div className="flex gap-5">
-        <Button label="모달버튼 1" size={'sm'} variant={'secondary'} />
-        <Button label="모달버튼 2" size={'sm'} variant={'secondary'} />
-        <Button label="모달버튼 3" size={'sm'} variant={'secondary'} />
-        <Button label="모달버튼 4" size={'sm'} variant={'secondary'} />
-        <Button label="모달버튼 5" size={'sm'} variant={'secondary'} />
-        <Button label="모달버튼 6" size={'sm'} variant={'secondary'} />
+        <Button
+          label="모달 버튼 1"
+          size={'sm'}
+          variant={'secondary'}
+          onClick={() => handleModalOpen('modal1')}
+        />
+        <Button
+          label="모달 버튼 2"
+          size={'sm'}
+          variant={'secondary'}
+          onClick={() => handleModalOpen('modal2')}
+        />
+        <Button
+          label="모달 버튼 3"
+          size={'sm'}
+          variant={'secondary'}
+          onClick={() => handleModalOpen('modal3')}
+        />
       </div>
-      <Modal
-        type="confirm"
-        variant="secondary"
-        subtitle="TOEIC"
-        title1="자격증을 취득하셨나요?"
-        message1="취득한 자격증을 등록해 한 곳에서 관리하세요!"
-        cancelButtonLabel="나중에 등록하기"
-        confirmButtonLabel="자격증 등록하기"
-        onCancel={() => console.log('취소!')}
-        onConfirm={() => console.log('확인!')}
-      />
-      <Modal type="input" onConfirm={() => console.log('확인!')} />
+      {activeModal === 'modal1' && (
+        <Modal
+          type="confirm"
+          variant="default"
+          subtitle="TOEIC"
+          title1="자격증을 취득하셨나요?"
+          message1="취득한 자격증을 등록해 한 곳에서 관리하세요!"
+          cancelButtonLabel="나중에 등록하기"
+          confirmButtonLabel="자격증 등록하기"
+          onCancel={handleModalClose}
+          onConfirm={() => console.log('확인!')}
+        />
+      )}
+      {activeModal === 'modal2' && (
+        <Modal
+          type="confirm"
+          variant="secondary"
+          subtitle="TOEIC"
+          title1="자격증을 취득하셨나요?"
+          message1="취득한 자격증을 등록해 한 곳에서 관리하세요!"
+          cancelButtonLabel="나중에 등록하기"
+          confirmButtonLabel="자격증 등록하기"
+          onCancel={handleModalClose}
+          onConfirm={() => console.log('확인!')}
+        />
+      )}
+      {/* closeOnOutsideClick={true}를 사용하려면 onCancel={handleModalClose}를 반드시 함께 사용해야 함. */}
+      {activeModal === 'modal3' && (
+        <Modal
+          type="input"
+          onConfirm={() => alert('서버에 집어넣을 데이터 관련 함수 작성하쇼')}
+          onCancel={handleModalClose}
+          closeOnOutsideClick={true}
+        />
+      )}
     </>
   );
 }

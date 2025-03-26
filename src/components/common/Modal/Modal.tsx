@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import ConfirmModal from './ConfirmModal';
 import InputModal from './InputModal';
 
@@ -15,6 +15,7 @@ interface BaseModalProps {
   type: 'confirm' | 'input';
   onCancel?: () => void;
   onConfirm: () => void;
+  closeOnOutsideClick?: boolean;
 }
 
 interface ConfirmModalProps extends BaseModalProps {
@@ -36,8 +37,30 @@ interface InputModalProps extends BaseModalProps {
 type ModalProps = ConfirmModalProps | InputModalProps;
 
 export default function Modal(props: ModalProps) {
-  if (props.type === 'confirm') {
-    return <ConfirmModal {...props} />;
-  }
-  return <InputModal {...props} />;
+  const handleOutsideClick = () => {
+    if (props.closeOnOutsideClick && props.onCancel) {
+      props.onCancel();
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 z-50">
+      <div
+        className="fixed inset-0 bg-black bg-opacity-40"
+        onClick={handleOutsideClick}
+      />
+      <div
+        className="fixed inset-0 flex items-center justify-center"
+        onClick={handleOutsideClick}
+      >
+        <div onClick={(e) => e.stopPropagation()}>
+          {props.type === 'confirm' ? (
+            <ConfirmModal {...props} />
+          ) : (
+            <InputModal {...props} />
+          )}
+        </div>
+      </div>
+    </div>
+  );
 }

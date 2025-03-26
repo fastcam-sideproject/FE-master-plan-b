@@ -43,7 +43,7 @@ const ConfirmModal = ({
 }: ConfirmModalProps) => {
   return (
     <div className={cn(ConfirmModalVariants({ variant }))} {...props}>
-      <div className="flex flex-col items-center text-center">
+      <div className="flex flex-col items-center gap-5 text-center">
         {variant === 'default' && (
           <Image
             src="/images/character/web/popup.png"
@@ -52,25 +52,31 @@ const ConfirmModal = ({
             height={175}
           />
         )}
-        <ul className="">
-          <li className="text-body-xlarge-desktop font-[700] text-primary-50">
-            {subtitle}
-          </li>
-          <li className="text-title-large-desktop">{title1}</li>
-          <li className="text-title-large-desktop">{title2}</li>
-        </ul>
-        {variant === 'secondary' && (
-          <Image
-            src="/images/character/web/popup.png"
-            alt="팝업 이미지"
-            width={175}
-            height={175}
-          />
-        )}
-        <ul className="text-body-small-desktop text-neutral-30">
-          <li>{message1}</li>
-          <li>{message2}</li>
-        </ul>
+        <div
+          className={`flex flex-col items-center ${variant === 'secondary' && 'gap-5'}`}
+        >
+          <ul>
+            <li className="text-body-xlarge-desktop font-[700] text-primary-50">
+              {subtitle}
+            </li>
+            <li className="text-title-large-desktop">{title1}</li>
+            <li className="text-title-large-desktop">{title2}</li>
+          </ul>
+          {variant === 'secondary' && (
+            <Image
+              src="/images/character/web/popup.png"
+              alt="팝업 이미지"
+              width={175}
+              height={175}
+            />
+          )}
+          <ul
+            className={`text-body-small-desktop text-neutral-30 ${variant === 'default' && 'mt-3'}`}
+          >
+            <li>{message1}</li>
+            <li>{message2}</li>
+          </ul>
+        </div>
       </div>
       <div className="flex gap-5">
         {onCancel && (
