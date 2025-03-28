@@ -35,7 +35,7 @@ export default function Header() {
     <header className="sticky top-0 z-10 flex justify-between items-center bg-neutral-85 px-9 py-4">
 
       <div className="flex items-center gap-[145px]">
-        <Image width={157} height={40} src={"/logos/logo-text-light.svg"} alt={"헤더 로고"} className="hidden lg:flex hover:cursor-pointer" onClick={() => { router.push("/") }} />
+        <Image width={157} height={40} src={"/logos/logo-text-light.svg"} alt={"헤더 로고"} className="hidden lg:flex hover:cursor-pointer" onClick={() => { router.push("/"); }} />
         <Image width={36} height={36} src={"/logos/logo-light.svg"} alt={"태블릿 모바일 로고"} className="flex lg:hidden" />
         <ul className="hidden lg:flex text-neutral-0">
           {headerNavLi.map((item) => (

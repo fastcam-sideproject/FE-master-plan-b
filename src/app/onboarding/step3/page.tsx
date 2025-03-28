@@ -1,11 +1,13 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import Chip from '@/components/Chip/Chip';
 import OnboardingSubject from '@/components/Onboarding/OnboardingSubject';
 import SearchBar from '@/components/SearchBar/SearchBar';
 import { Button } from '@/components/ui/button';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import OnbordingDropDown from '@/components/Dropdown/OnbordingDropDown';
+import JobDropdownToggle from '@/components/Dropdown/OnboardingCategorues';
 
 
 
@@ -35,10 +37,12 @@ export default function StepSearch() {
             <div className='w-[1px] h-[61px] bg-neutral-30'></div>
             <div>
               {jobTags.map(tag => (
+                // eslint-disable-next-line react/jsx-key
                 <Chip size={'large'} keyword={tag} onClick={() => handleRemoveTag(tag)} />
               ))}
             </div>
           </div>
+          <JobDropdownToggle />
         </div>
 
       </div>
