@@ -10,14 +10,14 @@ export default function JobDropdownToggle() {
 
       <button
         onClick={() => setIsOpen(prev => !prev)}
-        className="text-body-xlarge-desktop flex items-center gap-2"
+        className="text-body-xlarge-desktop flex items-center gap-4"
       >
         직군 · 직무
-        <span className="text-lg">{isOpen ? <IconChevronUp /> : <IconChevronDown />}</span>
+        <span className="w-[28px] h-[28px] flex justify-center items-center bg-neutral-5 rounded-4 border border-neutral-20">{isOpen ? <IconChevronUp /> : <IconChevronDown />}</span>
       </button>
 
       {isOpen && (
-        <div className="mt-4">
+        <div className="mt-[18px]">
           <OnbordingDropDown />
         </div>
       )}
