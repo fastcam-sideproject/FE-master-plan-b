@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { IconChevronDown, IconChevronUp } from "@tabler/icons-react";
 import OnbordingDropDown from "./OnbordingDropDown";
-
-export default function JobDropdownToggle() {
+interface JobDropdownToggleProps {
+  onSelect?: (main: string, sub: string) => void;
+}
+export default function JobDropdownToggle({ onSelect }: JobDropdownToggleProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -18,7 +20,7 @@ export default function JobDropdownToggle() {
 
       {isOpen && (
         <div className="mt-[18px]">
-          <OnbordingDropDown />
+          <OnbordingDropDown onSelect={onSelect} />
         </div>
       )}
     </div>

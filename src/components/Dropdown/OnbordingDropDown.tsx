@@ -1,4 +1,4 @@
-'use cilent';
+'use client';
 
 import { useState } from "react";
 import { IconChevronRight } from "@tabler/icons-react";
@@ -7,7 +7,11 @@ import jobCategoriesJson from '../data/job-categories.json';
 
 const jobCategories: JobCategoriesType = jobCategoriesJson;
 
-export default function OnbordingDropDown() {
+interface OnboardingDropDownProps {
+  onSelect?: (main: string, sub: string) => void;
+}
+
+export default function OnbordingDropDown({ onSelect }: OnboardingDropDownProps) {
   const [selectedMain, setSelectedMain] = useState<string | null>(null);
   const [selectedSub, setSelectedSub] = useState<string | null>(null);
 
@@ -18,7 +22,10 @@ export default function OnbordingDropDown() {
 
   const handleComplete = () => {
     if (selectedMain && selectedSub) {
-      alert(`선택한 직무: ${selectedMain} > ${selectedSub}`);
+
+      onSelect?.(selectedMain, selectedSub);
+
+      handleReset();
     } else {
       alert('직무를 선택해주세요.');
     }
@@ -26,7 +33,6 @@ export default function OnbordingDropDown() {
 
   return (
     <div className="max-h-[380px] bg-neutral-0 rounded-8 shadow-lg p-8 flex flex-col gap-4">
-
       <div className="grid grid-cols-2 gap-8">
 
         <ul className="max-h-[200px] overflow-y-auto">
@@ -37,20 +43,23 @@ export default function OnbordingDropDown() {
                 setSelectedMain(main);
                 setSelectedSub(null);
               }}
-              className={`w-full px-5 py-3 flex justify-between items-center cursor-pointer hover:bg-gray-100 ${selectedMain === main ? 'bg-gray-200 font-semibold' : ''}`}
+              className={`w-full px-5 py-3 flex justify-between items-center cursor-pointer hover:bg-gray-100 ${selectedMain === main ? 'bg-gray-200 font-semibold' : ''
+                }`}
             >
               <span>{main}</span> <IconChevronRight />
             </li>
           ))}
         </ul>
 
+        {/* 세분류 */}
         {selectedMain && (
           <ul className="max-h-[200px] overflow-y-auto">
             {jobCategories[selectedMain].map((sub: string) => (
               <li
                 key={sub}
                 onClick={() => setSelectedSub(sub)}
-                className={`w-full px-5 py-3 flex justify-between items-center cursor-pointer hover:bg-gray-100 ${selectedSub === sub ? 'bg-gray-200 font-semibold' : ''}`}
+                className={`w-full px-5 py-3 flex justify-between items-center cursor-pointer hover:bg-gray-100 ${selectedSub === sub ? 'bg-gray-200 font-semibold' : ''
+                  }`}
               >
                 {sub}
               </li>
@@ -58,7 +67,6 @@ export default function OnbordingDropDown() {
           </ul>
         )}
       </div>
-
 
       <div className="w-full flex justify-between mt-6">
         <button onClick={handleReset} className="px-4 py-2 border border-gray-300 rounded-md">
