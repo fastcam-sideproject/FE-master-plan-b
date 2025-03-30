@@ -47,6 +47,10 @@ const getCardStyles = () => {
 export default function ItemCard({ type, data }: ItemCardProps) {
   const { card, gap, textSize, hostTextSize } = getCardStyles();
 
+  if (!data || !Array.isArray(data)) {
+    return null;
+  }
+
   const renderCard = (item: ItemCardProps['data'][0]) => (
     <div
       key={item.examId}
