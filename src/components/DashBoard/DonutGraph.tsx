@@ -1,11 +1,25 @@
-import React from 'react';
+'use client';
+import React, { useEffect, useState } from 'react';
 import DashboardCardLayout from './DashboardCardLayout';
 
 type DonutGraphProps = {
   type: 'reflection' | 'time';
   data: { label: string; value: number }[];
 };
+
 export default function DonutGraph({ type, data }: DonutGraphProps) {
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 1279.9);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const getConicGradient = (items: { hex: string; value: number }[]) => {
     let currentDeg = 0;
     return items
@@ -17,10 +31,12 @@ export default function DonutGraph({ type, data }: DonutGraphProps) {
       })
       .join(', ');
   };
+  const titleSize =
+    'text-title-medium-desktop text-neutral-85 tablet:text-title-small-desktop mobile:text-title-small-desktop';
   const templates = {
     reflection: {
       title: (
-        <p className="text-title-medium-desktop text-neutral-85">
+        <p className={titleSize}>
           기출이 얼마나 <br /> 반영되었나요?
         </p>
       ),
@@ -32,7 +48,7 @@ export default function DonutGraph({ type, data }: DonutGraphProps) {
     },
     time: {
       title: (
-        <p className="text-title-medium-desktop text-neutral-85">
+        <p className={titleSize}>
           주어진 시간은 <br /> 충분했나요?
         </p>
       ),
@@ -58,28 +74,40 @@ export default function DonutGraph({ type, data }: DonutGraphProps) {
     const startDeg =
       index === 0
         ? 0
-        : template.items.slice(0, index).reduce((sum, cur) => sum + (cur.value / 100) * 360, 0);
+        : template.items
+            .slice(0, index)
+            .reduce((sum, cur) => sum + (cur.value / 100) * 360, 0);
     const midDeg = startDeg + ((item.value / 100) * 360) / 2;
+
     const x = 125 + 95 * Math.cos(((midDeg - 90) * Math.PI) / 180);
     const y = 125 + 95 * Math.sin(((midDeg - 90) * Math.PI) / 180);
-    return { label: `${item.value}%`, x, y };
+    const xSmall = 80 + 60 * Math.cos(((midDeg - 90) * Math.PI) / 180);
+    const ySmall = 80 + 60 * Math.sin(((midDeg - 90) * Math.PI) / 180);
+
+    return {
+      label: `${item.value}%`,
+      x: isSmallScreen ? xSmall : x,
+      y: isSmallScreen ? ySmall : y,
+    };
   });
 
   const conicGradient = getConicGradient(template.items);
   return (
-    <DashboardCardLayout className="flex gap-7">
+    <DashboardCardLayout className="flex items-center justify-center gap-7 tablet:h-[230px] tablet:w-[343px] tablet:p-6 mobile:h-[230px] mobile:w-[343px] mobile:p-6">
       <div className="flex flex-col gap-9">
         {template.title}{' '}
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 tablet:gap-3 mobile:gap-3">
           {template.items.map((item, index) => (
-            <div key={index} className="flex gap-3 items-center">
-              <div className={`w-5 h-5 rounded-2 ${item.color}`}></div>
-              <span className="text-body-small-desktop text-neutral-50">{item.label}</span>
+            <div key={index} className="flex items-center gap-3">
+              <div className={`h-5 w-5 rounded-2 ${item.color}`}></div>
+              <span className="text-body-small-desktop text-neutral-50 tablet:text-label-xsmall-desktop mobile:text-label-xsmall-desktop">
+                {item.label}
+              </span>
             </div>
           ))}
         </div>
       </div>
-      <div className="relative size-[250px]">
+      <div className="relative size-[250px] tablet:size-[160px] mobile:size-[160px]">
         <div
           className="absolute inset-0 rounded-full"
           style={{
@@ -89,7 +117,7 @@ export default function DonutGraph({ type, data }: DonutGraphProps) {
         {labelPositions.map((position, index) => (
           <div
             key={index}
-            className="absolute text-title-small-desktop text-neutral-0"
+            className="absolute text-title-small-desktop text-neutral-0 tablet:text-body-xsmall-desktop mobile:text-body-xsmall-desktop"
             style={{
               left: `${position.x}px`,
               top: `${position.y}px`,
@@ -99,11 +127,15 @@ export default function DonutGraph({ type, data }: DonutGraphProps) {
             {position.label}
           </div>
         ))}
-        <div className="absolute size-full flex items-center justify-center">
-          <div className="size-[125px] flex items-center justify-center bg-neutral-0 rounded-10">
+        <div className="absolute flex size-full items-center justify-center">
+          <div className="flex size-[125px] items-center justify-center rounded-10 bg-neutral-0 tablet:size-[80px] mobile:size-[80px]">
             <div className="flex flex-col items-center">
-              <span className="text-title-large-desktop text-neutral-85">{maxValue.value}%</span>
-              <span className="text-title-small-desktop text-neutral-50">{maxValue.label}</span>
+              <span className="text-title-large-desktop text-neutral-85 tablet:text-title-small-desktop mobile:text-title-small-desktop">
+                {maxValue.value}%
+              </span>
+              <span className="text-title-small-desktop text-neutral-50 tablet:text-body-xsmall-desktop mobile:text-body-xsmall-desktop">
+                {maxValue.label}
+              </span>
             </div>
           </div>
         </div>

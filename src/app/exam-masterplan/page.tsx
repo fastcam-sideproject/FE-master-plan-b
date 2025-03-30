@@ -1,10 +1,10 @@
 import React from 'react';
 import { IconPencil, IconWand } from '@tabler/icons-react';
-import { PageHeader } from '@/components/common/PageHeader';
 import LearningTimeGraph from '@/components/DashBoard/LearningTimeGraph';
 import BarGraph from '@/components/DashBoard/BarGraph';
 import DonutGraph from '@/components/DashBoard/DonutGraph';
 import TimeComparisonGraph from '@/components/DashBoard/TimeComparisonGraph';
+import Modal from '@/components/common/Modal/Modal';
 import Banner from './Banner';
 
 const difBarGraphData = [
@@ -36,17 +36,19 @@ const timeData = [
 ];
 const timeComparison = { written: 60, practical: 40, total: 100 };
 
-const boxHorizonGap = 'flex gap-6';
+const boxHorizonGap = 'flex gap-6 mobile:flex-col';
 const boxVerticalGap = 'flex flex-col gap-6';
-const smallTitleGap = 'flex gap-3 text-title-medium-desktop items-center';
+const smallTitleGap =
+  'flex gap-3 text-title-medium-desktop items-center mobile:gap-2 mobile:text-title-small-desktop';
+const iconSize = 'size-[24px] mobile:size-[20px]';
 
 const ExamMasterPlanPage = () => {
   return (
     <div>
       <Banner />
-      <div className="flex flex-col items-center gap-[64px] pb-[120px] pt-[64px]">
-        <div className="flex flex-col gap-[64px]">
-          <ul className="text-title-large-desktop text-neutral-50">
+      <div className="flex flex-col items-center gap-[64px] pb-[120px] pt-[64px] mobile:gap-9 mobile:px-6 mobile:py-9">
+        <div className="flex flex-col gap-[64px] mobile:gap-9">
+          <ul className="text-title-large-desktop text-neutral-50 tablet:text-title-medium-desktop mobile:text-title-medium-desktop">
             <li>이 자격증을 취득한 마스터님들은</li>
             <li>
               <span className="text-neutral-85">평균 N개월</span> 정도
@@ -60,7 +62,7 @@ const ExamMasterPlanPage = () => {
         </div>
         <div className={boxVerticalGap}>
           <ul className={smallTitleGap}>
-            <IconPencil />
+            <IconPencil className={iconSize} />
             <li>필기</li>
           </ul>
           <div className={boxHorizonGap}>
@@ -74,7 +76,7 @@ const ExamMasterPlanPage = () => {
         </div>
         <div className={boxVerticalGap}>
           <ul className={smallTitleGap}>
-            <IconWand />
+            <IconWand className={iconSize} />
             <li>실기</li>
           </ul>
           <div className={boxHorizonGap}>

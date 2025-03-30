@@ -15,14 +15,19 @@ export default function LearningTimeGraph({ data }: LearningTimeGraphProps) {
   }));
 
   return (
-    <DashboardCardLayout className="flex-col gap-9">
-      <p className="text-title-medium-desktop text-neutral-80">필기 과목별 평균 학습시간</p>
+    <DashboardCardLayout className="flex-col items-center gap-9 tablet:w-[343px] tablet:justify-center tablet:gap-6 tablet:p-6 mobile:w-[343px] mobile:justify-center mobile:p-6">
+      <p className="w-full text-title-medium-desktop text-neutral-80 tablet:w-[270px] tablet:text-title-small-desktop mobile:w-[270px] mobile:text-title-small-desktop">
+        필기 과목별 평균 학습시간
+      </p>
       <div className="flex justify-center">
-        <div className="relative w-[314px] h-[180px] flex gap-5">
+        <div className="relative flex h-[180px] w-[314px] gap-5 tablet:h-[143px] tablet:w-[210px] mobile:h-[143px] mobile:w-[210px]">
           {updatedData.map((data, index) => (
-            <div key={index} className="w-full flex flex-col gap-3 items-center justify-end">
+            <div
+              key={index}
+              className="flex w-full flex-col items-center justify-end gap-3 tablet:gap-1 mobile:gap-1"
+            >
               <span
-                className={`${data.isMax ? 'text-neutral-85' : 'text-neutral-50'} text-body-medium-desktop `}
+                className={`${data.isMax ? 'text-neutral-85' : 'text-neutral-50'} text-body-medium-desktop tablet:text-body-xxsmall-desktop mobile:text-body-xxsmall-desktop`}
               >
                 {data.value}%
               </span>
@@ -32,13 +37,13 @@ export default function LearningTimeGraph({ data }: LearningTimeGraphProps) {
               ></div>
               <span
                 key={index}
-                className={`${data.isMax ? 'text-neutral-85' : 'text-neutral-50'} text-body-xsmall-desktop`}
+                className={`${data.isMax ? 'text-neutral-85' : 'text-neutral-50'} text-body-xsmall-desktop tablet:text-body-xxsmall-desktop mobile:text-body-xxsmall-desktop`}
               >
                 {data.label}
               </span>
             </div>
           ))}
-          <div className="absolute bottom-[29px] w-full h-px bg-neutral-50"></div>
+          <div className="absolute bottom-[29px] h-px w-full bg-neutral-50 tablet:bottom-[19px] mobile:bottom-[19px]"></div>
         </div>
       </div>
     </DashboardCardLayout>

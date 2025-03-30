@@ -21,7 +21,7 @@ export default function StudyCardList({ studyData }: StudyCardListProps) {
             title={data.title}
             daysRemaining={data.daysRemaining}
             progress={data.progress}
-            onClickRecord={() => console.log(`${data.title} 학습 기록하기 클릭`)}
+            onClickRecord={() => alert(`${data.title} 학습 기록하기 클릭`)}
           />
         ))}
       </ul>

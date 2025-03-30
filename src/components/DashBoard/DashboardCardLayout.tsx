@@ -11,7 +11,7 @@ export default function DashboardCardLayout({
 }: DashboardCardLayoutProps) {
   return (
     <div
-      className={`flex w-[530px] rounded-7 bg-neutral-0 px-10 py-9 shadow-2 ${className}`}
+      className={`flex rounded-7 bg-neutral-0 px-10 py-9 shadow-2 desktop:w-[530px] tablet:w-[343px] tablet:p-6 ${className}`}
     >
       {children}
     </div>

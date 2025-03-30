@@ -13,16 +13,17 @@ export default function TimeComparisonGraph({
   const maxType = data.written > data.practical ? '필기' : '실기';
   const isEqual = data.written === data.practical;
   const month = Math.floor(data.total / 30);
-  const iconStyle = 'text-primary-50 w-[48px] h-[48px]';
+  const iconStyle =
+    'text-primary-50 size-[48px] tablet:size-[31px] mobile:size-[31px]';
   const monthStyle =
-    'relative bg-neutral-5 rounded-10 w-full h-[24px] px-6 text-label-small-desktop font-[400] flex items-center justify-end';
+    'relative bg-neutral-5 rounded-10 w-full h-[24px] tablet:h-[20px] mobile:h-[20px] px-6 text-label-small-desktop font-[400] flex items-center justify-end tablet:text-label-xsmall-desktop mobile:text-label-xsmall-desktop';
   const graphStyle =
-    'absolute left-0 top-0 h-full rounded-full bg-primary-30 flex items-center px-6 text-label-small-desktop font-[400]';
+    'absolute left-0 top-0 h-full rounded-full bg-primary-30 flex items-center px-6 text-label-small-desktop font-[400] text-neutral-85 tablet:text-label-xsmall-desktop mobile:text-label-xsmall-desktop';
 
   return (
-    <DashboardCardLayout className="flex flex-col gap-6">
-      <div className="flex flex-col gap-5">
-        <div className="flex h-[80px] w-[80px] items-center justify-center rounded-10 bg-primary-5">
+    <DashboardCardLayout className="flex flex-col items-center tablet:w-[343px] tablet:p-6 mobile:w-[343px] mobile:p-6">
+      <div className="flex w-full flex-col gap-5 tablet:w-[280px] mobile:w-[280px]">
+        <div className="flex size-[80px] items-center justify-center rounded-10 bg-primary-5 tablet:size-[60px] mobile:size-[60px]">
           {isEqual ? (
             <IconWand className={iconStyle} />
           ) : data.written > data.practical ? (
@@ -31,7 +32,7 @@ export default function TimeComparisonGraph({
             <IconWand className={iconStyle} />
           )}
         </div>
-        <ul className="text-title-medium-desktop">
+        <ul className="text-title-medium-desktop tablet:text-title-small-desktop mobile:text-title-small-desktop">
           {isEqual ? (
             <>
               <li>필기와 실기 준비</li>
@@ -45,7 +46,7 @@ export default function TimeComparisonGraph({
           )}
         </ul>
       </div>
-      <ul className="flex flex-col gap-2">
+      <ul className="flex w-full flex-col gap-2 text-neutral-50 tablet:w-[280px] tablet:gap-0 tablet:text-body-xxsmall-desktop mobile:w-[280px] mobile:gap-0 mobile:text-body-xxsmall-desktop">
         <li>필기</li>
         <li className={monthStyle}>
           {month}개월
