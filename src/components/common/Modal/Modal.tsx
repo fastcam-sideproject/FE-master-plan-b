@@ -1,4 +1,5 @@
 import React from 'react';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 import ConfirmModal from './ConfirmModal';
 import InputModal from './InputModal';
 
@@ -37,6 +38,7 @@ interface InputModalProps extends BaseModalProps {
 type ModalProps = ConfirmModalProps | InputModalProps;
 
 export default function Modal(props: ModalProps) {
+  const isMobile = useMediaQuery('(min-width: 767.9px)');
   const handleOutsideClick = () => {
     if (props.closeOnOutsideClick && props.onCancel) {
       props.onCancel();

@@ -4,7 +4,6 @@ import LearningTimeGraph from '@/components/DashBoard/LearningTimeGraph';
 import BarGraph from '@/components/DashBoard/BarGraph';
 import DonutGraph from '@/components/DashBoard/DonutGraph';
 import TimeComparisonGraph from '@/components/DashBoard/TimeComparisonGraph';
-import Modal from '@/components/common/Modal/Modal';
 import Banner from './Banner';
 
 const difBarGraphData = [

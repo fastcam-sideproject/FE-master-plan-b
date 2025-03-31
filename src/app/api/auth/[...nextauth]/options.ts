@@ -54,7 +54,7 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async jwt({ token, user }) {
-      console.log('JWT 콜백:', { token, user });
+      // console.log('JWT 콜백:', { token, user });
       if (user) {
         token.email = user.email;
         token.nickname = user.nickname;
@@ -64,7 +64,7 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
     async session({ session, token }) {
-      console.log('세션 콜백:', { session, token });
+      // console.log('세션 콜백:', { session, token });
       if (session.user) {
         session.user.email = token.email;
         session.user.nickname = token.nickname;

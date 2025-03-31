@@ -6,6 +6,7 @@ import { PageHeader } from '@/components/common/PageHeader';
 import { Dropdown } from '@/components/Dropdown';
 import ItemCard from '@/components/ItemCard/ItemCard';
 import Modal from '@/components/common/Modal/Modal';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 const breadcrumbItems = [
   { label: '홈', href: '/' },
@@ -105,6 +106,7 @@ const ItemCardDummyData = [
 
 const Banner = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const isMobile = useMediaQuery('(max-width: 767.9px)');
 
   const handleAddSchedule = () => {
     setIsModalOpen(true);
@@ -147,7 +149,7 @@ const Banner = () => {
       {isModalOpen && (
         <Modal
           type="confirm"
-          variant="secondary"
+          variant={isMobile ? 'default' : 'secondary'}
           subtitle="웹디자인기능사"
           title1="0000. 00. 00 (월)"
           title2="시험을 일정에 추가했어요"

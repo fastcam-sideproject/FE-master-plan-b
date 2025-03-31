@@ -1,5 +1,6 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 import DashboardCardLayout from './DashboardCardLayout';
 
 type DonutGraphProps = {
@@ -8,17 +9,7 @@ type DonutGraphProps = {
 };
 
 export default function DonutGraph({ type, data }: DonutGraphProps) {
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsSmallScreen(window.innerWidth <= 1279.9);
-    };
-
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  const isUnderTabletSize = useMediaQuery('(max-width: 1279.9px)');
 
   const getConicGradient = (items: { hex: string; value: number }[]) => {
     let currentDeg = 0;
@@ -86,8 +77,8 @@ export default function DonutGraph({ type, data }: DonutGraphProps) {
 
     return {
       label: `${item.value}%`,
-      x: isSmallScreen ? xSmall : x,
-      y: isSmallScreen ? ySmall : y,
+      x: isUnderTabletSize ? xSmall : x,
+      y: isUnderTabletSize ? ySmall : y,
     };
   });
 
