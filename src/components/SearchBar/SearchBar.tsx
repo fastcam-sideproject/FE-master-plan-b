@@ -4,6 +4,7 @@ import React from 'react';
 import { IconSearch } from '@tabler/icons-react';
 import { cva } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 const searchBarVariants = cva(
   'flex items-center justify-between rounded-10 border',
@@ -18,13 +19,13 @@ const searchBarVariants = cva(
       size: {
         default:
           'w-[560px] mobile:w-[335px] h-[79px] mobile:h-[58px] pl-9 pr-4 py-4 text-body-xlarge-desktop border-2',
-        sm: 'w-[335px] h-[58px] pr-3 pl-8 border',
+        sm: 'w-[335px] h-[58px] pr-3 pl-8 border tablet:w-[220px] tablet:h-[50px] mobile:w-[220px] mobile:h-[50px] tablet:pl-5 mobile:pl-5',
       },
     },
   },
 );
 const inputVariants = cva(
-  'size-full grow-1 mobile:text-body-medium-desktop bg-transparent focus:outline-none focus:ring-0 focus:border-transparent',
+  'size-full grow-1 mobile:text-body-small-desktop bg-transparent focus:outline-none focus:ring-0 focus:border-transparent font-[400]',
   {
     variants: {
       variant: { default: '', secondary: '' },
@@ -89,6 +90,8 @@ export default function SearchBar({
     }
   };
 
+  const isMobile = useMediaQuery('(max-width: 767.9px)');
+
   return (
     <div className={cn(searchBarVariants({ variant, type, size }))}>
       <input
@@ -96,7 +99,7 @@ export default function SearchBar({
         value={inputValue}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
-        placeholder="원하는 자격증을 검색해보세요"
+        placeholder={`${isMobile ? '원하는 자격증 검색하기' : '원하는 자격증을 검색해보세요'}`}
       />
       <button className={cn(buttonVariants({ variant, type, size }))}>
         <IconSearch

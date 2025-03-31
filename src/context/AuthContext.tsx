@@ -30,8 +30,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
 
   useEffect(() => {
+    console.log('세션 상태 변화:', { status, session });
+  }, [status, session]);
+
+  useEffect(() => {
     const handleSessionUpdate = async (event: SessionUpdateEvent) => {
       const { accessToken } = event.detail;
+      console.log('세션 업데이트 이벤트 수신:', { accessToken });
+
       await update({
         ...session,
         user: {
@@ -39,6 +45,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           accessToken,
         },
       });
+      console.log('세션 업데이트 완료');
     };
 
     window.addEventListener(

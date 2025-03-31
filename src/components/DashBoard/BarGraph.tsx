@@ -31,22 +31,30 @@ export default function BarGraph({ data, type }: BarGraphProps) {
             어려워요: '어렵다',
           }[maxLabel] || '알 수 없음'}
         </span>
-        고<br /> 느끼고 있어요
+        {maxLabel === '알 수 없음'
+          ? '이라고'
+          : maxLabel === '보통이에요' || maxLabel === '어려워요'
+            ? '라고'
+            : '고'}
+        <br className="tablet:hidden mobile:hidden" /> 느끼고 있어요
       </>
     ),
     method: (
       <>
         <span className="text-neutral-85">{maxLabel}</span>
-        {hasFinalConsonant(maxLabel) ? '으로' : '로'} <br />
+        {hasFinalConsonant(maxLabel) ? '으로' : '로'}{' '}
+        <br className="tablet:hidden mobile:hidden" />
         가장 많이 준비했어요
       </>
     ),
   };
 
   return (
-    <DashboardCardLayout className="flex-col gap-7">
-      <p className="text-title-medium-desktop text-neutral-50">{templates[type]}</p>
-      <div className="flex flex-col gap-4">
+    <DashboardCardLayout className="flex-col items-center justify-center gap-7 tablet:h-[230px] tablet:w-[343px] tablet:p-6 mobile:h-[230px] mobile:w-[343px] mobile:p-6">
+      <p className="w-full text-title-medium-desktop text-neutral-50 tablet:w-[270px] tablet:text-title-small-desktop mobile:w-[270px] mobile:text-title-small-desktop">
+        {templates[type]}
+      </p>
+      <div className="flex w-full flex-col gap-4 tablet:w-[270px] mobile:w-[270px]">
         {data.map((data, index) => (
           <HorizontalBar key={index} label={data.label} value={data.value} />
         ))}
