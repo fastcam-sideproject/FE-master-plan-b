@@ -69,6 +69,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       });
 
       if (result?.ok) {
+        // todo: 로그인에 성공하면 원래 들어가려던 페이지로 이동
         router.push('/mypage');
       } else {
         console.error('로그인 실패');

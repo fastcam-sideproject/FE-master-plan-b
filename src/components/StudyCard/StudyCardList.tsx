@@ -13,7 +13,7 @@ interface StudyCardListProps {
 
 export default function StudyCardList({ studyData }: StudyCardListProps) {
   return (
-    <div className="flex h-[270px] items-end overflow-x-scroll pb-4 disabled:bg-neutral-5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-neutral-20 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:h-[6px]">
+    <div className="flex h-[280px] items-end overflow-x-scroll pb-4 disabled:bg-neutral-5 mobile:h-[226px] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-neutral-20 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:h-[6px]">
       <ul className="flex gap-4">
         {studyData.map((data) => (
           <StudyCard

@@ -5,12 +5,16 @@ import { useRouter } from 'next/navigation';
 import Footer from '@/components/Footer/Footer';
 import SideBarFavoriteCertifications from '@/components/SideBar/SideBarFavoriteCertifications';
 import { useAuth } from '@/context/AuthContext';
+import Header from '@/components/Header/Header';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 export default function MypageLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const isMobile = useMediaQuery('(max-width: 767.9px)');
+
   const { isAuthenticated, loading } = useAuth();
   const router = useRouter();
 
@@ -35,9 +39,10 @@ export default function MypageLayout({
   }
 
   return (
-    <div className="flex">
-      <SideBarFavoriteCertifications />
-      <div className="max-h-[100vh] w-full overflow-auto">
+    <div className="flex mobile:flex-col">
+      {isMobile ? <Header /> : <SideBarFavoriteCertifications />}
+
+      <div className="max-h-[100vh] w-full overflow-auto mobile:overflow-visible">
         <div className="flex justify-center">{children}</div>
         <Footer />
       </div>

@@ -9,6 +9,7 @@ import { Input } from '../ui/input';
 import AgreementCheckboxes from './AgreementCheckboxes';
 
 // todo: 이메일 인증 api 사용 시 로딩 중 메시지 표시할 수 있게 하기
+// todo: status 409 시 버튼 비활성화
 
 export default function SignUp() {
   const router = useRouter();
@@ -242,7 +243,7 @@ export default function SignUp() {
           size={'md'}
           textColor={'gray'}
           label="가입하기"
-          disabled={!isAgreementChecked}
+          disabled={!isAgreementChecked || emailExist}
         />
       </form>
     </section>

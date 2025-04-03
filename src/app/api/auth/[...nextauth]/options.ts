@@ -1,5 +1,6 @@
 import type { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import { USERS_API_PATH } from '@/api/path';
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -12,9 +13,21 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) return null;
 
+        // 개발 환경에서는 항상 로그인 성공
+        // todo: 개발자 로그인은 배포 시 제거할 것
+        if (process.env.NODE_ENV === 'development') {
+          return {
+            id: 'dev-user',
+            email: credentials.email,
+            nickname: '개발자',
+            role: 'user',
+            accessToken: 'dev-token',
+          };
+        }
+
         try {
           const res = await fetch(
-            `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/member/login`,
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}${USERS_API_PATH.login}`,
             {
               method: 'POST',
               headers: {
@@ -54,7 +67,7 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async jwt({ token, user }) {
-      // console.log('JWT 콜백:', { token, user });
+      console.log('JWT 콜백:', { token, user });
       if (user) {
         token.email = user.email;
         token.nickname = user.nickname;
@@ -64,7 +77,7 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
     async session({ session, token }) {
-      // console.log('세션 콜백:', { session, token });
+      console.log('세션 콜백:', { session, token });
       if (session.user) {
         session.user.email = token.email;
         session.user.nickname = token.nickname;

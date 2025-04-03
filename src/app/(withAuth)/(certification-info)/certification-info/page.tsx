@@ -3,12 +3,12 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import search from '@/api/search/search';
 import Category from '@/components/Category/Category';
 import { Dropdown } from '@/components/Dropdown';
 import ItemCard from '@/components/ItemCard/ItemCard';
 import SearchBar from '@/components/SearchBar/SearchBar';
 import { NumberPagination } from '@/components/common/Pagination';
+import { certificatioinInfoApi } from '@/api/certificationInfo/certificationInfo';
 
 // todo: 검색 api: /api/v1/exam?page={page}&size={size}&sort={sort}
 // todo: 이동 경로: /api/v1/exam/{exam-id}
@@ -94,6 +94,13 @@ const certificationTypes = [
   'AZURE',
 ];
 
+const sortExamsMenu = [
+  { sort: '전체' },
+  { sort: '조회순' },
+  { sort: '시험일정순' },
+  { sort: '난이도순' },
+];
+
 const CertificationInfoPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 10;
@@ -128,6 +135,7 @@ const CertificationInfoPage = () => {
               <li>검색 결과</li>
               <li>n건</li>
             </ul>
+            {/* {sortExamsMenu.map} */}
             <ul className="flex items-center">
               <li
                 className="cursor-pointer p-3"
@@ -158,13 +166,7 @@ const CertificationInfoPage = () => {
               </li>
             </ul>
           </div>
-          <div className="grid gap-6 desktop:grid-cols-4">
-            {ItemCardDummyData.map((item, index) => (
-              // <Link href={`/certification-detail/${examId}`}>
-              <ItemCard key={index} type={'info'} data={item} />
-              // </Link>
-            ))}
-          </div>
+          <ItemCard type={'info'} data={ItemCardDummyData} />
         </div>
       </div>
       <div className="flex justify-center">
