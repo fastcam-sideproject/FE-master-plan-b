@@ -1,5 +1,6 @@
 import type { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import { USERS_API_PATH } from '@/api/path';
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -12,9 +13,21 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) return null;
 
+        // 개발 환경에서는 항상 로그인 성공
+        // todo: 개발자 로그인은 배포 시 제거할 것
+        if (process.env.NODE_ENV === 'development') {
+          return {
+            id: 'dev-user',
+            email: credentials.email,
+            nickname: '개발자',
+            role: 'user',
+            accessToken: 'dev-token',
+          };
+        }
+
         try {
           const res = await fetch(
-            `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/member/login`,
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}${USERS_API_PATH.login}`,
             {
               method: 'POST',
               headers: {
@@ -29,7 +42,6 @@ export const authOptions: NextAuthOptions = {
 
           const data = await res.json();
           const authHeader = res.headers.get('authorization') || undefined;
-          const refreshToken = res.headers.get('refresh-token') || undefined;
 
           console.log('로그인 응답 데이터:', data);
           console.log('인증 헤더:', authHeader);
@@ -41,7 +53,6 @@ export const authOptions: NextAuthOptions = {
               nickname: data.data.nickname,
               role: data.data.role,
               accessToken: authHeader,
-              refreshToken: refreshToken,
             };
             console.log('생성된 사용자 객체:', user);
             return user;
@@ -56,22 +67,22 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async jwt({ token, user }) {
+      console.log('JWT 콜백:', { token, user });
       if (user) {
         token.email = user.email;
         token.nickname = user.nickname;
         token.role = user.role;
         token.accessToken = user.accessToken;
-        token.refreshToken = user.refreshToken;
       }
       return token;
     },
     async session({ session, token }) {
+      console.log('세션 콜백:', { session, token });
       if (session.user) {
         session.user.email = token.email;
         session.user.nickname = token.nickname;
         session.user.role = token.role;
         session.user.accessToken = token.accessToken;
-        session.user.refreshToken = token.refreshToken;
       }
       return session;
     },
@@ -81,7 +92,7 @@ export const authOptions: NextAuthOptions = {
   },
   session: {
     strategy: 'jwt',
-    maxAge: 60 * 60, // 1 hour
+    maxAge: 60 * 60, // 1시간
   },
   secret: process.env.NEXTAUTH_SECRET,
 };

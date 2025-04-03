@@ -46,22 +46,22 @@ export function PageHeader({
     'center-default': {
       container: 'flex flex-col',
       title: (color: string) =>
-        `w-[1200px] flex items-center justify-center text-heading-medium-desktop font-[400] leading-[140%] text-${color} py-3 px-6 text-center`,
+        `w-[1200px] tablet:w-[688px] flex items-center justify-center text-heading-medium-desktop font-[400] leading-[140%] text-${color} py-3 px-6 text-center`,
     },
     'center-small': {
       container: 'flex flex-col',
       title: (color: string) =>
-        `w-[1200px] flex items-center justify-center text-heading-small-desktop font-[400] leading-[140%] text-${color} py-3 px-6 text-center`,
+        `w-[1200px] tablet:w-[688px] flex items-center justify-center text-heading-small-desktop font-[400] leading-[140%] text-${color} py-3 px-6 text-center`,
     },
     'left-default': {
       container: 'flex flex-col',
       title: (color: string) =>
-        `w-[1200px] flex items-center text-heading-medium-desktop font-[400] leading-[140%] text-${color} py-3 px-6 text-center`,
+        `w-[1200px] tablet:w-[688px] flex items-center text-heading-medium-desktop font-[400] leading-[140%] text-${color} py-3 px-6 text-center`,
     },
     'left-small': {
       container: 'flex flex-col',
       title: (color: string) =>
-        `w-[1200px] flex items-center text-heading-small-desktop font-[400] leading-[140%] text-${color} py-3 px-6 text-center`,
+        `w-[1200px] tablet:w-[688px] flex items-center text-heading-small-desktop font-[400] leading-[140%] text-${color} py-3 px-6 text-center`,
     },
   };
 
@@ -79,7 +79,9 @@ export function PageHeader({
           ))}
         </BreadcrumbList>
       </Breadcrumb>
-      {withTitle === true && <h1 className={variants[variant].title(titleColor)}>{title}</h1>}
+      {withTitle === true && (
+        <h1 className={variants[variant].title(titleColor)}>{title}</h1>
+      )}
     </div>
   );
 }

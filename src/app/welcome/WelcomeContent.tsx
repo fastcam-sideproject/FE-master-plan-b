@@ -26,7 +26,7 @@ export default function WelcomeContent() {
           size={'md'}
           textColor={'gray'}
           label="온보딩 하러가기"
-          onClick={() => router.push('/onbording')}
+          onClick={() => router.push('/onboarding')}
         />
       </section>
     </div>

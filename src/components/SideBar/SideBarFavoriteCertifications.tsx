@@ -1,7 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import { IconBell, IconCalendarWeek, IconGraph, IconHome, IconSettings } from '@tabler/icons-react';
+import {
+  IconBell,
+  IconCalendarWeek,
+  IconGraph,
+  IconHome,
+  IconSettings,
+} from '@tabler/icons-react';
 import Link from 'next/link';
 import SideBarLi from './SideBarLi';
 import SideBarLogo from './SideBarLogo';
@@ -21,9 +27,17 @@ export default function SideBarFavoriteCertifications() {
     >
       <nav className="flex h-full flex-col justify-between">
         <div>
-          <SideBarLogo isCollapsed={isCollapsed} toggleSidebar={toggleSidebar} />
+          <SideBarLogo
+            isCollapsed={isCollapsed}
+            toggleSidebar={toggleSidebar}
+          />
           <ul className="flex flex-col items-center justify-center text-neutral-0">
-            <SideBarLi Href="/mypage" liName={'My 홈'} isCollapsed={isCollapsed} Icon={IconHome} />
+            <SideBarLi
+              Href="/mypage"
+              liName={'My 홈'}
+              isCollapsed={isCollapsed}
+              Icon={IconHome}
+            />
             <SideBarLi
               Href="/mypage/my-certification"
               liName={'자격증 모아보기'}

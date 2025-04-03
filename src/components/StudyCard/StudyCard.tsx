@@ -1,4 +1,5 @@
 import { IconHexagonFilled, IconPencil } from '@tabler/icons-react';
+import { Button } from '../ui/button';
 
 interface StudyCardProps {
   title: string;
@@ -18,7 +19,9 @@ export default function StudyCard({
       <div className="flex w-full flex-col gap-7">
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-4">
-            <h3 className="text-title-medium-desktop mobile:text-title-small-mobile">{title}</h3>
+            <h3 className="text-title-medium-desktop mobile:text-title-small-mobile">
+              {title}
+            </h3>
             <div className="rounded-4 bg-gray-200 px-3 text-label-small-desktop text-neutral-40">
               D-{daysRemaining}
             </div>
@@ -40,13 +43,15 @@ export default function StudyCard({
           </div>
         </div>
 
-        <button
-          className="flex w-full items-center justify-center gap-3 rounded-md bg-neutral-85 px-5 py-3 text-neutral-0 hover:bg-neutral-80"
+        <Button
+          label="학습 기록하기"
+          variant={'secondary'}
+          size={'sm'}
+          className="w-full"
+          withIcon
+          icon={<IconPencil />}
           onClick={onClickRecord}
-        >
-          <IconPencil />
-          학습 기록하기
-        </button>
+        />
       </div>
     </li>
   );
