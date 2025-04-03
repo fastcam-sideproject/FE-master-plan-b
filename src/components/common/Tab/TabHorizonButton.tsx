@@ -21,7 +21,7 @@ export default function TabHorizonButton({
   const sizeClass = {
     normal: 'px-7 py-4',
     medium: 'px-6 py-3',
-    small: 'px-5 py-3',
+    small: 'px-4 py-3',
   };
 
   return (
