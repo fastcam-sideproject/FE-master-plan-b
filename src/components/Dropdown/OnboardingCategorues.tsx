@@ -9,7 +9,6 @@ export default function JobDropdownToggle({ onSelect }: JobDropdownToggleProps) 
 
   return (
     <div className="relative">
-
       <button
         onClick={() => setIsOpen(prev => !prev)}
         className="text-body-xlarge-desktop flex items-center gap-4"
@@ -19,7 +18,7 @@ export default function JobDropdownToggle({ onSelect }: JobDropdownToggleProps) 
       </button>
 
       {isOpen && (
-        <div className="mt-[18px]">
+        <div className="absolute w-[570px] top-8">
           <OnbordingDropDown onSelect={onSelect} />
         </div>
       )}
