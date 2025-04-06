@@ -6,6 +6,7 @@ import {
   IconChevronRight,
   IconHexagon,
   IconHexagonFilled,
+  IconHexagons,
 } from '@tabler/icons-react';
 import { DayPicker } from 'react-day-picker';
 import { ko } from 'date-fns/locale';
@@ -22,8 +23,9 @@ function HexagonCalendar({
   size,
   className,
   classNames,
+  onPrevSlide,
   ...props
-}: HexagonCalendarProps) {
+}: HexagonCalendarProps & { onPrevSlide?: () => void }) {
   const [currentMonth, setCurrentMonth] = React.useState(new Date());
   const [clickedDate, setClickedDate] = React.useState<ClickedDate>(null);
 
@@ -33,12 +35,18 @@ function HexagonCalendar({
   });
 
   const handlePreviousMonth = () => {
-    const newMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1);
+    const newMonth = new Date(
+      currentMonth.getFullYear(),
+      currentMonth.getMonth() - 1,
+    );
     setCurrentMonth(newMonth);
   };
 
   const handleNextMonth = () => {
-    const newMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1);
+    const newMonth = new Date(
+      currentMonth.getFullYear(),
+      currentMonth.getMonth() + 1,
+    );
     setCurrentMonth(newMonth);
   };
 
@@ -76,12 +84,25 @@ function HexagonCalendar({
   const styles = getStyles(isDark, isLarge);
 
   return (
-    <div className="px-7">
+    <div className="px-7 tablet:p-0 mobile:ml-2 mobile:flex mobile:w-[314px] mobile:flex-col mobile:items-center mobile:p-0">
+      <div className="mb-5 hidden w-full items-center justify-between text-[20px] mobile:flex">
+        <p>이번 달 학습량</p>
+        <Button
+          variant={'none'}
+          className="hidden size-[45px] items-center justify-center rounded-full shadow-2 mobile:flex"
+          onClick={onPrevSlide}
+        >
+          <IconHexagons className="rotate-180" />
+        </Button>
+      </div>
       <DayPicker
         month={currentMonth}
         showOutsideDays={true}
         onMonthChange={setCurrentMonth}
-        className={cn(`size-fit ${isDark ? 'bg-neutral-80' : 'bg-neutral-0'}`, className)}
+        className={cn(
+          `size-fit ${isDark ? 'bg-neutral-80' : 'bg-neutral-0'}`,
+          className,
+        )}
         locale={ko}
         selected={dateObjects}
         formatters={{
@@ -121,17 +142,17 @@ function HexagonCalendar({
         }}
         components={{
           Caption: () => (
-            <div className="mb-8 flex items-center justify-between">
+            <div className="mb-8 flex items-center justify-between mobile:mb-7">
               <div className="flex items-center gap-5">
                 <div
                   className={`${styles.captionTextSize} ${styles.baseYearMonthColor} font-[800]`}
                 >{`${year}. ${month}`}</div>
                 <Button
-                  // className="h-[38px] rounded-4 border border-neutral-20 px-5 text-label-small-desktop"
                   variant="outline"
                   size="sm"
                   onClick={() => alert('그래서 언제로 이동하지?')}
                   label="시험일로 이동하기"
+                  className="mobile:h-[35px] mobile:text-label-small-mobile"
                 />
               </div>
               <div className="flex gap-3">

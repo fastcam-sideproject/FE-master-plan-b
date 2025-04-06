@@ -21,10 +21,7 @@ const ExamDateMobile = ({
         </ul>
         <div className="flex flex-col gap-3">
           {selectedDatesAndExams.map((item, index) => (
-            <ul
-              key={index}
-              className="text-body-medium-desktop text-neutral-85"
-            >
+            <ul key={index} className="text-body-small-desktop text-neutral-85">
               <li className="flex w-[160px] items-center gap-3 font-[700]">
                 <p className="h-6 w-6 rounded-[5px] bg-primary-40"></p>
                 {item.date}

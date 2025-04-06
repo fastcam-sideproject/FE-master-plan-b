@@ -19,4 +19,5 @@ export type HexagonCalendarProps = {
   size: 'large' | 'small';
   className?: string;
   classNames?: Partial<Record<string, string>>;
+  onPrevSlide?: () => void;
 };

@@ -44,7 +44,7 @@ const Quotes = () => {
   const todayQuote = useQuoteOfDay();
 
   return (
-    <div className="absolute bottom-0 right-[20px]">
+    <div className="absolute bottom-0 right-[20px] tablet:hidden mobile:hidden">
       <div className="relative h-[233px] w-[437px]">
         <Popover
           label={todayQuote}
