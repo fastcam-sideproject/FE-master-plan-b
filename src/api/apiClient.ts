@@ -53,18 +53,29 @@ class ApiClient {
 
           try {
             const session = await getSession();
-            const refreshToken = session?.user?.refreshToken;
+            const expiredAccessToken = session?.user?.accessToken;
 
-            if (!refreshToken) {
-              throw new Error('리프레시 토큰이 없습니다.');
+            console.log('토큰 갱신 시도:', {
+              expiredAccessToken,
+              originalRequest: originalRequest.url,
+            });
+
+            if (!expiredAccessToken) {
+              throw new Error('액세스 토큰이 없습니다.');
             }
 
             const response = await fetch(`${BASE_URL}/api/v1/member/login`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
-                Authorization: `${refreshToken}`,
+                Authorization: expiredAccessToken,
               },
+            });
+
+            console.log('토큰 갱신 응답:', {
+              status: response.status,
+              headers: Object.fromEntries(response.headers.entries()),
+              body: await response.text(),
             });
 
             if (!response.ok) {
@@ -72,7 +83,7 @@ class ApiClient {
             }
 
             const newAccessToken = response.headers.get('authorization');
-            const newRefreshToken = response.headers.get('refresh-token');
+            console.log('새로운 액세스 토큰:', newAccessToken);
 
             if (!newAccessToken) {
               throw new Error('새 액세스 토큰을 받지 못했습니다.');
@@ -82,7 +93,6 @@ class ApiClient {
             const event = new CustomEvent('session-update', {
               detail: {
                 accessToken: newAccessToken,
-                refreshToken: newRefreshToken,
               },
             });
             window.dispatchEvent(event);
@@ -93,12 +103,13 @@ class ApiClient {
 
             originalRequest.headers.Authorization = newAccessToken;
             return this.client(originalRequest);
-          } catch (refreshError) {
+          } catch (error) {
+            console.error('토큰 갱신 중 오류 발생:', error);
             this.failedQueue.forEach((prom) => {
-              prom.reject(refreshError);
+              prom.reject(error);
             });
             await signOut({ redirect: true, callbackUrl: '/signin/email' });
-            return Promise.reject(refreshError);
+            return Promise.reject(error);
           } finally {
             this.isRefreshing = false;
             this.failedQueue = [];

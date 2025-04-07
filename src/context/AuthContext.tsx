@@ -30,8 +30,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
 
   useEffect(() => {
+    console.log('세션 상태 변화:', { status, session });
+  }, [status, session]);
+
+  useEffect(() => {
     const handleSessionUpdate = async (event: SessionUpdateEvent) => {
       const { accessToken } = event.detail;
+      console.log('세션 업데이트 이벤트 수신:', { accessToken });
+
       await update({
         ...session,
         user: {
@@ -39,6 +45,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           accessToken,
         },
       });
+      console.log('세션 업데이트 완료');
     };
 
     window.addEventListener(
@@ -62,6 +69,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       });
 
       if (result?.ok) {
+        // todo: 로그인에 성공하면 원래 들어가려던 페이지로 이동
         router.push('/mypage');
       } else {
         console.error('로그인 실패');

@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
   IconHexagons,
   IconPencil,
@@ -8,6 +8,7 @@ import {
   IconTrash,
 } from '@tabler/icons-react';
 import { Button } from '@/components/ui/button';
+import Modal from '@/components/common/Modal/Modal';
 
 const handleCertificationRegistration = () => {
   confirm('테스트');
@@ -19,7 +20,7 @@ const handleCertificationEdit = (name: string) => {
   confirm(`${name} 수정?`);
 };
 const handleCertificationDelete = (name: string) => {
-  confirm(`${name} 삭제제?`);
+  confirm(`${name} 삭제?`);
 };
 
 interface MyCertificationListProps {
@@ -34,6 +35,16 @@ interface MyCertificationListProps {
 }
 
 const MyCertificationList: React.FC<MyCertificationListProps> = ({ data }) => {
+  const [activeModal, setActiveModal] = useState<string | null>(null);
+
+  const handleModalOpen = () => {
+    setActiveModal('certification-registration');
+  };
+
+  const handleModalClose = () => {
+    setActiveModal(null);
+  };
+
   return (
     <div className="flex justify-center py-[64px]">
       <div className="flex w-[1121px] flex-col gap-6">
@@ -44,7 +55,7 @@ const MyCertificationList: React.FC<MyCertificationListProps> = ({ data }) => {
           </ul>
           <ul
             className="flex cursor-pointer items-center gap-2"
-            onClick={handleCertificationRegistration}
+            onClick={handleModalOpen}
           >
             <li className="p-3 text-label-small-desktop text-blue-40">
               자격증 등록하기
@@ -110,6 +121,14 @@ const MyCertificationList: React.FC<MyCertificationListProps> = ({ data }) => {
           ))}
         </div>
       </div>
+      {activeModal && (
+        <Modal
+          type="input"
+          onConfirm={() => alert('서버에 집어넣을 데이터 관련 함수 작성하쇼')}
+          onCancel={handleModalClose}
+          closeOnOutsideClick={true}
+        />
+      )}
     </div>
   );
 };

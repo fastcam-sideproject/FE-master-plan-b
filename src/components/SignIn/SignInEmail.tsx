@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { signIn } from 'next-auth/react';
+import { getSession, signIn } from 'next-auth/react';
 import { FormProvider, useForm } from 'react-hook-form';
 import type { SubmitHandler } from 'react-hook-form';
 import Link from 'next/link';
@@ -29,8 +29,10 @@ export default function SignInEmail() {
         password: data.password,
         redirect: false,
       });
-
+      console.log('결과물', result);
       if (result?.ok) {
+        // todo: 로그인에 성공하면 원래 진입하려 했던 페이지로 이동
+
         router.push('/mypage');
       } else {
         console.error('로그인 실패:', result?.error);
@@ -71,6 +73,21 @@ export default function SignInEmail() {
             textColor={'gray'}
             label="로그인"
           />
+          {/* // todo: 개발자 로그인은 배포 시 제거할 것 */}
+          {process.env.NODE_ENV === 'development' && (
+            <Button
+              type="button"
+              variant={'secondary'}
+              size={'md'}
+              textColor={'gray'}
+              label="개발자 로그인"
+              onClick={() => {
+                methods.setValue('email', 'dev@example.com');
+                methods.setValue('password', 'dev1234');
+                methods.handleSubmit(onSubmit)();
+              }}
+            />
+          )}
         </form>
       </FormProvider>
       <div className="my-8">또는</div>

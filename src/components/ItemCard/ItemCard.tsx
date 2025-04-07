@@ -1,6 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
+import { useState, useEffect } from 'react';
 import BookmarkButton from './BookmarkButton';
 import StarRating from '../common/StarRating/StarRating';
 import RegDateBadge from './RegDateBadge';
@@ -25,6 +26,7 @@ type ItemCardProps = {
     examStartDate?: string;
     community?: number;
   }[];
+  onAddSchedule?: () => void;
 };
 // todo: 태블릿, 모바일용 카드 사이즈 수정 필요
 const getCardStyles = () => {
@@ -33,9 +35,6 @@ const getCardStyles = () => {
       'desktop:w-[285px] desktop:pt-[24px] desktop:p-7 ' +
       'tablet:w-[218px] tablet:pt-[21px] tablet:pr-[12px] tablet:pb-[21px] tablet:pl-[16px] ' +
       'mobile:w-[163px] mobile:pt-[19px] mobile:pr-[17px] mobile:pb-[13px] mobile:pl-[16px]',
-    // 'desktop:min-w-[285px] desktop:h-[270px] desktop:pt-[24px] desktop:pr-[21px] desktop:pb-[34px] desktop:pl-[19px] ' +
-    // 'tablet:min-w-[218px] tablet:h-[219px] tablet:pt-[21px] tablet:pr-[12px] tablet:pb-[21px] tablet:pl-[16px] ' +
-    // 'mobile:min-w-[163px] mobile:h-[179px] mobile:pt-[19px] mobile:pr-[17px] mobile:pb-[13px] mobile:pl-[16px]',
     gap: 'desktop:gap-5 tablet:gap-3 mobile:gap-3',
     textSize:
       'desktop:text-body-xxlarge-desktop tablet:text-body-xlarge-desktop mobile:text-body-xlarge-mobile',
@@ -44,15 +43,47 @@ const getCardStyles = () => {
   };
 };
 
-export default function ItemCard({ type, data }: ItemCardProps) {
+export default function ItemCard({ type, data, onAddSchedule }: ItemCardProps) {
   const { card, gap, textSize, hostTextSize } = getCardStyles();
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [slidesPerView, setSlidesPerView] = useState(4);
+
+  useEffect(() => {
+    const updateSlidesPerView = () => {
+      if (window.innerWidth >= 1280) {
+        setSlidesPerView(4);
+      } else if (window.innerWidth >= 1024) {
+        setSlidesPerView(3);
+      } else if (window.innerWidth >= 768) {
+        setSlidesPerView(3);
+      } else {
+        setSlidesPerView(2);
+      }
+    };
+
+    updateSlidesPerView();
+    window.addEventListener('resize', updateSlidesPerView);
+
+    return () => {
+      window.removeEventListener('resize', updateSlidesPerView);
+    };
+  }, []);
+
+  if (!data || !Array.isArray(data)) {
+    return null;
+  }
+
+  const getPaginationCount = () => {
+    const totalSlides = data.length;
+    return Math.max(1, totalSlides - slidesPerView + 1);
+  };
 
   const renderCard = (item: ItemCardProps['data'][0]) => (
     <div
       key={item.examId}
       className={`${card} ${gap} flex cursor-pointer flex-col justify-between rounded-6 border-2 border-transparent bg-neutral-0 shadow-2 transition duration-300 hover:border-neutral-70`}
     >
-      <div className="flex justify-between">
+      <div className="flex justify-between tablet:text-label-xsmall-desktop mobile:text-label-xsmall-desktop">
         <RegDateBadge
           start={item.regStartDate}
           end={item.regEndDate}
@@ -96,6 +127,7 @@ export default function ItemCard({ type, data }: ItemCardProps) {
             examId={item.examId}
             regStartDate={item.regStartDate || 'Default'}
             examStartDate={item.examStartDate || 'Default'}
+            onAddSchedule={onAddSchedule}
           />
         )}
       </div>
@@ -105,23 +137,31 @@ export default function ItemCard({ type, data }: ItemCardProps) {
   if (type === 'date') {
     return (
       <div className="relative desktop:w-[1376px]">
-        <div className="mx-auto overflow-hidden desktop:w-[1200px]">
+        <div className="mx-auto overflow-hidden desktop:w-[1200px] tablet:w-[688px] mobile:w-[335px]">
           <Swiper
             modules={[Navigation, Pagination]}
-            slidesPerView={4}
+            slidesPerView={slidesPerView}
             spaceBetween={24}
+            onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
             navigation={{
               prevEl: '.swiper-button-prev',
               nextEl: '.swiper-button-next',
+              disabledClass: 'swiper-button-disabled',
+            }}
+            pagination={{
+              el: '.swiper-pagination',
+              clickable: true,
             }}
             breakpoints={{
               320: {
                 slidesPerView: 2,
                 spaceBetween: 16,
+                navigation: false,
               },
               768: {
                 slidesPerView: 3,
                 spaceBetween: 20,
+                navigation: false,
               },
               1024: {
                 slidesPerView: 3,
@@ -137,11 +177,21 @@ export default function ItemCard({ type, data }: ItemCardProps) {
               <SwiperSlide key={item.examId}>{renderCard(item)}</SwiperSlide>
             ))}
           </Swiper>
+          <div className="!swiper-pagination mt-6 flex justify-center gap-2 desktop:hidden tablet:flex mobile:flex">
+            {Array.from({ length: getPaginationCount() }).map((_, index) => (
+              <div
+                key={index}
+                className={`swiper-pagination-bullet !h-2 !w-6 !rounded-full !bg-neutral-10 ${
+                  index === activeIndex ? '!opacity-100' : '!opacity-16'
+                }`}
+              ></div>
+            ))}
+          </div>
         </div>
-        <div className="swiper-button-prev absolute -left-[40px] top-1/2 -translate-y-1/2 !text-neutral-0">
+        <div className="swiper-button-prev absolute -left-[40px] top-1/2 !hidden -translate-y-1/2 !text-neutral-0 desktop:!block tablet:!hidden mobile:!hidden">
           <IconChevronLeft size={48} />
         </div>
-        <div className="swiper-button-next absolute right-0 top-1/2 -translate-y-1/2 !text-neutral-0">
+        <div className="swiper-button-next absolute right-0 top-1/2 !hidden -translate-y-1/2 !text-neutral-0 desktop:!block tablet:!hidden mobile:!hidden">
           <IconChevronRight size={48} />
         </div>
       </div>

@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 
 // todo: 버튼에 들어갈 아이콘 확인 후 필요한 것만 항목 추가할 것.
 const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap ring-offset-white transition-colors  disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300',
+  'inline-flex items-center justify-center whitespace-nowrap ring-offset-white transition-colors  disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300',
   {
     variants: {
       variant: {
@@ -60,6 +60,7 @@ export interface ButtonProps
   label?: string;
   onClick?: () => void;
   onSubmit?: () => void;
+  icon?: React.ReactNode;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -74,6 +75,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       label,
       onClick,
       onSubmit,
+      icon,
       ...props
     },
     ref,
@@ -90,13 +92,12 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {withIcon === true && (
-          <img
-            src="/icons/active/check.svg"
-            alt="button icon"
-            className="bg-neutral-0"
-            width={iconSize}
-            height={iconSize}
-          />
+          <div
+            className="flex items-center justify-center"
+            style={{ width: iconSize, height: iconSize }}
+          >
+            {icon}
+          </div>
         )}
         {label || children}
       </Comp>

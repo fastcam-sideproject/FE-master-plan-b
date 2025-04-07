@@ -1,9 +1,9 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import BtnOnboarding from '@/components/Onboarding/BtnOnboarding';
 import OnboardingSubject from '@/components/Onboarding/OnboardingSubject';
 import { Button } from '@/components/ui/button';
-import { useRouter } from 'next/navigation';
 
 export default function StepIsFavorite() {
   const router = useRouter();

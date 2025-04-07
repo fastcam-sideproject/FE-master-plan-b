@@ -8,7 +8,6 @@ declare module 'next-auth' {
       nickname?: string;
       role?: string;
       accessToken?: string;
-      refreshToken?: string;
     };
   }
 
@@ -18,7 +17,6 @@ declare module 'next-auth' {
     nickname: string;
     role: string;
     accessToken?: string;
-    refreshToken?: string;
   }
 }
 
@@ -28,6 +26,5 @@ declare module 'next-auth/jwt' {
     nickname?: string;
     role?: string;
     accessToken?: string;
-    refreshToken?: string;
   }
 }

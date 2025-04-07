@@ -8,7 +8,6 @@ export const USERS_API_PATH = {
   // 셋 모두 post 사용
   login: '/api/v1/member/login',
   logout: '/api/v1/member/logout',
-  create: '/api/v1/member/create',
 } as const;
 
 export const MY_HISTORY_API_PATH = {
@@ -24,6 +23,8 @@ export const MY_HISTORY_API_PATH = {
   // 게시글 수정(patch)
   posts: '/api/v1/posts',
 } as const;
+
+export const EXAM_API_PATH = { exams: '/api/v1/exams' };
 
 export const MY_EXAM_SESSION_API_PATH = {
   // 시험 일정 조회
