@@ -200,7 +200,13 @@ export default function ItemCard({ type, data, onAddSchedule }: ItemCardProps) {
 
   return (
     <div className="flex flex-wrap gap-6">
-      {data.map((item) => renderCard(item))}
+      {data.length > 0 ? (
+        data.map((item) => renderCard(item))
+      ) : (
+        <div className="text-neutral-40 text-body-medium-desktop py-10 w-full text-center">
+          검색 결과가 없습니다.
+        </div>
+      )}
     </div>
   );
 }
