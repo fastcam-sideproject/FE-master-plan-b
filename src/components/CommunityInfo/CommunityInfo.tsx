@@ -39,7 +39,7 @@ const CommunityInfo = () => {
   }, []);
 
   return (
-    <div className="flex">
+    <div className="flex gap-4">
       {CommunityInfoData.map((item, index) => (
         <div
           key={index}

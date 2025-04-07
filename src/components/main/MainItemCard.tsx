@@ -21,10 +21,10 @@ function MainItemCard() {
       </div>
       <div className="flex gap-6 tablet:min-w-[688px] tablet:overflow-scroll mobile:min-w-[335px] mobile:overflow-scroll">
         {/* 데스크탑일때는 4개, 태블릿 3개 옆으로 스크롤 모바일 두개 */}
-        <ItemCard type={'info'} data={ItemCardDummyData} />
-        <ItemCard type={'info'} data={ItemCardDummyData} />
-        <ItemCard type={'info'} data={ItemCardDummyData} />
-        <ItemCard type={'info'} data={ItemCardDummyData} />
+        <ItemCard type={'info'} data={[ItemCardDummyData]} />
+        <ItemCard type={'info'} data={[ItemCardDummyData]} />
+        <ItemCard type={'info'} data={[ItemCardDummyData]} />
+        <ItemCard type={'info'} data={[ItemCardDummyData]} />
       </div>
     </section>
   );
