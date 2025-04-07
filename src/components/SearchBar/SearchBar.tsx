@@ -90,6 +90,9 @@ export default function SearchBar({
     }
   };
 
+  const isTablet = useMediaQuery(
+    '(min-width: 768px) and (max-width: 1279.9px)',
+  );
   const isMobile = useMediaQuery('(max-width: 767.9px)');
 
   return (
@@ -99,7 +102,7 @@ export default function SearchBar({
         value={inputValue}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
-        placeholder={`${isMobile ? '원하는 자격증 검색하기' : '원하는 자격증을 검색해보세요'}`}
+        placeholder={`${isTablet || isMobile ? '원하는 자격증 검색하기' : '원하는 자격증을 검색해보세요'}`}
       />
       <button className={cn(buttonVariants({ variant, type, size }))}>
         <IconSearch

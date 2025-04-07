@@ -37,13 +37,14 @@ const popoverVariants = cva('text-center', {
     mode: {
       // 작은 말풍선
       light:
-        'bg-[rgba(255,255,255,0.7)] absolute w-fit min-w-[200px] whitespace-nowrap px-6 py-5 rounded-4 box-border',
-      dark: 'bg-[rgba(28,28,28,0.7)] absolute w-fit min-w-[200px] whitespace-nowrap px-6 py-5 rounded-4 box-border',
+        'bg-[rgba(255,255,255,0.7)] absolute w-fit min-w-[200px] px-6 py-5 rounded-4 box-border',
+      dark: 'bg-[rgba(28,28,28,0.7)] absolute w-fit min-w-[200px] px-6 py-5 rounded-4 box-border',
       // 큰 말풍선
       big: 'w-[263px] h-[136px] bg-neutral-80 rounded-10 flex !justify-center items-center absolute z-0',
     },
     tipColor: {
-      light: 'after:border-t-[rgba(255,255,255,0.7)] after:border-b-[rgba(255,255,255,0.7)]',
+      light:
+        'after:border-t-[rgba(255,255,255,0.7)] after:border-b-[rgba(255,255,255,0.7)]',
       dark: 'after:border-t-[rgba(28,28,28,0.7)] after:border-b-[rgba(28,28,28,0.7)]',
     },
     tipDirection: {
@@ -56,6 +57,7 @@ const popoverVariants = cva('text-center', {
         '[&:after]:!left-1/2 [&:after]:!-translate-x-1/2 [&:after]:!right-auto left-1/2 -translate-x-1/2',
       end: '[&:after]:!right-5 [&:after]:!left-auto right-[-10px]',
     },
+
     // 큰 말풍선 화살표 위치
     bigTipPosition: {
       start: 'after:left-4',
@@ -68,6 +70,7 @@ const popoverVariants = cva('text-center', {
     tipDirection: 'down',
     tipColor: 'dark',
     tipPosition: 'start',
+
     bigTipPosition: 'start',
   },
 });
@@ -79,9 +82,14 @@ const textVariants = cva('', {
       dark: 'text-label-small-desktop text-neutral-0 font-bold',
       big: 'text-body-small-desktop text-neutral-0 font-medium w-[160px] h-[104px] font-regular',
     },
+    whiteSpace: {
+      nowrap: 'whitespace-nowrap',
+      preLine: 'whitespace-pre-line',
+    },
   },
   defaultVariants: {
     text: 'dark',
+    whiteSpace: 'nowrap',
   },
 });
 
@@ -90,6 +98,7 @@ interface PopoverProps
     VariantProps<typeof textVariants> {
   className?: string;
   label: string;
+  whiteSpace?: 'nowrap' | 'preLine';
 }
 
 const Popover = ({
@@ -98,6 +107,7 @@ const Popover = ({
   variant,
   mode,
   text,
+  whiteSpace,
   tipDirection,
   tipColor,
   tipPosition,
@@ -106,6 +116,9 @@ const Popover = ({
 }: PopoverProps) => {
   // mode가 big이 '아닐 때만' 말풍선 화살표에 tailwind 적용
   const shouldShowTailwindTip = mode !== 'big';
+  const hasLineBreak = label.includes('\n');
+  const effectiveWhiteSpace =
+    whiteSpace || (hasLineBreak ? 'preLine' : 'nowrap');
 
   return (
     <div
@@ -129,7 +142,7 @@ const Popover = ({
       {/* 글씨 색상은 mode의 설정을 추종함 */}
       <div
         className={cn(
-          textVariants({ text: mode }),
+          textVariants({ text: mode, whiteSpace: effectiveWhiteSpace }),
           // big 모드일 때 z-index 추가
           mode === 'big' ? 'relative z-10 h-fit' : '',
         )}
@@ -142,10 +155,17 @@ const Popover = ({
           className={cn(
             "absolute bottom-[-20px] z-0 before:content-['']",
             // bigTipPosition에 따라 위치와 좌우반전 적용
-            bigTipPosition === 'start' ? 'left-4 [&>img]:scale-x-[-1]' : 'right-4',
+            bigTipPosition === 'start'
+              ? 'left-4 [&>img]:scale-x-[-1]'
+              : 'right-4',
           )}
         >
-          <Image src={popoverTipPath} alt="popover tip" width={101.05} height={61} />
+          <Image
+            src={popoverTipPath}
+            alt="popover tip"
+            width={101.05}
+            height={61}
+          />
         </div>
       )}
     </div>
