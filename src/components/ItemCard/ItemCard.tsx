@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import BookmarkButton from './BookmarkButton';
 import StarRating from '../common/StarRating/StarRating';
 import RegDateBadge from './RegDateBadge';
@@ -48,6 +49,9 @@ export default function ItemCard({ type, data, onAddSchedule }: ItemCardProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [slidesPerView, setSlidesPerView] = useState(4);
 
+  const router = useRouter();
+
+
   useEffect(() => {
     const updateSlidesPerView = () => {
       if (window.innerWidth >= 1280) {
@@ -81,6 +85,11 @@ export default function ItemCard({ type, data, onAddSchedule }: ItemCardProps) {
   const renderCard = (item: ItemCardProps['data'][0]) => (
     <div
       key={item.examId}
+      onClick={() => {
+        if (type === 'community') {
+          router.push(`/community/${item.examId}`);
+        }
+      }}
       className={`${card} ${gap} flex cursor-pointer flex-col justify-between rounded-6 border-2 border-transparent bg-neutral-0 shadow-2 transition duration-300 hover:border-neutral-70`}
     >
       <div className="flex justify-between tablet:text-label-xsmall-desktop mobile:text-label-xsmall-desktop">
@@ -181,9 +190,8 @@ export default function ItemCard({ type, data, onAddSchedule }: ItemCardProps) {
             {Array.from({ length: getPaginationCount() }).map((_, index) => (
               <div
                 key={index}
-                className={`swiper-pagination-bullet !h-2 !w-6 !rounded-full !bg-neutral-10 ${
-                  index === activeIndex ? '!opacity-100' : '!opacity-16'
-                }`}
+                className={`swiper-pagination-bullet !h-2 !w-6 !rounded-full !bg-neutral-10 ${index === activeIndex ? '!opacity-100' : '!opacity-16'
+                  }`}
               ></div>
             ))}
           </div>
