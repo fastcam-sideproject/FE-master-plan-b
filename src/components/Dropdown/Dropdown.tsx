@@ -16,6 +16,16 @@ import {
 import { cva, VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
+/*
+**dropdown 사용**
+- size의 기본값은 'lg'입니다. 알맞은 항목을 선택해 주세요.
+- variant의 기본값은 'default'입니다. 알맞은 항목을 선택해 주세요.
+- size -> width: 사이즈 옵션 적용에 따라 기존의 (너비 적용을 위한) size를 width로 고쳤습니다. 기본값은 w-[200px].
+- 컴포넌트 사용 시 사용하려는 곳에서 알맞은 너비를 적용해 주세요.
+- title 항목이 없으면 타이틀 자리에 자동으로 '[ 선택 ]' 텍스트가 출력됩니다.
+- items={['텍스트1', '텍스트2', '텍스트3']}와 같이 콘텐츠가 들어갈 자리에 배열데이터로 string을 입력해 주세요.
+*/
+
 const dropdownBoxVariants = cva('flex flex-col gap-2 w-fit h-fit', {
   variants: {
     variant: {
@@ -34,7 +44,7 @@ const dropdownBoxVariants = cva('flex flex-col gap-2 w-fit h-fit', {
   },
   defaultVariants: {
     variant: 'default',
-    size: 'default',
+    size: 'lg',
   },
 });
 
@@ -42,19 +52,19 @@ const dropdownMenuItemVariants = cva('', {
   variants: {
     variant: {
       default:
-        'focus:bg-neutral-70 py-3 text-body-large-desktop font-normal focus:outline-none ',
+        'focus:bg-neutral-70 py-3 text-body-large-desktop font-normal focus:outline-none text-neutral-0 px-8',
     },
     size: {
       default: '',
-      lg: 'px-8 text-neutral-0',
-      sm: 'px-7 text-neutral-0',
-      lgOutline: 'focus:bg-neutral-5 px-8 text-neutral-85',
-      smOutline: 'focus:bg-neutral-5 px-8 text-neutral-85',
+      lg: 'px-8', // 중복 코드라 의미는 없으나 가독성을 위해 추가함
+      sm: 'px-7',
+      lgOutline: 'focus:bg-neutral-5 text-neutral-85',
+      smOutline: 'focus:bg-neutral-5 text-neutral-85',
     },
   },
   defaultVariants: {
     variant: 'default',
-    size: 'default',
+    size: 'lg',
   },
 });
 
@@ -68,13 +78,13 @@ type DropdownProps = {
 
 export function Dropdown({
   items,
-  size = 'default',
+  size = 'lg',
   title,
   width = 'w-[200px]',
   variant = 'default',
 }: DropdownProps) {
   const [expanded, setExpanded] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(title || '선택');
+  const [selectedItem, setSelectedItem] = useState(title || '[ 선택 ]');
 
   const handleOpenChange = (open: boolean) => {
     setExpanded(open);
@@ -136,9 +146,9 @@ export function Dropdown({
         <DropdownMenuContent
           className={cn(
             width,
-            'py-6',
-            size === 'lg' && 'mt-5 rounded-6 bg-neutral-90 shadow-1',
-            size === 'sm' && 'mt-5 rounded-6 bg-neutral-90 shadow-1',
+            'rounded-6 bg-neutral-90 py-6',
+            size === 'lg' && 'mt-5 shadow-1',
+            size === 'sm' && 'mt-5 shadow-1',
             size === 'lgOutline' && 'mt-7 rounded-4 bg-neutral-0',
             size === 'smOutline' && 'mt-6 rounded-4 bg-neutral-0',
           )}

@@ -435,40 +435,46 @@ export default function Home() {
           closeOnOutsideClick={true}
         />
       )}
-      <div className="flex gap-5 bg-neutral-85 p-5">
-        <Dropdown
-          items={['텍스트1', '텍스트2', '텍스트3']}
-          title="여기를 선택!"
-          size="sm"
-        />
-        <Dropdown
-          items={['텍스트1', '텍스트2', '텍스트3']}
-          title="여기를 선택!"
-          size="lg"
-        />
-        <Dropdown
-          items={['텍스트1', '텍스트2', '텍스트3']}
-          title="여기를 선택!"
-          size="smOutline"
-          width="w-[321px]"
-        />
-        <Dropdown
-          items={['텍스트1', '텍스트2', '텍스트3']}
-          title="여기를 선택!"
-          size="lgOutline"
-          width="w-[378px]"
-        />
-        <Dropdown
-          items={['텍스트1', '텍스트2', '텍스트3']}
-          variant="dark"
-          title="선택 ㄱ?"
-          size="sm"
-        />
-        <Dropdown
-          items={['텍스트1', '텍스트2', '텍스트3']}
-          variant="dark"
-          size="lg"
-        />
+      <div className="flex w-fit flex-col gap-5 bg-neutral-0 p-5">
+        <div className="box-border flex gap-10 border-2 border-red-20 p-5">
+          <Dropdown
+            items={['텍스트1', '텍스트2', '텍스트3']}
+            title="여기를 선택!"
+            size="sm"
+          />
+          <Dropdown
+            items={['텍스트1', '텍스트2', '텍스트3']}
+            title="여기를 선택!"
+            size="lg"
+          />
+        </div>
+        <div className="box-border flex gap-10 border-2 border-red-20 p-5">
+          <Dropdown
+            items={['텍스트1', '텍스트2', '텍스트3']}
+            title="여기를 선택!"
+            size="smOutline"
+            width="w-[321px]"
+          />
+          <Dropdown
+            items={['텍스트1', '텍스트2', '텍스트3']}
+            title="여기를 선택!"
+            size="lgOutline"
+            width="w-[378px]"
+          />
+        </div>
+        <div className="box-border flex gap-10 border-2 border-neutral-85 bg-neutral-85 p-5">
+          <Dropdown
+            items={['텍스트1', '텍스트2', '텍스트3']}
+            variant="dark"
+            title="선택 ㄱ?"
+            size="sm"
+          />
+          <Dropdown
+            items={['텍스트1', '텍스트2', '텍스트3']}
+            variant="dark"
+            size="lg"
+          />
+        </div>
       </div>
     </>
   );

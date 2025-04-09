@@ -132,12 +132,7 @@ const Banner = () => {
           </ul>
         </div>
         <div className="w-[1200px] text-title-medium-desktop text-neutral-0 tablet:w-[688px] mobile:w-[335px] mobile:text-body-medium-desktop">
-          <Dropdown
-            items={dropdownItems}
-            title="학습 기간"
-            color="bg-neutral-90"
-            size="sm"
-          />
+          <Dropdown items={dropdownItems} title="학습 기간" size="sm" />
           <p className="pl-4">응시 가능한 시험 날짜예요</p>
         </div>
         <ItemCard

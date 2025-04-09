@@ -4,10 +4,14 @@ import { setCookie } from '@/lib/cookies';
 import { USERS_API_PATH } from '../path';
 import apiClient from '../apiClient';
 
-export async function loginApi() {
-  const res = apiClient.post(USERS_API_PATH.login);
+interface LoginResponse {
+  accessToken: string;
+}
 
-  const { accessToken } = await res.json();
+export async function loginApi() {
+  const res = await apiClient.post<LoginResponse>(USERS_API_PATH.login);
+
+  const { accessToken } = res;
 
   setCookie('accessToken', accessToken, {
     httpOnly: true,
