@@ -168,11 +168,11 @@ export default function Home() {
         tags={['하루 1~2시간 학습', '비전공자', '6개월 준비']}
         content="필기는 기출문제를 정복하면 절반은 먹고 들어갑니다. 저는 5년 치 기출문제를 다운로드해서 한 번 풀어본 뒤, 틀린 문제만 다시 정리했어요. 기출문제는 반복되는 경향이 강하니까 시험 직전까지 최소 3번은 돌려보는 걸 추천합니다. 암기 팁으로는 **'키워드 중심으로 정리'**하는 게 중요해요. 책 한 권을 다 외우려 하지 말고, 꼭 나오는 핵심 개념만 메모하면서 공부했어요."
       />
-      <Dropdown
+      {/* <Dropdown
         items={['검은색 1', '검은색 2', '검은색 3', '검은색 4', '검은색 5']}
         size="w-[165px]"
         color="bg-neutral-90"
-      />
+      /> */}
 
       <div className="flex items-center justify-center">
         <TooltipComponent />
@@ -435,6 +435,41 @@ export default function Home() {
           closeOnOutsideClick={true}
         />
       )}
+      <div className="flex gap-5 bg-neutral-85 p-5">
+        <Dropdown
+          items={['텍스트1', '텍스트2', '텍스트3']}
+          title="여기를 선택!"
+          size="sm"
+        />
+        <Dropdown
+          items={['텍스트1', '텍스트2', '텍스트3']}
+          title="여기를 선택!"
+          size="lg"
+        />
+        <Dropdown
+          items={['텍스트1', '텍스트2', '텍스트3']}
+          title="여기를 선택!"
+          size="smOutline"
+          width="w-[321px]"
+        />
+        <Dropdown
+          items={['텍스트1', '텍스트2', '텍스트3']}
+          title="여기를 선택!"
+          size="lgOutline"
+          width="w-[378px]"
+        />
+        <Dropdown
+          items={['텍스트1', '텍스트2', '텍스트3']}
+          variant="dark"
+          title="선택 ㄱ?"
+          size="sm"
+        />
+        <Dropdown
+          items={['텍스트1', '텍스트2', '텍스트3']}
+          variant="dark"
+          size="lg"
+        />
+      </div>
     </>
   );
 }

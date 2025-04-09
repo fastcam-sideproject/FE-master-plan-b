@@ -51,6 +51,7 @@ const Quotes = () => {
           mode="big"
           bigTipPosition="start"
           className="absolute left-0 top-0 m-[10px]"
+          whiteSpace="preLine"
         />
         <Image
           src={'/images/character/web/Dashboard.png'}

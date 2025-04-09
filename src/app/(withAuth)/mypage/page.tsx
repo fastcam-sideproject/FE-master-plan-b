@@ -74,6 +74,10 @@ export default function MypagePage() {
     '(min-width: 768px) and (max-width: 1279.9px)',
   );
 
+  const handleRouteStudyLog = () => {
+    router.push('/mypage/my-study');
+  };
+
   return (
     <div className="flex w-[1280px] flex-col justify-start gap-9 px-9 py-[120px] tablet:w-[696px] tablet:py-[80px] mobile:w-[375px] mobile:px-6 mobile:py-9">
       <div className="flex flex-col gap-9 mobile:gap-6">
@@ -97,12 +101,16 @@ export default function MypagePage() {
           />
         </div>
         <div className="flex items-center gap-10">
-          <StudyCardList studyData={dummyStudyData} />
+          <StudyCardList
+            studyData={dummyStudyData}
+            onClickRecord={handleRouteStudyLog}
+          />
           <Button
             variant="secondary"
             size={'lg'}
             className={`${isTablet || isMobile ? 'hidden' : ''} h-[141px] w-[154px] rounded-6`}
             label="시험 등록하기"
+            onClick={handleMoveExamRegit}
           />
         </div>
       </div>

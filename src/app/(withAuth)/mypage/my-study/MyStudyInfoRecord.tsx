@@ -67,6 +67,8 @@ const MyStudyInfoRecord = ({
                 '검은색 4',
                 '검은색 5',
               ]}
+              size="sm"
+              width="w-[200px]"
             />
           </div>
           <div className={`${constentFlexes}`}>
