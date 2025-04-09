@@ -31,7 +31,14 @@ interface BadgeIconProps {
 }
 
 const BadgeIcon = ({ type, width = 48, height = 48 }: BadgeIconProps) => {
-  return <Image src={badges[type]} alt={`${type} badge`} width={width} height={height} />;
+  return (
+    <Image
+      src={badges[type]}
+      alt={`${type} badge`}
+      width={width}
+      height={height}
+    />
+  );
 };
 
 export default BadgeIcon;

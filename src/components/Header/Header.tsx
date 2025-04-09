@@ -2,8 +2,8 @@
 
 import {
   IconBellFilled,
+  IconMenu2,
   IconSearch,
-  IconUser,
   IconUserFilled,
 } from '@tabler/icons-react';
 import Image from 'next/image';
@@ -76,7 +76,7 @@ export default function Header() {
           height={40}
           src={'/logos/logo-text-light.svg'}
           alt={'헤더 로고'}
-          className="hidden hover:cursor-pointer lg:flex"
+          className="hidden hover:cursor-pointer desktop:flex"
           onClick={() => {
             router.push('/');
           }}
@@ -86,12 +86,12 @@ export default function Header() {
           height={36}
           src={'/logos/logo-light.svg'}
           alt={'태블릿 모바일 로고'}
-          className="flex cursor-pointer lg:hidden"
+          className="flex cursor-pointer desktop:hidden"
           onClick={() => {
             router.push('/');
           }}
         />
-        <ul className="hidden text-neutral-0 lg:flex">
+        <ul className="flex text-neutral-0 tablet:hidden mobile:hidden">
           {headerNavLi.map((item) => (
             <li
               key={item.id}
@@ -111,14 +111,17 @@ export default function Header() {
           >
             로그아웃(임시)
           </button>
-          <li className="hidden h-10 w-10 items-center justify-center rounded-full bg-neutral-80 hover:cursor-pointer hover:bg-neutral-70 active:bg-neutral-50 lg:flex">
+          <li className="hidden h-10 w-10 items-center justify-center rounded-full bg-neutral-80 hover:cursor-pointer hover:bg-neutral-70 active:bg-neutral-50 desktop:flex">
             <IconBellFilled className="text-neutral-0" />
           </li>
-          <li className="hidden h-10 w-10 items-center justify-center rounded-full bg-neutral-80 hover:cursor-pointer hover:bg-neutral-70 active:bg-neutral-50 lg:flex">
+          <li className="hidden h-10 w-10 items-center justify-center rounded-full bg-neutral-80 hover:cursor-pointer hover:bg-neutral-70 active:bg-neutral-50 desktop:flex">
             <IconUserFilled className="text-neutral-0" />
           </li>
-          <li className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-80 hover:cursor-pointer hover:bg-neutral-70 active:bg-neutral-50 lg:hidden">
-            <IconUser className="text-neutral-0" />
+          <li className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-80 hover:cursor-pointer hover:bg-neutral-70 active:bg-neutral-50 desktop:hidden">
+            <IconSearch className="text-neutral-0" />
+          </li>
+          <li className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-80 hover:cursor-pointer hover:bg-neutral-70 active:bg-neutral-50 desktop:hidden">
+            <IconMenu2 className="text-neutral-0" />
           </li>
         </ul>
       </div>
